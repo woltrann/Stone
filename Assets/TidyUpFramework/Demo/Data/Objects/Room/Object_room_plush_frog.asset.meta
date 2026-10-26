@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 716f1ebae8ee4d1498501d0d9729bfb3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Room/Object_room_plush_frog.asset
+  uploadId: 1021752

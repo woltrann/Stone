@@ -1,0 +1,36 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0851dd53ded063a4aaf093603b87ed24, type: 3}
+  m_Name: Objective_Store_Shelves
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objectives.TidyPlaceObjectsObjective
+  objectiveId: store_shelves
+  title: Shelve the Pals by family {current}/{target}
+  description: Bears, bunnies, cats, frogs and robots each have their own shelving
+    unit. Match the sign above it.
+  icon: {fileID: 0}
+  bonusScore: 300
+  hideCounter: 0
+  objectFilter:
+    categories:
+    - {fileID: 11400000, guid: 6dd625c10be2dd84188bd40236fe6cc8, type: 2}
+    requiredTags: []
+    excludedTags: []
+    definitions: []
+    rule: {fileID: 0}
+  requiredCount: 60
+  requireCorrectPlacement: 1
+  restrictToTargetIds:
+  - store_shelf_bear
+  - store_shelf_bunny
+  - store_shelf_cat
+  - store_shelf_frog
+  - store_shelf_robot

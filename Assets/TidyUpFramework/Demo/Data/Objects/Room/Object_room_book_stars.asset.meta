@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: fb92c6b7701aa444089653dd2f7835e1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Room/Object_room_book_stars.asset
+  uploadId: 1021752

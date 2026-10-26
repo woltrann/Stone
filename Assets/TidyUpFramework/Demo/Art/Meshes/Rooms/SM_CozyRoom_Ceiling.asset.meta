@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: bea5f4cf709176a4f85b82bc3dcd3cb0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Rooms/SM_CozyRoom_Ceiling.asset
+  uploadId: 1021752

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 614879a122d0deb4eac6ca722730fdfa
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Prefabs/TidyLevelSystems.prefab
+  uploadId: 1021752

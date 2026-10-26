@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e5247673f1e4051478f618047ec57365
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Materials/M_Lamp_Glow.mat
+  uploadId: 1021752

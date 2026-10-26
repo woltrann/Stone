@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 884d23faf8ba49c4fa4dd856a50e6d60
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Library/Object_ink_bottle.asset
+  uploadId: 1021752

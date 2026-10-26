@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Demo Scenes</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Demo Scenes</h1>
+<p class="lead">Four complete levels, a main menu and a sandbox show the same framework producing very different games. No demo uses gameplay code of its own: every behaviour is configuration.</p>
+
+<table>
+<tr><th>Scene</th><th>Level</th><th>Highlights</th></tr>
+<tr><td><code>TidyUp_MainMenu</code></td><td>-</td><td>Main menu, level select, settings, controls, credits over a live 3D backdrop</td></tr>
+<tr><td><code>TidyUp_ArcaneLibrary</code></td><td>1 · Easy</td><td>Subject shelves, alphabetical rule shelves, sequential volumes, colour racks, containers, snap slots, free zone, tutorial, before/after mood</td></tr>
+<tr><td><code>TidyUp_ToyStore</code></td><td>2 · Normal</td><td>Hundreds of collectibles, species and colour sorting, grid shelves, matching sets, quantity objectives, combos</td></tr>
+<tr><td><code>TidyUp_Warehouse</code></td><td>3 · Hard</td><td>Colour bins with fill visuals, size-based stacking on pallets, tool wall, physics crates, countdown timer with fail state</td></tr>
+<tr><td><code>TidyUp_CozyRoom</code></td><td>4 · Relaxed</td><td>Cleaning stains, sponge and vacuum tools, clutter disposal, hidden keepsakes, laundry basket fill stages, strongest before/after</td></tr>
+<tr><td><code>TidyUp_Sandbox</code></td><td>Not in catalog</td><td>The finished result of <a href="first-level.html">Creating Your First Level</a></td></tr>
+</table>
+
+<h2 id="library">Arcane Library</h2>
+<figure><img src="images/demo_library.png" alt="Arcane Library"><figcaption>The reading hall: two-storey bookcases, gallery, chandeliers and arched windows. Books, potions, scrolls, candles and curiosities are scattered everywhere.</figcaption></figure>
+<h3>What it demonstrates</h3>
+<ul>
+<li><strong>Category sorting</strong> — four subject bookcases (Spell Books, Botany, History, Star Charts) using <code>TidyRowZone</code> shelves that pack books by real width.</li>
+<li><strong>Rule assets</strong> — the spell book case splits titles A–M and N–Z with two <em>Alphabetical Range Rule</em> assets.</li>
+<li><strong>Ordering</strong> — the <em>Encyclopaedia Arcana</em> shelf requires volumes I–VIII in sequence and locks when complete.</li>
+<li><strong>Tag sorting</strong> — three potion racks (<code>TidySlotGroup</code> with manual anchors) accept Potions + Red / Blue / Green.</li>
+<li><strong>Containers</strong> — wicker scroll baskets with a natural pile layout.</li>
+<li><strong>Snap slots</strong> — candles on candelabras; crystals on colour-matched pedestals.</li>
+<li><strong>Free placement</strong> — ink and quill on the writing desk (definition filter).</li>
+<li><strong>Tutorial</strong> — seven steps teaching looking, moving, picking up, placing, inspecting and hints.</li>
+<li><strong>Before/After</strong> — a desaturated "messy" volume cross-fades into a warm one, chandeliers brighten, dust patches vanish and magic motes appear as progress grows.</li>
+</ul>
+<h3>How it is structured</h3>
+<pre><code>Environment         room shell, columns, gallery, sconces, windows, chandeliers (static)
+Furniture           bookcases with decorative book rows, tables, chairs, racks, pedestals (static)
+Placement Targets   shelf rows, potion racks, baskets, candle slots, pedestals, desk
+Clutter             84 interactive objects
+Before After        transformation controller with volume, light and reveal reactors
+TidyLevelSystems    level manager (Level_01_ArcaneLibrary), hints, feedback, tutorial, highlighter
+TidyPlayer          first person controller, interactor, preview, cleaning, camera punch
+TidyHUD             HUD, pause, settings, controls, results, mobile controls</code></pre>
+<h3>How to modify it</h3>
+<p>Open <code>Demo/Data/Levels/Level_01_ArcaneLibrary</code> to change objectives or stars. Select any shelf under <em>Placement Targets</em> to change what it accepts. Add a new subject by creating a category, a few object definitions and a new shelf row — the level picks them up automatically if the "Shelve the books" objective filter includes the new category.</p>
+
+<h2 id="store">Toy &amp; Collectible Store — "Pebble Pals Toy Shop"</h2>
+<figure><img src="images/demo_store.png" alt="Toy store before"><figcaption>Opening day: a delivery box has burst and about 260 collectibles are piled in the middle of the shop.</figcaption></figure>
+<figure><img src="images/store_organised.png" alt="Toy store after"><figcaption>Organised: families on their shelves, the rainbow stand sorted, bunting and balloons revealed by the before/after controller.</figcaption></figure>
+<h3>What it demonstrates</h3>
+<ul>
+<li><strong>Quantity</strong> — 348 interactive objects (30 "Pebble Pals" definitions: 5 families × 6 colours, plus 4 mystery capsule colours) as a performance showcase.</li>
+<li><strong>Category sorting on grids</strong> — one <code>TidySlotGroup</code> (11 × 6) per family.</li>
+<li><strong>Colour sorting</strong> — the tiered Rainbow Stand: six manual-anchor slot groups, each accepting one colour tag.</li>
+<li><strong>Grouping</strong> — Family Set pedestals use <em>Same Category</em> grouping (six of one family, any colour); Triplet trays use <em>Same Definition</em> (three identical figures). Objects that would break a group are rejected at placement.</li>
+<li><strong>Containers</strong> — capsule bins by colour.</li>
+<li><strong>Quantity objectives</strong> — "Stock 110 Pebble Pals" counts placements anywhere; shelf and stand objectives count specific targets.</li>
+<li><strong>Combos and optional goals</strong> — a score objective and a time objective reward fast chains.</li>
+</ul>
+<h3>How to modify it</h3>
+<p>Each figure family is a category under <code>Pebble Pals</code>; add a family by creating a category, six definitions and a shelf. Change goals in <code>Level_02_ToyStore</code>.</p>
+
+<h2 id="warehouse">Warehouse — "Northwind Parcel Depot"</h2>
+<figure><img src="images/demo_warehouse.png" alt="Warehouse before"><figcaption>The morning delivery dumped across the depot floor.</figcaption></figure>
+<figure><img src="images/warehouse_organised.png" alt="Warehouse after"><figcaption>Parcels in colour bins, cartons stacked by size, crates racked; the BACKLOG sign switches to ALL CLEAR.</figcaption></figure>
+<h3>What it demonstrates</h3>
+<ul>
+<li><strong>Tag sorting into containers</strong> — four colour bins (Pile layout) with rising fill plates and indicator lamps.</li>
+<li><strong>Size rules and stacking</strong> — <code>TidyStackPoint</code>s on pallets accept cartons through <em>Numeric Range Rule</em> assets on Size (<code>Rule_Warehouse_SizeSmall/Medium/Large</code>).</li>
+<li><strong>Rows on racks</strong> — fragile and spare-parts crates on pallet-rack beams.</li>
+<li><strong>Snap slots</strong> — a pegboard tool wall with painted outlines (manual-anchor slot group).</li>
+<li><strong>Free placement with rotation snap</strong> — the hazmat cage (45° steps).</li>
+<li><strong>Physics handling</strong> — drums, fuel cans and large crates use the physics profile; everything else is controlled.</li>
+<li><strong>Countdown with fail state</strong> — 15-minute limit, stars by completion time.</li>
+</ul>
+
+<h2 id="cozy-room">Cozy Room — "Moving-in Day"</h2>
+<figure><img src="images/before_after.png" alt="Cozy room before and after"><figcaption>The strongest transformation: cool, dim and cluttered on the left; warm golden hour, fairy lights and flowers on the right.</figcaption></figure>
+<h3>What it demonstrates</h3>
+<ul>
+<li><strong>Cleaning</strong> — 11 <code>TidyCleanable</code> stains on floor, wall and furniture; a sponge (<code>TidyCleaningTool</code>) cleans faster and in a radius.</li>
+<li><strong>Clutter</strong> — rubbish into consuming bins, dust bunnies collected with a handheld vacuum (<em>Collects Clutter</em>).</li>
+<li><strong>Find objects</strong> — three keepsakes hidden under the bed and behind furniture (<em>Requires Discovery</em>).</li>
+<li><strong>Hidden containers</strong> — a laundry basket with fill stages, a toy chest.</li>
+<li><strong>Stacks, rows, slots and free zones</strong> — wardrobe stacks, bookshelf row, shoe rack, kitchenette tray.</li>
+<li><strong>Tutorial</strong> — teaches scrubbing, dropping and disposal.</li>
+<li><strong>Stars by mistakes</strong> — relaxed play without a timer.</li>
+</ul>
+
+<h2 id="regenerating">Regenerating demo content</h2>
+<p>All demo meshes, textures, sounds, prefabs and scenes are produced by the editor pipeline under <em>Tools &gt; Tidy Up Framework &gt; Demo Content</em>. You never need to run it: the generated assets are included. It is provided so you can study how content is assembled, and to regenerate assets if you modify the generators (<code>Demo/Editor</code>).</p>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

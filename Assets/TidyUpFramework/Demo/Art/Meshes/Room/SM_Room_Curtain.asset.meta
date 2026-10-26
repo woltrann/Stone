@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cdebedfd16380594aa8f43223e81c4ec
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Room/SM_Room_Curtain.asset
+  uploadId: 1021752

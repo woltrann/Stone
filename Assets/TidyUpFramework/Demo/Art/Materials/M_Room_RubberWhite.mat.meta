@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b4a5007c926023b418c1146c86d6fc58
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Materials/M_Room_RubberWhite.mat
+  uploadId: 1021752

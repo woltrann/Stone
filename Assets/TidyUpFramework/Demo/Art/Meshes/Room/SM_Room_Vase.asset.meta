@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 675c22b7c9dda2a40b5fd85ac98aecdc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Room/SM_Room_Vase.asset
+  uploadId: 1021752

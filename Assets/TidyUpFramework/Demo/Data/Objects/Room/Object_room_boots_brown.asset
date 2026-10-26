@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_room_boots_brown
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: room_boots_brown
+  displayName: Ankle Boots
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.5882353, g: 0.74509805, b: 0.9019608, a: 1}
+  category: {fileID: 11400000, guid: 054ca2c64fe24b142b6e2fa9ec9d2f74, type: 2}
+  tags:
+  - {fileID: 11400000, guid: 41ef7ab123daeb7449e7d99c194d9cfb, type: 2}
+  - {fileID: 11400000, guid: 5304d34cf37ca4140a68ac9c4f1ece12, type: 2}
+  size: 1.5
+  weight: 0.9
+  priority: 0
+  sortKey: Ankle Boots
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 0
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 14
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 186007203541288692, guid: a381b6434f96c88439b2cea575c49344, type: 3}
+  inspectText: Fleece-lined boots for autumn walks.

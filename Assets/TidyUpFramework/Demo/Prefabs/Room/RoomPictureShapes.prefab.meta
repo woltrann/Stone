@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c5cadc5237e48e14eaecf1ef49e70bb7
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Room/RoomPictureShapes.prefab
+  uploadId: 1021752

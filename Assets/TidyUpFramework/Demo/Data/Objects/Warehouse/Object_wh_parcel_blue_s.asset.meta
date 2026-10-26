@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 54952ba563e3f264fa29037910e5073d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Warehouse/Object_wh_parcel_blue_s.asset
+  uploadId: 1021752

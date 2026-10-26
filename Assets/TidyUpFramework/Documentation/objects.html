@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Objects, Categories &amp; Rules</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Objects, Categories &amp; Rules</h1>
+<p class="lead">Describe what each object is once, then let rules decide where it belongs.</p>
+
+<h2 id="interactive-objects">Creating interactive objects</h2>
+<h3>What</h3>
+<p>An interactive object is any GameObject with a <code>TidyObject</code> component, a collider and (recommended) a kinematic <code>Rigidbody</code>. The component points to a <code>TidyObjectDefinition</code> asset that describes the object.</p>
+<h3>Why</h3>
+<p>Separating the scene instance from its definition means a hundred identical toys share one asset, rules can be written against definitions, and you can rebalance every copy at once.</p>
+<h3>How</h3>
+<ol class="steps">
+<li>Model or import your prop so that its <strong>pivot is at the bottom centre</strong>. Placement aligns the bottom of an object's bounds with the surface, so other pivots work too, but bottom-centre pivots are the easiest to reason about.</li>
+<li>Select one or more props and run <em>Tools &gt; Tidy Up Framework &gt; Make Selected Objects Interactive</em>. It adds <code>TidyObject</code>, a kinematic <code>Rigidbody</code> and a fitted <code>BoxCollider</code> when no collider exists, and assigns a unique instance id.</li>
+<li>Create a definition with <em>Create &gt; Tidy Up Framework &gt; Object Definition</em> and drag it into the <em>Definition</em> field.</li>
+<li>Save the configured object as a prefab and assign it to the definition's <em>Prefab</em> field so tools and spawners can find it.</li>
+</ol>
+
+<h3>Object Definition fields</h3>
+<table>
+<tr><th>Field</th><th>Purpose</th></tr>
+<tr><td>Id, Display Name, Description, Icon, Display Color</td><td>Identity shared by every definition type. Ids are used by save data; the <em>Generate Missing Definition IDs</em> tool fills them.</td></tr>
+<tr><td>Category</td><td>Most specific category. Parent categories match automatically.</td></tr>
+<tr><td>Tags</td><td>Colour, size, shape, material, theme or custom tags.</td></tr>
+<tr><td>Size, Weight, Priority</td><td>Numbers used by numeric rules, ordering and hints.</td></tr>
+<tr><td>Sort Key, Sequence Index</td><td>Alphabetical and sequential ordering (volume numbers). Both can be overridden per instance.</td></tr>
+<tr><td>Movable, Rotatable, Placeable, Sortable, Stackable, Inspectable, Container / Snap compatible</td><td>Capabilities. Targets refuse incompatible objects; for example a <code>TidyStackPoint</code> only accepts stackable objects.</td></tr>
+<tr><td>Base Score</td><td>Points for a correct placement before multipliers.</td></tr>
+<tr><td>Physics Profile</td><td>Controlled (arcade, predictable) or Physics (simulated) handling, mass, damping, throw speed.</td></tr>
+<tr><td>Inspect Text</td><td>Flavour text shown in the inspect panel.</td></tr>
+</table>
+<h3>Per-instance options on Tidy Object</h3>
+<table>
+<tr><th>Option</th><th>Use it for</th></tr>
+<tr><td>Sort Key Override / Sequence Override</td><td>"Volume 3" of a set where every volume uses the same definition.</td></tr>
+<tr><td>Requires Discovery</td><td>Hidden items for <em>Find Objects</em> objectives.</td></tr>
+<tr><td>Counts As Clutter</td><td>Trash and mess for <em>Clear Clutter</em> objectives and the vacuum tool.</td></tr>
+<tr><td>Visual Root</td><td>Child transform animated by punch feedback when the root must not scale.</td></tr>
+<tr><td>Placement Euler Offset</td><td>Corrects meshes authored lying down or facing another axis.</td></tr>
+</table>
+
+<h2 id="your-props">Using your own props</h2>
+<h3>Replacing the look of a demo prop</h3>
+<ol class="steps">
+<li>Open the prop prefab, for example <code>Demo/Prefabs/Library/BookCantrips</code>.</li>
+<li>Assign your mesh and materials to its <code>MeshFilter</code> and <code>MeshRenderer</code>, or add your model as a child and remove the old renderer.</li>
+<li>Press <em>Fit Box Collider</em> in the <code>Tidy Object</code> inspector so aiming and placement match the new shape.</li>
+<li>Save the prefab. Every placed copy in every scene updates, and the object keeps its definition, so rules, shelves and objectives still accept it.</li>
+</ol>
+<h3>Adding a new prop</h3>
+<ol class="steps">
+<li>Duplicate an existing definition in <code>Demo/Data/Objects</code> (or create one with <em>Create &gt; Tidy Up Framework &gt; Object Definition</em>), rename it and change its display name, category and tags.</li>
+<li>Run <em>Tools &gt; Tidy Up Framework &gt; Generate Missing Definition IDs</em>. Duplicated ids are replaced with unique ones, which save data relies on.</li>
+<li>Import your model, run <em>Make Selected Objects Interactive</em>, assign the new definition and save it as a prefab.</li>
+<li>Place copies in the level. Objectives and targets that filter by category or tag pick the new prop up automatically; run the <em>Level Validator</em> to confirm every object has a valid destination.</li>
+</ol>
+
+<h2 id="categories">Creating categories and tags</h2>
+<p><strong>Categories</strong> answer "what kind of thing is this?" and form a hierarchy: <code>Spell Books</code> can have the parent <code>Books</code>, so a shelf that accepts <code>Books</code> also accepts spell books. <strong>Tags</strong> describe attributes that cut across categories (Red, Large, Fragile, Magic). Each tag belongs to a <em>group</em> (Color, Size, Shape, Material, Theme, Custom) which lets grouping rules ask for "the same colour".</p>
+<ol class="steps">
+<li><em>Create &gt; Tidy Up Framework &gt; Category</em>. Set Display Name and Display Color (used in UI and gizmos). Optionally set a parent.</li>
+<li><em>Create &gt; Tidy Up Framework &gt; Tag</em>. Choose its group.</li>
+<li>Add categories and tags to object definitions.</li>
+</ol>
+
+<h2 id="rules">Creating sorting rules</h2>
+<h3>Match filters (inline)</h3>
+<p>Every placement target and many objectives have an <em>Acceptance</em> or <em>Object Filter</em> block. It combines, with AND logic:</p>
+<ul>
+<li><strong>Categories</strong> — any of these (including subcategories). Empty = any.</li>
+<li><strong>Required Tags</strong> — all of these.</li>
+<li><strong>Excluded Tags</strong> — none of these.</li>
+<li><strong>Definitions</strong> — exact objects. Empty = any.</li>
+<li><strong>Rule</strong> — an optional reusable rule asset.</li>
+</ul>
+<table>
+<tr><th>Designer sentence</th><th>Filter setup</th></tr>
+<tr><td>Red books go here.</td><td>Categories: Books · Required Tags: Red</td></tr>
+<tr><td>Large potion bottles go here.</td><td>Categories: Potions · Required Tags: Large</td></tr>
+<tr><td>All vegetables go into this basket.</td><td>Categories: Vegetables</td></tr>
+<tr><td>Objects with the MAGIC tag belong on this shelf.</td><td>Required Tags: Magic</td></tr>
+<tr><td>Anything that is not fragile.</td><td>Excluded Tags: Fragile</td></tr>
+<tr><td>Books A to M.</td><td>Categories: Books · Rule: an <em>Alphabetical Range Rule</em> A–M</td></tr>
+</table>
+
+<h3>Rule assets (reusable)</h3>
+<table>
+<tr><th>Rule</th><th>Matches when</th></tr>
+<tr><td>Category Rule</td><td>The object is in any listed category.</td></tr>
+<tr><td>Tag Rule</td><td>All / Any / None of the tags are present.</td></tr>
+<tr><td>Exact Object Rule</td><td>The definition is one of the listed definitions.</td></tr>
+<tr><td>Numeric Range Rule</td><td>Size, Weight, Priority or Sequence Index lies in [min, max].</td></tr>
+<tr><td>Alphabetical Range Rule</td><td>The sort key starts with a letter in the range.</td></tr>
+<tr><td>Composite Rule</td><td>All / Any of child rules match, optionally inverted (NOT).</td></tr>
+</table>
+
+<h3>Ordering and grouping</h3>
+<p>Targets with several positions can additionally require an order or a group. They are evaluated on the target, not on individual objects: each book can be correctly shelved while the shelf as a whole is not complete until the order is right.</p>
+<table>
+<tr><th>Setting</th><th>Values</th><th>Example</th></tr>
+<tr><td>Ordering</td><td>None, Alphabetical, Sequence, Priority, Size, Weight (ascending or descending)</td><td>"Books must be sorted alphabetically", "Volumes 1–6 in order"</td></tr>
+<tr><td>Grouping</td><td>None, Same Definition, Same Category, Same Tag In Group</td><td>"Three identical toys belong together", "one colour per bin"</td></tr>
+</table>
+<figure><img src="images/ordering_shelf.png" alt="A shelf requiring alphabetical order"><figcaption>An alphabetical shelf row. The row packs books by their real width, and the target completes only when the order is correct.</figcaption></figure>
+
+<h3>Policy: reject or accept wrong objects</h3>
+<p><code>RejectIncorrect</code> bounces wrong objects back with a gentle error cue. <code>AcceptIncorrect</code> lets the player place them; they count as mistakes and break the combo, which suits puzzle-like games where the player discovers the rule. The placement preview can also hide correctness (<em>Reveal Correctness</em> on <code>TidyPlacementPreview</code>).</p>
+
+<h2 id="custom-rules">Creating custom rules</h2>
+<p>When a rule cannot be expressed with the built-in assets, derive from <code>TidyRuleDefinition</code>. The new rule immediately appears in the Create menu and can be used in any match filter.</p>
+<pre><code>using TidyUpFramework.Objects;
+using TidyUpFramework.Rules;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Tidy Up Framework/Rules/Heavier Than Rule")]
+public sealed class HeavierThanRule : TidyRuleDefinition
+{
+    [SerializeField] float minimumWeight = 5f;
+
+    public override bool Matches(TidyObject tidyObject)
+    {
+        return tidyObject != null &amp;&amp; tidyObject.Weight &gt; minimumWeight;
+    }
+
+    public override string Describe()
+    {
+        return "Heavier than " + minimumWeight;
+    }
+}</code></pre>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

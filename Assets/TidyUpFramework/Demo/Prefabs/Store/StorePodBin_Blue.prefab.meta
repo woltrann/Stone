@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: bd219cd8f65348e45a09e59ad27af409
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Store/StorePodBin_Blue.prefab
+  uploadId: 1021752

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: d107751d165d408428b24f2639c7d134
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Room/RoomSponge.prefab
+  uploadId: 1021752

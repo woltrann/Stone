@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6841fe36d679b9346bd0a5d612e1b1a5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Store/Object_pal_bear_purple.asset
+  uploadId: 1021752

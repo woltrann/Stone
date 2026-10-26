@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_book_castles
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: book_castles
+  displayName: Castles of the North
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.8392157, g: 0.2901961, b: 0.2509804, a: 1}
+  category: {fileID: 11400000, guid: cad5cf8c6c5f8e447b8360ce11644913, type: 2}
+  tags:
+  - {fileID: 11400000, guid: 916752289ca2f8e41961f8a08392e80e, type: 2}
+  - {fileID: 11400000, guid: 2a4b484efdb34e5459a713f1f9f50ca2, type: 2}
+  size: 3
+  weight: 0.84
+  priority: 0
+  sortKey: Castles of the North
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 1
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 12
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 3181821053975355874, guid: 63666237390e5184b95a8eac25f87b03, type: 3}
+  inspectText: Dusty, heavy and full of dates.

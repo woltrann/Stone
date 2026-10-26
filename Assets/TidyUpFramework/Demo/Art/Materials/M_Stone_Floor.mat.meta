@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4535008603fc7ab4ca5e60fe17216c2a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Materials/M_Stone_Floor.mat
+  uploadId: 1021752

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08c25f7e24cf3aa408c6fd1824ed2e4c, type: 3}
+  m_Name: Objective_Library_Time
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objectives.TidyTimeLimitObjective
+  objectiveId: library_time
+  title: Finish within {limit}
+  description: A tidy librarian is a quick librarian.
+  icon: {fileID: 0}
+  bonusScore: 250
+  hideCounter: 1
+  timeLimitSeconds: 600

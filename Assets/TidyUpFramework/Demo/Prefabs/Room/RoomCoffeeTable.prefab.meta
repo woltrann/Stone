@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 217746bf5798eae4a87d971f180ab205
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Room/RoomCoffeeTable.prefab
+  uploadId: 1021752

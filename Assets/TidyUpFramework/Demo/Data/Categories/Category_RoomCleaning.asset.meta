@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0ccf61d08f892fb42a59f41268420a82
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Categories/Category_RoomCleaning.asset
+  uploadId: 1021752

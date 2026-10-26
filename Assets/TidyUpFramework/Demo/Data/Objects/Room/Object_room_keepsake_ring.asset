@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_room_keepsake_ring
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: room_keepsake_ring
+  displayName: Velvet Ring Box
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 1, g: 0.8392157, b: 0.54901963, a: 1}
+  category: {fileID: 11400000, guid: 322f470c86db20c4a97593ea11648827, type: 2}
+  tags:
+  - {fileID: 11400000, guid: 4b15f2a0b029c394d801dfdca3395cf7, type: 2}
+  - {fileID: 11400000, guid: 1dbb101338b8e35458b2accb6d474ab6, type: 2}
+  - {fileID: 11400000, guid: 008ee83ba5e6a30408a61b6bac3e2839, type: 2}
+  - {fileID: 11400000, guid: 49f0d2b0e4d2248428996a006af56196, type: 2}
+  size: 0.3
+  weight: 0.1
+  priority: 3
+  sortKey: Velvet Ring Box
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 0
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 30
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 457509554680157217, guid: d482aaf22edd9bf4e92375c24aea478d, type: 3}
+  inspectText: Something precious is waiting inside.

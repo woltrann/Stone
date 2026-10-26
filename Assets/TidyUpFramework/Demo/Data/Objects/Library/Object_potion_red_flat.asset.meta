@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1269d0ec3d6ce964292d116bb3069034
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Library/Object_potion_red_flat.asset
+  uploadId: 1021752

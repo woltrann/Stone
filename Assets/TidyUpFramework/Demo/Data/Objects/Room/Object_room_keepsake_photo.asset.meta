@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8c0baea0ded19814da3275db270dcea0
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Room/Object_room_keepsake_photo.asset
+  uploadId: 1021752

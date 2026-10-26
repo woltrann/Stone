@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_book_moon
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: book_moon
+  displayName: Phases of the Moon
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.27450982, g: 0.47058824, b: 0.8392157, a: 1}
+  category: {fileID: 11400000, guid: c780211e5530e244886a317e0d8c2dde, type: 2}
+  tags:
+  - {fileID: 11400000, guid: 724166721fd04484b83b4f0eedb843eb, type: 2}
+  - {fileID: 11400000, guid: 5304d34cf37ca4140a68ac9c4f1ece12, type: 2}
+  size: 2.3999999
+  weight: 0.79999995
+  priority: 0
+  sortKey: Phases of the Moon
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 1
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 12
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 6215656350084874084, guid: f34924905cb014a4f8c4ca4d4a6f6dd6, type: 3}
+  inspectText: Fold-out maps of the night sky.

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Introduction</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Tidy Up Framework</h1>
+<p class="lead">Tidy Up + Sorting + Organizing + Placement + Satisfying Interaction Framework for Unity 6 and the Universal Render Pipeline.</p>
+
+<figure>
+<img src="images/hero_library.png" alt="The Arcane Library demo scene mid-way through organisation">
+<figcaption>The Arcane Library demo: books scattered on the floor become ordered shelves. Every object, shelf and objective in this scene is configured through data assets.</figcaption>
+</figure>
+
+<div class="callout ok"><strong>New in version 1.1</strong>Carry a stack of objects, save and continue a level at any time, cleaning methods for tools and stains, tutorial shortcuts and several fixes. See <a href="whats-new.html">What&#8217;s New</a>.</div>
+
+<h2 id="introduction">1. Introduction</h2>
+<h3>What it is</h3>
+<p>The Tidy Up Framework is a reusable toolkit for games in which the player finds, picks up, sorts, places, stacks and cleans objects until a messy space becomes organised. It is not a single game: it is the set of systems underneath one, separated from content so you can replace every model, room and rule with your own.</p>
+<h3>Why it exists</h3>
+<p>Organising games look simple but repeat the same hard problems: reliable aiming at small objects, placement that always looks neat, rules such as "red books go here" or "volumes in order", objectives, scoring, hints, input on three device families, saving and a polished UI. The framework solves those once, in a data-driven way, so a new level is mostly configuration.</p>
+<h3>What you can build</h3>
+<div class="grid">
+<div class="card"><h4>Library &amp; museum sorting</h4><p>Shelves ordered alphabetically or by volume, curated display cases.</p></div>
+<div class="card"><h4>Store &amp; collectible shelves</h4><p>Hundreds of small items sorted by type, colour and quantity.</p></div>
+<div class="card"><h4>Warehouse &amp; workshop</h4><p>Colour-coded bins, size-based pallets, tool walls.</p></div>
+<div class="card"><h4>Cosy room &amp; unpacking</h4><p>Cleaning stains, disposing clutter, placing items on surfaces.</p></div>
+<div class="card"><h4>Kitchen, garage, office</h4><p>Any mix of containers, drawers, stacks and free placement areas.</p></div>
+<div class="card"><h4>Fantasy inventories</h4><p>Potions, crystals and scrolls with tag-based rules.</p></div>
+</div>
+
+<h3>Feature overview</h3>
+<table>
+<tr><th>Area</th><th>Included</th></tr>
+<tr><td>Interaction</td><td>Hover outline, pick up, hold, carry a stack of several objects with smart selection, rotate, inspect, place with ghost preview, drop, toss, controlled or physics-based handling</td></tr>
+<tr><td>Data</td><td>Object, category, tag, rule, objective, level, score, combo, hint, feedback, tutorial, audio cue and input prompt assets</td></tr>
+<tr><td>Placement</td><td>Snap slots, slot grids, packed shelf rows, containers (grid, pile, hidden/disposal), free placement zones, stack points</td></tr>
+<tr><td>Sorting</td><td>Category, tag, colour, size, shape, exact object, numeric range, alphabetical range, composite rules; ordering by name, sequence, priority, size, weight; grouping by identical object, category or tag</td></tr>
+<tr><td>Progression</td><td>Objectives, optional objectives, time limits, stars, unlocks, level select, best score and time, rewards, mid-level save and continue</td></tr>
+<tr><td>Feel</td><td>Combo multiplier and tiers, floating score, punch animations, particles, camera kick, sound cues, before/after transformation</td></tr>
+<tr><td>Input</td><td>Input System action asset, keyboard &amp; mouse, gamepad, touch joystick and gestures, device-aware prompts</td></tr>
+<tr><td>UI</td><td>Main menu, level select, settings (graphics, audio, gameplay, input), controls, credits, HUD, pause, results</td></tr>
+<tr><td>Tools</td><td>GameObject creation menu, interactive object setup, ID generator, Level Validator, custom inspectors, welcome window</td></tr>
+</table>
+
+<h2 id="installation">2. Installation</h2>
+<ol class="steps">
+<li><strong>Requirements.</strong> Unity 6000.0 or newer with the Universal Render Pipeline (17.x), the Input System package (1.11+) and uGUI 2.0 (TextMeshPro is part of it). The Player Settings option <em>Active Input Handling</em> must include the Input System.</li>
+<li><strong>Import.</strong> Import the package. All files live under <code>Assets/TidyUpFramework</code>.</li>
+<li><strong>TextMeshPro resources.</strong> If Unity prompts for TMP Essential Resources, accept. They provide the default font used by the UI.</li>
+<li><strong>Build scenes.</strong> Open <em>File &gt; Build Profiles</em> and make sure the scenes in <code>Demo/Scenes</code> are listed, with <code>TidyUp_MainMenu</code> first. The demo pipeline does this automatically.</li>
+<li><strong>Play.</strong> Open <code>Demo/Scenes/TidyUp_MainMenu</code> and press Play.</li>
+</ol>
+<div class="callout"><strong>Using your own URP asset?</strong>The demo works with any URP asset. For the best look enable HDR, soft shadows and the Screen Space Ambient Occlusion renderer feature. Recommended settings are listed in <a href="performance.html#urp">URP Configuration</a>.</div>
+
+<h2 id="quick-start">3. Quick Start</h2>
+<p>This is the shortest path from an empty scene to a playable sorting level. The full illustrated version is in <a href="first-level.html">Creating Your First Level</a>.</p>
+<ol class="steps">
+<li>Create a new scene and add a floor.</li>
+<li>Choose <em>GameObject &gt; Tidy Up Framework &gt; Complete Level Setup</em>. This adds the player, the level systems and the HUD.</li>
+<li>Create a category: <em>Create &gt; Tidy Up Framework &gt; Category</em>, for example <code>Books</code>.</li>
+<li>Create an object definition: <em>Create &gt; Tidy Up Framework &gt; Object Definition</em> and set its category to <code>Books</code>.</li>
+<li>Drop a few book meshes in the scene, select them and run <em>Tools &gt; Tidy Up Framework &gt; Make Selected Objects Interactive</em>. Assign the definition on the Tidy Object component.</li>
+<li>Add a shelf: <em>GameObject &gt; Tidy Up Framework &gt; Placement &gt; Shelf Row (Packed)</em>. In <em>Acceptance &gt; Categories</em> add <code>Books</code>.</li>
+<li>Create a level: <em>Create &gt; Tidy Up Framework &gt; Level Definition</em>, add a <em>Place Objects</em> objective and assign the level to the Level Manager.</li>
+<li>Run <em>Tools &gt; Tidy Up Framework &gt; Level Validator</em>, fix anything it reports, then press Play.</li>
+</ol>
+
+<h2 id="project-structure">4. Project Structure</h2>
+<pre><code>Assets/TidyUpFramework/
+  Runtime/            Framework code (TidyUpFramework.Runtime assembly)
+    Core/             Services, tweening, pooling, control locks
+    Objects/          Object, category, tag and physics definitions
+    Rules/            Sorting rules, match filters, ordering
+    Placement/        Slots, rows, containers, free zones, stacks
+    Interaction/      Interactor, highlight, placement preview
+    Objectives/       Objective definitions and trackers
+    Levels/           Level definition, catalog, manager, scene loader
+    Scoring/          Score and combo
+    Hints/            Hint definition, system and indicator
+    Cleaning/         Cleanable surfaces, tools, cleaning interactor
+    Transformation/   Before/after controller and reactors
+    Feedback/         Feedback definition, player, camera punch
+    Player/           First person controller, cursor
+    Input/            Input reader, prompts, action names
+    UI/               HUD views, screens, menus, mobile controls
+    Audio/            Audio cues and service
+    Save/             Save service, storage back-ends, data
+    Settings/         Framework settings, bootstrap, settings service
+    Tutorial/         Tutorial definition and runner
+  Editor/             Inspectors, menus, Level Validator (TidyUpFramework.Editor)
+  Shaders/            Outline and ghost preview shaders
+  Prefabs/            Player, Level Systems, HUD, Main Menu
+  Resources/          TidyUpFrameworkSettings (loaded at start-up)
+  Settings/           Input actions and prompt definitions
+  UI/Sprites/         Interface sprites
+  Demo/               Demo content only (scripts, data, art, audio, scenes)
+  Documentation/      This documentation</code></pre>
+<div class="callout ok"><strong>Separation of framework and demo</strong>No file outside <code>Demo/</code> references demo content. You can delete the <code>Demo</code> folder and the framework still compiles and works.</div>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

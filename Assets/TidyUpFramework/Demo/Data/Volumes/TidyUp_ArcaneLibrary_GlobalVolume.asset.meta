@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: d266539a6470d2140879cfafadec640d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Volumes/TidyUp_ArcaneLibrary_GlobalVolume.asset
+  uploadId: 1021752

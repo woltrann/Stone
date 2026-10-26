@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 496de8d9b2c56cd4aa74f5be625feb0e
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Meshes/Tidy_HintArrow.asset
+  uploadId: 1021752

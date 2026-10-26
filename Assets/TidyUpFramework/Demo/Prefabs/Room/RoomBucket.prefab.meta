@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: fc98330812fe7bb4d8800ffc95d9e6a8
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Room/RoomBucket.prefab
+  uploadId: 1021752

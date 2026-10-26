@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 53431de9649fe2b49b993fab120cee04, type: 3}
+  m_Name: Score_Default
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Scoring.TidyScoreDefinition
+  scoreCorrectPlacements: 1
+  placementMultiplier: 1
+  penalizeIncorrectPlacements: 1
+  incorrectPlacementPenalty: 5
+  applyComboMultiplier: 1
+  scoreCleaning: 1
+  pointsPerCleanedSurface: 15
+  pointsPerDisposedClutter: 5
+  awardObjectiveBonuses: 1
+  awardLevelCompleteBonus: 1
+  levelCompleteBonus: 250
+  awardSpeedBonus: 1
+  parTimeSeconds: 300
+  speedBonusPerSecond: 2
+  awardNoMistakeBonus: 1
+  noMistakeBonus: 150
+  awardAccuracyBonus: 1
+  accuracyBonus: 100
+  hintPenalty: 0

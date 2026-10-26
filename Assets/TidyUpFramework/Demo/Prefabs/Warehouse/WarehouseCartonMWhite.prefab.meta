@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: b4158b4fee55813449362fb5b591bb9a
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Warehouse/WarehouseCartonMWhite.prefab
+  uploadId: 1021752

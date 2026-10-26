@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Input</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Input: Keyboard, Gamepad &amp; Touch</h1>
+<p class="lead">One input abstraction feeds every gameplay system, so the same code runs with a mouse, a controller or a finger.</p>
+
+<h2 id="architecture">How input flows</h2>
+<p><code>TidyInputReader</code> wraps an <code>InputActionAsset</code> (the framework ships <code>Settings/TidyUpInputActions</code>) and exposes a frame-stable view through <code>ITidyPlayerInput</code>: Move, LookDelta (in degrees), Interact pressed/held, Drop, Throw, Rotate axis and steps, Inspect, Sprint, Crouch, Hint, Pause, and an optional pointer aim position for touch. Gameplay code only reads this interface. On-screen controls feed the same reader through <code>SetVirtualMove</code>, <code>AddVirtualLookPixels</code>, <code>TriggerVirtual</code> and <code>RegisterTap</code>.</p>
+<p>The reader detects the active scheme from the last device used and raises <code>SchemeChanged</code>. Prompts, the controls screen and the mobile overlay react to it. Players can force a scheme in Settings.</p>
+
+<h2 id="keyboard">Keyboard &amp; mouse</h2>
+<table>
+<tr><th>Action</th><th>Binding</th></tr>
+<tr><td>Move</td><td><span class="kbd">W</span><span class="kbd">A</span><span class="kbd">S</span><span class="kbd">D</span> / arrows</td></tr>
+<tr><td>Look</td><td>Mouse</td></tr>
+<tr><td>Pick up / Place / Clean (hold)</td><td><span class="kbd">LMB</span> or <span class="kbd">E</span></td></tr>
+<tr><td>Drop</td><td><span class="kbd">RMB</span> or <span class="kbd">G</span></td></tr>
+<tr><td>Toss</td><td><span class="kbd">F</span></td></tr>
+<tr><td>Rotate held object</td><td>Scroll wheel (15° steps), <span class="kbd">Z</span> / <span class="kbd">C</span></td></tr>
+<tr><td>Inspect</td><td><span class="kbd">R</span> or middle mouse</td></tr>
+<tr><td>Hurry / Crouch</td><td><span class="kbd">Shift</span> / <span class="kbd">Ctrl</span></td></tr>
+<tr><td>Hint</td><td><span class="kbd">H</span></td></tr>
+<tr><td>Pause / Back</td><td><span class="kbd">Esc</span></td></tr>
+</table>
+
+<h2 id="gamepad">Gamepad</h2>
+<table>
+<tr><th>Action</th><th>Binding</th></tr>
+<tr><td>Move / Look</td><td>Left stick / Right stick</td></tr>
+<tr><td>Pick up / Place / Clean</td><td>South (A / Cross)</td></tr>
+<tr><td>Drop / Back</td><td>East (B / Circle)</td></tr>
+<tr><td>Inspect</td><td>North (Y / Triangle)</td></tr>
+<tr><td>Rotate</td><td>Left / Right shoulder</td></tr>
+<tr><td>Toss</td><td>Right trigger</td></tr>
+<tr><td>Hint</td><td>D-pad up</td></tr>
+<tr><td>Hurry / Crouch</td><td>Left stick press / Right stick press</td></tr>
+<tr><td>Pause</td><td>Start</td></tr>
+</table>
+<p>All menus are navigable with a gamepad: each screen selects a sensible first element, settings rows use left/right selectors, and East closes the top screen.</p>
+
+<h2 id="touch">Mobile touch</h2>
+<figure><img src="images/mobile_controls.png" alt="Mobile controls overlay"><figcaption>Floating joystick on the left, look area on the right, action buttons that appear while an object is held.</figcaption></figure>
+<table>
+<tr><th>Gesture</th><th>Result</th></tr>
+<tr><td>Drag on the left</td><td>Floating virtual joystick (full deflection = hurry)</td></tr>
+<tr><td>Drag on the right</td><td>Look around</td></tr>
+<tr><td>Tap on an object</td><td>Pick it up (aims at the tapped point, not the screen centre)</td></tr>
+<tr><td>Tap on a shelf while holding</td><td>Place at the tapped spot</td></tr>
+<tr><td>Press and hold</td><td>Scrub a cleanable surface</td></tr>
+<tr><td>Buttons</td><td>Use, Drop, Look (inspect), rotate left/right, Pause</td></tr>
+</table>
+<p>The overlay (<code>TidyMobileControls</code>) shows only when the touch scheme is active, and held-object buttons show only while something is held. <code>TidySafeArea</code> keeps the HUD clear of notches.</p>
+
+<h2 id="prompts">Input prompts</h2>
+<p>Never hard-code key names in UI. Write tokens instead and let <code>TidyInputPrompts</code> substitute the right label for the current device:</p>
+<pre><code>"{Interact} Pick up   {Drop} Drop"
+Keyboard: [LMB] Pick up   [RMB] Drop
+Gamepad:  [A] Pick up   [B] Drop
+Touch:    [Tap] Pick up   [Drop] Drop</code></pre>
+<p>Use the <code>TidyPromptLabel</code> component on any TextMeshPro text, or call <code>TidyInputPrompts.Format(template)</code>. Labels come from the <code>TidyInputPromptDefinition</code> asset when provided, otherwise from the binding display names of the action asset, so rebinding keeps prompts correct. The key template (default <code>&lt;b&gt;[{0}]&lt;/b&gt;</code>) can wrap labels in rich text or TextMeshPro sprite tags for glyph icons.</p>
+
+<h2 id="custom-input">Replacing input</h2>
+<p>Implement <code>ITidyPlayerInput</code> on your own component and register it with <code>TidyServices.Register&lt;ITidyPlayerInput&gt;(this)</code>. The interactor, player controller, hints, pause menu and tutorial will use it. To add actions keep the action names defined in <code>TidyInputActionNames</code>.</p>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

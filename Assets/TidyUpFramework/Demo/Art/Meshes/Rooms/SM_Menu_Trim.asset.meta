@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ef6a1d45d9a0da146ac7ff0f2f3cb2fc
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Rooms/SM_Menu_Trim.asset
+  uploadId: 1021752

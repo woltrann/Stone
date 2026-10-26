@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e4388447a5bd3d441bc8a8ac0a6e79d4
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Warehouse/WarehouseCanisterRed.prefab
+  uploadId: 1021752

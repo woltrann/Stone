@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ed0209811edadd5479303983b657e58c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Defaults/VFX/VFX_DustPuff.prefab
+  uploadId: 1021752

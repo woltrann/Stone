@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 3425c8d1c1d74f543a31e048697292e5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Materials/M_Matte_White.mat
+  uploadId: 1021752

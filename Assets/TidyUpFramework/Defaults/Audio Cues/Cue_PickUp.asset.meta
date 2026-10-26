@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1b92e3b5ad7e9214eb7b698f12b8ad04
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Defaults/Audio Cues/Cue_PickUp.asset
+  uploadId: 1021752

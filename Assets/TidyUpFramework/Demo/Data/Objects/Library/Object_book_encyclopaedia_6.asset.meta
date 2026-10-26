@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 84f4ec93d7e12c0498919081195ed0ae
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Library/Object_book_encyclopaedia_6.asset
+  uploadId: 1021752

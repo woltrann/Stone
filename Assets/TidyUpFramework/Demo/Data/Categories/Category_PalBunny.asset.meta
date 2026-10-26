@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0e285be25877a83498cf96ccc1707788
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Categories/Category_PalBunny.asset
+  uploadId: 1021752

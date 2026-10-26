@@ -1,0 +1,89 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8edb192d0a9ecfb41b5501e6d74645b3, type: 3}
+  m_Name: Feedback_Default
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Feedback.TidyFeedbackDefinition
+  pickUp:
+    Sound: {fileID: 11400000, guid: 1b92e3b5ad7e9214eb7b698f12b8ad04, type: 2}
+    Particles: {fileID: 0}
+    CameraPunch: 0
+    PitchFollowsCombo: 0
+    ComboPitchRange: 0.35
+  drop:
+    Sound: {fileID: 11400000, guid: 4d7c99652e6bef14fb8bfb788c338307, type: 2}
+    Particles: {fileID: 6389474580457132996, guid: ed0209811edadd5479303983b657e58c, type: 3}
+    CameraPunch: 0
+    PitchFollowsCombo: 0
+    ComboPitchRange: 0.35
+  placeCorrect:
+    Sound: {fileID: 11400000, guid: 69c6c4ae93a30464b813bc49b322014d, type: 2}
+    Particles: {fileID: 4488324486409188575, guid: b387504a0cfb8b348bc0fa4e4dc5a14f, type: 3}
+    CameraPunch: 0
+    PitchFollowsCombo: 1
+    ComboPitchRange: 0.35
+  placeIncorrect:
+    Sound: {fileID: 11400000, guid: 3046f1cb08d20654d8fdc8d28bfe3577, type: 2}
+    Particles: {fileID: 6389474580457132996, guid: ed0209811edadd5479303983b657e58c, type: 3}
+    CameraPunch: 0
+    PitchFollowsCombo: 0
+    ComboPitchRange: 0.35
+  rejected:
+    Sound: {fileID: 11400000, guid: 1e41f9bb8bb89a84a9787fddbfd18953, type: 2}
+    Particles: {fileID: 0}
+    CameraPunch: 0
+    PitchFollowsCombo: 0
+    ComboPitchRange: 0.35
+  targetComplete:
+    Sound: {fileID: 11400000, guid: 0376271eb5c60ba4e9e381fbf9197125, type: 2}
+    Particles: {fileID: 3470868169356048382, guid: c24c05fadca8c4447a0b131a114493f2, type: 3}
+    CameraPunch: 0.25
+    PitchFollowsCombo: 0
+    ComboPitchRange: 0.35
+  comboTier:
+    Sound: {fileID: 11400000, guid: 0376271eb5c60ba4e9e381fbf9197125, type: 2}
+    Particles: {fileID: 0}
+    CameraPunch: 0.12
+    PitchFollowsCombo: 1
+    ComboPitchRange: 0.35
+  objectiveComplete:
+    Sound: {fileID: 11400000, guid: 9e0ac2222bdbf6940a66337722fd4723, type: 2}
+    Particles: {fileID: 0}
+    CameraPunch: 0
+    PitchFollowsCombo: 0
+    ComboPitchRange: 0.35
+  levelComplete:
+    Sound: {fileID: 11400000, guid: ee291e9a05108ef47aee4d9929e1697a, type: 2}
+    Particles: {fileID: 4819781765966441814, guid: 855a532542846664884eb0c61e558c62, type: 3}
+    CameraPunch: 0.4
+    PitchFollowsCombo: 0
+    ComboPitchRange: 0.35
+  cleaned:
+    Sound: {fileID: 11400000, guid: 59a17ec90ffeccd45bc394df0e4655d9, type: 2}
+    Particles: {fileID: 4488324486409188575, guid: b387504a0cfb8b348bc0fa4e4dc5a14f, type: 3}
+    CameraPunch: 0
+    PitchFollowsCombo: 1
+    ComboPitchRange: 0.35
+  hint:
+    Sound: {fileID: 11400000, guid: dc3d9981ac09ffb4f8e2f19305a2866f, type: 2}
+    Particles: {fileID: 0}
+    CameraPunch: 0
+    PitchFollowsCombo: 0
+    ComboPitchRange: 0.35
+  rotate:
+    Sound: {fileID: 11400000, guid: e14535a04e09e9b4fb45a92dfc7092ae, type: 2}
+    Particles: {fileID: 0}
+    CameraPunch: 0
+    PitchFollowsCombo: 0
+    ComboPitchRange: 0.35
+  showFloatingScore: 1
+  positiveScoreColor: {r: 1, g: 0.93, b: 0.55, a: 1}
+  negativeScoreColor: {r: 1, g: 0.45, b: 0.4, a: 1}

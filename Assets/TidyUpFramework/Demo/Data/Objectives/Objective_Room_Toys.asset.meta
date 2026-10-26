@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 8f583af4fb9a9d74ba6bc75c3e2fbe54
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objectives/Objective_Room_Toys.asset
+  uploadId: 1021752

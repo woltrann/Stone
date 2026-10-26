@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Placement, Containers &amp; Stacking</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Placement, Containers &amp; Stacking</h1>
+<p class="lead">Every place an object can go is a <code>TidyPlacementTarget</code>. Pick the type that matches how things should look once organised.</p>
+
+<h2 id="choosing">Choosing a target type</h2>
+<table>
+<tr><th>Component</th><th>Looks like</th><th>Typical use</th></tr>
+<tr><td><code>TidySnapSlot</code></td><td>One exact spot</td><td>Candle holder, display pedestal, key hook</td></tr>
+<tr><td><code>TidySlotGroup</code></td><td>A grid of evenly spaced spots</td><td>Potion rack, egg box, shoe rack, toy shelf with price tags</td></tr>
+<tr><td><code>TidyRowZone</code></td><td>Objects packed side by side by real width</td><td>Bookshelves, spice racks, record crates</td></tr>
+<tr><td><code>TidyContainer</code></td><td>Grid, natural pile, or hidden contents with a fill visual</td><td>Baskets, drawers, toy chests, trash bins</td></tr>
+<tr><td><code>TidyFreePlacementZone</code></td><td>Anywhere on a surface, with optional grid and angle snapping</td><td>Desks, tables, counters</td></tr>
+<tr><td><code>TidyStackPoint</code></td><td>Objects stacked along a direction</td><td>Book stacks, crate stacks on pallets, plates</td></tr>
+</table>
+<figure><img src="images/placement_types.png" alt="All placement target types side by side"><figcaption>The six placement target types with their gizmos visible.</figcaption></figure>
+
+<h2 id="common">Settings every target shares</h2>
+<table>
+<tr><th>Group</th><th>Setting</th><th>Meaning</th></tr>
+<tr><td rowspan="3">Identity</td><td>Target Id</td><td>Unique id used by objectives, hints and tutorials.</td></tr>
+<tr><td>Display Name</td><td>Shown in prompts ("&rarr; Spell Books").</td></tr>
+<tr><td>Gizmo Color</td><td>Scene view colour.</td></tr>
+<tr><td rowspan="5">Rules</td><td>Acceptance</td><td>Which objects belong here (see <a href="objects.html#rules">rules</a>).</td></tr>
+<tr><td>Policy</td><td>Reject wrong objects or accept them as mistakes.</td></tr>
+<tr><td>Ordering / Direction</td><td>Required order of occupants.</td></tr>
+<tr><td>Grouping / Tag Group</td><td>Occupants must share a definition, category or tag.</td></tr>
+<tr><td>Completion Mode</td><td>When Full · When Required Count Reached · When All Matching Objects Placed · Never.</td></tr>
+<tr><td rowspan="4">Behaviour</td><td>Allow Removal</td><td>Players may take objects out again.</td></tr>
+<tr><td>Lock Correct Objects</td><td>Correct objects stay put.</td></tr>
+<tr><td>Lock When Complete</td><td>A finished shelf cannot be disturbed.</td></tr>
+<tr><td>Motion</td><td>Duration, easing, arc height and landing punch of the placement animation.</td></tr>
+<tr><td>Setup</td><td>Initial Occupants</td><td>Objects that start inside (silently snapped at Start). Use them for partially organised rooms.</td></tr>
+</table>
+<div class="callout warn"><strong>Aim colliders</strong>Players point at a target through a collider on the target or its children. Every creation menu adds a trigger <code>BoxCollider</code> for you; resize it to cover the shelf face. The Level Validator reports targets without one.</div>
+
+<h2 id="shelf-rows">Shelf rows</h2>
+<p>A <code>TidyRowZone</code> starts at its transform and extends along local +X for <em>Length</em> metres. Objects are inserted where the player aims and neighbours slide aside with a short animation. <em>Item Euler Rotation</em> orients every object, for example <code>(0, 90, 0)</code> to show book spines. A row is full when no length remains or <em>Max Count</em> is reached.</p>
+
+<h2 id="slot-groups">Slot grids and snap points</h2>
+<p><code>TidySlotGroup</code> generates <em>Columns × Rows</em> slots with the given spacing on a vertical (shelf face) or horizontal (table) plane, or uses your own child transforms in <em>Manual Anchors</em> mode. With <em>Fill In Order</em> the next free slot is used regardless of aim, which is ideal for mobile.</p>
+<p><code>TidySnapSlot</code> is a single slot; rotate its transform to rotate what it holds.</p>
+
+<h2 id="containers">Creating containers</h2>
+<table>
+<tr><th>Layout</th><th>Result</th></tr>
+<tr><td>Grid</td><td>Neat rows and layers inside <em>Inner Size</em>.</td></tr>
+<tr><td>Pile</td><td>Deterministic natural heap with random yaw and tilt.</td></tr>
+<tr><td>Hidden</td><td>Objects drop in and disappear. Combine with a <em>Fill Indicator</em> (a transform that rises) or <em>Fill Stages</em> (objects enabled as it fills).</td></tr>
+</table>
+<p><strong>Disposal bins</strong> are containers with <em>Consume On Place</em> and <em>Unlimited Capacity</em>. Consumed objects count as resolved clutter. Create one with <em>GameObject &gt; Tidy Up Framework &gt; Placement &gt; Disposal Bin</em>.</p>
+
+<h2 id="stacking">Stacking</h2>
+<p>A <code>TidyStackPoint</code> accepts only objects flagged <em>Stackable</em>. Configure <em>Max Height</em>, <em>Spacing</em>, <em>Direction</em> (local), <em>Identical Only</em>, <em>Item Euler Rotation</em> and a subtle <em>Yaw Jitter</em> for a hand-placed look. With <em>Only Top Removable</em> players lift the top item first, like a real stack.</p>
+
+<h2 id="free-zones">Free placement zones</h2>
+<p>A <code>TidyFreePlacementZone</code> is a rectangle on a surface (<em>Area Size</em> in local X/Z). Objects land where the player aims, rotated with the scroll wheel or shoulder buttons and snapped to <em>Rotation Snap Degrees</em>. Overlap prevention keeps objects from intersecting; set <em>Grid Snap</em> for tidy layouts.</p>
+
+<h2 id="animation">Placement feel</h2>
+<p>Placement uses a dependency-free tween runner (<code>TidyTweenRunner</code>). The default motion is a 0.32 s arc with cubic easing and a small landing punch. Increase <em>Arc Height</em> for a playful toss, set <em>Landing Punch</em> to zero for a calmer feel.</p>
+
+<h2 id="custom-zones">Creating custom sorting zones</h2>
+<p>Derive from <code>TidyPlacementTarget</code> and implement one method that returns a pose:</p>
+<pre><code>using TidyUpFramework.Placement;
+using UnityEngine;
+
+public sealed class TidyCircleTray : TidyPlacementTarget
+{
+    [SerializeField] float radius = 0.3f;
+    [SerializeField] int seats = 8;
+
+    public override int Capacity =&gt; seats;
+
+    protected override bool TryFindPose(TidyPlacementQuery query, out Vector3 position, out Quaternion rotation, out int slotIndex)
+    {
+        slotIndex = Occupants.Count;
+        var angle = slotIndex * Mathf.PI * 2f / seats;
+        var surfacePoint = transform.TransformPoint(new Vector3(Mathf.Cos(angle), 0f, Mathf.Sin(angle)) * radius);
+        rotation = transform.rotation * Quaternion.Euler(0f, -angle * Mathf.Rad2Deg, 0f);
+        position = PivotForBottomAt(query.Object, surfacePoint, rotation);
+        return true;
+    }
+}</code></pre>
+<p>Override <code>IsCompatible</code>, <code>AllowsRemoval</code>, <code>InsertOccupant</code>, <code>OnOccupantsChanged</code> or <code>OnPlacementCompleted</code> for more control. Everything else (rules, events, scoring, hints, objectives) works automatically.</p>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

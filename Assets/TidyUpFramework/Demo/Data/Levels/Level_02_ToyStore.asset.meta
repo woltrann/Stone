@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 59f9fda73ae7274449916c2fd6047061
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Levels/Level_02_ToyStore.asset
+  uploadId: 1021752

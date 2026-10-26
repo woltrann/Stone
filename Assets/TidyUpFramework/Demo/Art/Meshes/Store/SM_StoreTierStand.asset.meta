@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 51a9c9aaeadcec64884069268f478cac
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Store/SM_StoreTierStand.asset
+  uploadId: 1021752

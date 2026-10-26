@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c13590d9e0893074da00701ce411b7e5
+DefaultImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Scenes/TidyUp_Sandbox.unity
+  uploadId: 1021752

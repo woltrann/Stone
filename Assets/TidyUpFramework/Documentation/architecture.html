@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Core Architecture</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Core Architecture</h1>
+<p class="lead">How the framework is put together, why it is split this way, and where to plug in your own code.</p>
+
+<h2 id="core-prefabs">The four core prefabs</h2>
+<p>Everything a playable level needs comes from four prefabs in <code>TidyUpFramework/Prefabs</code>. <em>GameObject &gt; Tidy Up Framework &gt; Complete Level Setup</em> drops the first three into an open scene and adds an EventSystem when none exists.</p>
+<table>
+<tr><th>Prefab</th><th>Contains</th><th>Typical changes</th></tr>
+<tr><td><code>TidyPlayer</code></td><td>First person controller, camera, interactor, placement preview, cleaning interactor, camera feedback</td><td>Move speed, reach distance, interaction layers, head bob</td></tr>
+<tr><td><code>TidyLevelSystems</code></td><td>Level manager, score and combo, hints, feedback, tutorial runner, target highlighter</td><td>Assign your Level Definition to the Level Manager; swap feedback profiles</td></tr>
+<tr><td><code>TidyHUD</code></td><td>HUD, objective list, pause, settings, controls, results screen, mobile touch controls</td><td>Colours, fonts, layout, which panels are shown</td></tr>
+<tr><td><code>TidyMainMenu</code></td><td>Main menu, level select, settings, controls, credits</td><td>Title, background scene, Level Catalog</td></tr>
+</table>
+<p>Edit the prefab assets themselves for project-wide changes, or override a placed instance for changes that apply to one scene only. Every scene and level is data: the prefabs never need code changes to run a new level.</p>
+
+<h2 id="principles">Design principles</h2>
+<table>
+<tr><th>Principle</th><th>What it means in practice</th></tr>
+<tr><td>Data first</td><td>Anything a designer tunes lives in a ScriptableObject: objects, categories, tags, rules, objectives, levels, scoring, combos, hints, feedback, tutorials, audio cues.</td></tr>
+<tr><td>Small components</td><td>Each MonoBehaviour does one job. A shelf is a <code>TidyRowZone</code>; a bin is a <code>TidyContainer</code>; nothing knows about "books".</td></tr>
+<tr><td>Events over references</td><td>Systems react to events (<code>ObjectPlaced</code>, <code>ProgressChanged</code>, <code>ComboChanged</code>) instead of polling each other.</td></tr>
+<tr><td>IDs for scene links</td><td>Assets refer to scene objects by string id (<code>TargetId</code>, <code>InstanceId</code>), so data assets never hold scene references.</td></tr>
+<tr><td>Replaceable services</td><td>Input, highlighting, audio, saving and progress are interfaces registered in <code>TidyServices</code>. Swap any of them without touching gameplay code.</td></tr>
+</table>
+
+<h2 id="assemblies">Assemblies</h2>
+<table>
+<tr><th>Assembly</th><th>Folder</th><th>Depends on</th></tr>
+<tr><td><code>TidyUpFramework.Runtime</code></td><td>Runtime/</td><td>Input System, uGUI, TextMeshPro, URP</td></tr>
+<tr><td><code>TidyUpFramework.Editor</code></td><td>Editor/</td><td>Runtime (editor only)</td></tr>
+<tr><td><code>TidyUpFramework.Demo</code></td><td>Demo/Scripts/</td><td>Runtime</td></tr>
+<tr><td><code>TidyUpFramework.Demo.Editor</code></td><td>Demo/Editor/</td><td>Runtime, Editor, Demo (content generation pipeline)</td></tr>
+</table>
+
+<h2 id="flow">Runtime flow</h2>
+<figure>
+<svg viewBox="0 0 960 470" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+<defs>
+<marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0,0 L10,5 L0,10 z" fill="#c98a2b"/></marker>
+<style>.box{fill:#fff7ea;stroke:#c98a2b;stroke-width:1.5}.sys{fill:#f3efe9;stroke:#9b8b82;stroke-width:1.2}.t{fill:#2b2228}.s{fill:#6d5f66;font-size:12px}.l{stroke:#c98a2b;stroke-width:1.6;fill:none;marker-end:url(#arrow)}</style>
+</defs>
+<rect class="box" x="20" y="40" width="160" height="64" rx="10"/><text class="t" x="100" y="68" text-anchor="middle" font-weight="600">Input Reader</text><text class="s" x="100" y="88" text-anchor="middle">KBM · Gamepad · Touch</text>
+<rect class="box" x="240" y="40" width="180" height="64" rx="10"/><text class="t" x="330" y="68" text-anchor="middle" font-weight="600">Tidy Interactor</text><text class="s" x="330" y="88" text-anchor="middle">aim · pick · hold · place</text>
+<rect class="box" x="480" y="40" width="190" height="64" rx="10"/><text class="t" x="575" y="68" text-anchor="middle" font-weight="600">Placement Target</text><text class="s" x="575" y="88" text-anchor="middle">rule check · pose · animate</text>
+<rect class="box" x="730" y="40" width="200" height="64" rx="10"/><text class="t" x="830" y="68" text-anchor="middle" font-weight="600">Tidy Object</text><text class="s" x="830" y="88" text-anchor="middle">definition · state · physics</text>
+<path class="l" d="M180 72 H236"/><path class="l" d="M420 72 H476"/><path class="l" d="M670 72 H726"/>
+<rect class="box" x="300" y="170" width="360" height="70" rx="10"/><text class="t" x="480" y="200" text-anchor="middle" font-weight="600">Tidy Level Manager</text><text class="s" x="480" y="220" text-anchor="middle">listens to placement, cleaning and state events</text>
+<path class="l" d="M575 104 C575 140 520 150 500 166"/>
+<rect class="sys" x="20" y="300" width="160" height="60" rx="10"/><text class="t" x="100" y="335" text-anchor="middle">Objective Trackers</text>
+<rect class="sys" x="200" y="300" width="160" height="60" rx="10"/><text class="t" x="280" y="335" text-anchor="middle">Score &amp; Combo</text>
+<rect class="sys" x="380" y="300" width="200" height="60" rx="10"/><text class="t" x="480" y="335" text-anchor="middle">Before / After Progress</text>
+<rect class="sys" x="600" y="300" width="160" height="60" rx="10"/><text class="t" x="680" y="335" text-anchor="middle">Hints &amp; Tutorial</text>
+<rect class="sys" x="780" y="300" width="160" height="60" rx="10"/><text class="t" x="860" y="335" text-anchor="middle">Feedback &amp; Audio</text>
+<path class="l" d="M360 240 L120 296"/><path class="l" d="M420 240 L290 296"/><path class="l" d="M480 240 V296"/><path class="l" d="M540 240 L670 296"/><path class="l" d="M600 240 L850 296"/>
+<rect class="box" x="240" y="400" width="480" height="54" rx="10"/><text class="t" x="480" y="432" text-anchor="middle" font-weight="600">HUD · Results · Save Service (progress, stars, best times)</text>
+<path class="l" d="M100 360 L330 396"/><path class="l" d="M280 360 L400 396"/><path class="l" d="M480 360 V396"/>
+</svg>
+<figcaption>Input drives the interactor; the interactor asks a placement target to evaluate and accept an object; the target raises events; the level manager turns events into objectives, score and progress which the UI, feedback and save systems display and persist.</figcaption>
+</figure>
+
+<h2 id="data-model">Data model</h2>
+<figure>
+<svg viewBox="0 0 960 330" xmlns="http://www.w3.org/2000/svg" font-family="Segoe UI, Arial, sans-serif" font-size="14">
+<style>.a{fill:#fff7ea;stroke:#c98a2b;stroke-width:1.5}.b{fill:#eef4fb;stroke:#6a8db8;stroke-width:1.5}.t{fill:#2b2228}.s{fill:#6d5f66;font-size:12px}.ln{stroke:#9b8b82;stroke-width:1.4;fill:none;stroke-dasharray:4 3}</style>
+<rect class="a" x="20" y="20" width="200" height="70" rx="10"/><text class="t" x="120" y="48" text-anchor="middle" font-weight="600">Object Definition</text><text class="s" x="120" y="68" text-anchor="middle">category · tags · size · sort key</text>
+<rect class="a" x="20" y="130" width="200" height="56" rx="10"/><text class="t" x="120" y="163" text-anchor="middle">Category (hierarchical)</text>
+<rect class="a" x="20" y="230" width="200" height="56" rx="10"/><text class="t" x="120" y="263" text-anchor="middle">Tag (Color / Size / Shape...)</text>
+<rect class="a" x="290" y="20" width="200" height="70" rx="10"/><text class="t" x="390" y="48" text-anchor="middle" font-weight="600">Rule / Match Filter</text><text class="s" x="390" y="68" text-anchor="middle">"Red books", "Magic tag"</text>
+<rect class="a" x="290" y="130" width="200" height="56" rx="10"/><text class="t" x="390" y="163" text-anchor="middle">Objective Definition</text>
+<rect class="a" x="290" y="230" width="200" height="56" rx="10"/><text class="t" x="390" y="263" text-anchor="middle">Level Definition</text>
+<rect class="a" x="560" y="230" width="180" height="56" rx="10"/><text class="t" x="650" y="263" text-anchor="middle">Level Catalog</text>
+<rect class="b" x="560" y="20" width="180" height="70" rx="10"/><text class="t" x="650" y="48" text-anchor="middle" font-weight="600">Placement Target</text><text class="s" x="650" y="68" text-anchor="middle">scene · has TargetId</text>
+<rect class="b" x="560" y="130" width="180" height="56" rx="10"/><text class="t" x="650" y="163" text-anchor="middle">Tidy Object (scene)</text>
+<rect class="a" x="790" y="130" width="150" height="56" rx="10"/><text class="t" x="865" y="163" text-anchor="middle">Score / Combo / Hint</text>
+<path class="ln" d="M120 90 V130"/><path class="ln" d="M60 90 C0 160 0 230 60 230"/><path class="ln" d="M220 55 H290"/><path class="ln" d="M390 90 V130"/><path class="ln" d="M390 186 V230"/><path class="ln" d="M490 258 H560"/><path class="ln" d="M490 55 H560"/><path class="ln" d="M650 130 V90"/><path class="ln" d="M220 40 C400 0 500 150 560 158"/><path class="ln" d="M490 250 C650 200 780 200 800 186"/>
+</svg>
+<figcaption>Assets (orange) describe what things are and what the rules are. Scene components (blue) reference assets, and assets reference scene components only through ids.</figcaption>
+</figure>
+
+<h2 id="services">Services and lifetime</h2>
+<p><code>TidyFramework.Initialize()</code> runs automatically before the first scene loads. It reads <code>Resources/TidyUpFrameworkSettings</code> and creates the persistent services on a hidden <code>[Tidy Up Runtime]</code> object:</p>
+<table>
+<tr><th>Service</th><th>Lifetime</th><th>Purpose</th></tr>
+<tr><td><code>TidySaveService</code> (implements <code>ITidyProgressService</code>)</td><td>Application</td><td>Progress, stars, best scores/times, tutorial completion, settings persistence</td></tr>
+<tr><td><code>TidySettingsService</code></td><td>Application</td><td>Applies graphics, audio, input and gameplay settings; re-applies after each scene load</td></tr>
+<tr><td><code>TidyAudioService</code> (<code>ITidyAudioService</code>)</td><td>Application</td><td>Pooled sound effects, music and ambience cross-fades, channel volumes</td></tr>
+<tr><td><code>TidySceneLoader</code></td><td>Application</td><td>Fade transitions and level loading</td></tr>
+<tr><td><code>TidyLevelManager</code>, <code>TidyInteractor</code>, <code>TidyInputReader</code>, <code>TidyHintSystem</code>...</td><td>Scene</td><td>Registered in <code>TidyServices</code> while enabled</td></tr>
+</table>
+<pre><code>if (TidyServices.TryGet(out TidyLevelManager level))
+{
+    level.ProgressChanged += progress => Debug.Log("Tidy: " + progress);
+}</code></pre>
+
+<h2 id="registries">Registries</h2>
+<p><code>TidyObjectRegistry</code> and <code>TidyTargetRegistry</code> keep every object and placement target in the loaded scenes, with fast collider look-ups used by aiming. They also relay global events, so a system that cares about every placement subscribes once:</p>
+<pre><code>TidyTargetRegistry.AnyObjectPlaced += placement =>
+{
+    if (placement.IsCorrect)
+    {
+        Debug.Log(placement.Object.DisplayName + " placed in " + placement.Target.DisplayName);
+    }
+};</code></pre>
+
+<h2 id="object-lifecycle">Object lifecycle</h2>
+<table>
+<tr><th>State</th><th>Entered when</th><th>Physics</th></tr>
+<tr><td>Loose</td><td>Scene start, dropped, thrown</td><td>Kinematic (controlled) or dynamic (physics)</td></tr>
+<tr><td>Held</td><td>Picked up</td><td>Follows the hold point; controlled objects disable colliders</td></tr>
+<tr><td>Moving</td><td>Animating into a target or onto the floor</td><td>Kinematic, colliders off</td></tr>
+<tr><td>Placed</td><td>Animation finished inside a target</td><td>Kinematic, parented to the target content root</td></tr>
+<tr><td>Inspecting</td><td>Inspect pressed while holding</td><td>Rotated in front of the camera</td></tr>
+<tr><td>Consumed</td><td>Disposed in a bin or vacuumed</td><td>Disabled</td></tr>
+</table>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

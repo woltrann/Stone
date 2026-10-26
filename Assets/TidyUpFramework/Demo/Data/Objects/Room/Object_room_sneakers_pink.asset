@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_room_sneakers_pink
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: room_sneakers_pink
+  displayName: Pink Sneakers
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.5882353, g: 0.74509805, b: 0.9019608, a: 1}
+  category: {fileID: 11400000, guid: 054ca2c64fe24b142b6e2fa9ec9d2f74, type: 2}
+  tags:
+  - {fileID: 11400000, guid: 9d52cc3bfd6f01b4c9eb59be28708449, type: 2}
+  - {fileID: 11400000, guid: 5304d34cf37ca4140a68ac9c4f1ece12, type: 2}
+  size: 1.2
+  weight: 0.6
+  priority: 0
+  sortKey: Pink Sneakers
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 0
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 12
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 2928340932369714837, guid: 632b9ccbe33dd044fb07a90c15c3b331, type: 3}
+  inspectText: A comfy pair of canvas sneakers.

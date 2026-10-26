@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 480154ef29110f44aaa9a332b0526ac3, type: 3}
+  m_Name: Objective_Room_Keepsakes
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objectives.TidyFindObjectsObjective
+  objectiveId: room_keepsakes
+  title: Find the lost keepsakes {current}/{target}
+  description: A key, a photo and a little velvet box are hiding somewhere. Try under
+    the bed and behind the plants.
+  icon: {fileID: 0}
+  bonusScore: 200
+  hideCounter: 0
+  objectFilter:
+    categories: []
+    requiredTags: []
+    excludedTags: []
+    definitions: []
+    rule: {fileID: 0}

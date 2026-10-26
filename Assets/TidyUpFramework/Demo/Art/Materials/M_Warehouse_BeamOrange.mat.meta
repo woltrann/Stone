@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 70a0b7cba3a5e7242862fc2dd40b0c5c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Materials/M_Warehouse_BeamOrange.mat
+  uploadId: 1021752

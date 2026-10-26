@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: 301fd4cf2e59a954a89cf808b7b58062
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Runtime/Rules/TidySortKeyRangeRule.cs
+  uploadId: 1021752

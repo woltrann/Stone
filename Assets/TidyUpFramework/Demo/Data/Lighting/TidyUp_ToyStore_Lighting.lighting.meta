@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 6966991b9c6b8534e8b9f9f6cad1128a
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Lighting/TidyUp_ToyStore_Lighting.lighting
+  uploadId: 1021752

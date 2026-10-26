@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 26bb79482aa39d143b14d315925d6241
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objectives/Objective_Warehouse_Hazmat.asset
+  uploadId: 1021752

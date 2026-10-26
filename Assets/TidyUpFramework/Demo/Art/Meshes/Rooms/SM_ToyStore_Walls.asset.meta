@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 606a131ddd8d06545b43e933fec5b665
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Rooms/SM_ToyStore_Walls.asset
+  uploadId: 1021752

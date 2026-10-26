@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f3df68657672f1e40814bb64425f7e53
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objectives/Objective_Warehouse_Totes.asset
+  uploadId: 1021752

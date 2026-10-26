@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 22bc12b00599a2b4e837e1396ece11da
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Materials/M_Warehouse_CardboardLight.mat
+  uploadId: 1021752

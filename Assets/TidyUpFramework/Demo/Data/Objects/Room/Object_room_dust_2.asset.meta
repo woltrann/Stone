@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 32e2e812bc0993f4e89f569da66f8e62
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Room/Object_room_dust_2.asset
+  uploadId: 1021752

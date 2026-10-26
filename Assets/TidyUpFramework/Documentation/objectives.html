@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Objectives &amp; Level Progression</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Objectives &amp; Level Progression</h1>
+<p class="lead">Objectives define when a level is finished. Levels group objectives with time limits, stars and unlock rules. A catalog orders levels for Level Select.</p>
+
+<h2 id="objectives">Creating objectives</h2>
+<p>Create objectives with <em>Create &gt; Tidy Up Framework &gt; Objectives</em>. Every objective has an id, a title with <code>{current}</code> and <code>{target}</code> placeholders, an optional icon, and a bonus score awarded the first time it completes.</p>
+<table>
+<tr><th>Objective</th><th>Complete when</th><th>Example title</th></tr>
+<tr><td>Place Objects</td><td>N objects matching a filter are placed (optionally correctly, optionally in specific targets). N = 0 means "all of them".</td><td>Shelve the spell books {current}/{target}</td></tr>
+<tr><td>Complete Targets</td><td>Listed targets (or all counting targets, or targets with an id prefix) report complete, including order and grouping.</td><td>Finish every shelf {current}/{target}</td></tr>
+<tr><td>Clear Clutter</td><td>Every object flagged as clutter is placed or disposed.</td><td>Clear the floor {current}/{target}</td></tr>
+<tr><td>Clean Surfaces</td><td>Cleanable surfaces (optionally one group) are clean.</td><td>Scrub the stains {current}/{target}</td></tr>
+<tr><td>Find Objects</td><td>Objects flagged <em>Requires Discovery</em> were picked up.</td><td>Find the lost keys {current}/{target}</td></tr>
+<tr><td>Reach Score</td><td>The score reaches a value.</td><td>Score 2,000 points</td></tr>
+<tr><td>Finish Within Time</td><td>The level is completed before the limit (resolved at the end).</td><td>Finish within {limit}</td></tr>
+<tr><td>Limit Mistakes</td><td>Mistakes stay at or below the allowance (resolved at the end).</td><td>No wrong placements</td></tr>
+</table>
+<p>Objectives are evaluated from scene state rather than from counted events, so removing an object from a shelf correctly lowers progress again, and pre-placed objects count from the first frame.</p>
+
+<h2 id="levels">Level definitions</h2>
+<table>
+<tr><th>Section</th><th>Fields</th></tr>
+<tr><td>Identity</td><td>Level Id, Display Name, Description, Scene Name, Thumbnail, Difficulty, Accent Color</td></tr>
+<tr><td>Objectives</td><td>List of objectives; tick <em>Optional</em> for bonus goals</td></tr>
+<tr><td>Time</td><td>Time Limit (0 = none), Fail When Time Runs Out</td></tr>
+<tr><td>Stars</td><td>Metric (Score, Time, Mistakes) and thresholds for 2 and 3 stars. Completing always gives 1 star.</td></tr>
+<tr><td>Systems</td><td>Score, Combo, Hint and Tutorial definitions. Missing ones use defaults.</td></tr>
+<tr><td>Audio</td><td>Music and ambience cues started with the level</td></tr>
+<tr><td>Progression</td><td>Unlock requirement (default unlocked, previous level, total stars) and a generic reward amount</td></tr>
+</table>
+<p>Assign the level to the <code>TidyLevelManager</code> in the scene. The manager starts automatically, builds objective trackers, listens to placement and cleaning events, runs the timer and combo, and completes the level when every required objective is complete.</p>
+<div class="callout"><strong>No level assigned?</strong>The manager still runs: the level completes when every placement target that counts towards progress is complete. This is handy while prototyping.</div>
+
+<h2 id="progression">Level progression and Level Select</h2>
+<ol class="steps">
+<li>Create a catalog with <em>Create &gt; Tidy Up Framework &gt; Level Catalog</em> and list your levels in order. Set the main menu scene name.</li>
+<li>Assign the catalog in <code>Resources/TidyUpFrameworkSettings</code>.</li>
+<li>Add every level scene to the build scene list. The Level Validator checks this.</li>
+<li>The main menu's <em>Play</em> button continues with the first unlocked, unfinished level; <em>Level Select</em> shows cards with stars, best score, best time and lock state.</li>
+</ol>
+<figure><img src="images/level_select.png" alt="Level select screen"><figcaption>Level Select built from the demo catalog. Locked cards explain their requirement.</figcaption></figure>
+
+<h2 id="completion">Completion, stars and results</h2>
+<p>When requirements are met the manager waits <em>Completion Delay</em> seconds (letting the final placement animation and celebration play), resolves end-of-level objectives, adds completion bonuses, computes stars and records the result through <code>ITidyProgressService</code>. The results screen counts up the score, pops the earned stars and lists the score breakdown.</p>
+
+<h2 id="custom-objectives">Creating custom objectives</h2>
+<pre><code>using TidyUpFramework.Levels;
+using TidyUpFramework.Objectives;
+using TidyUpFramework.Objects;
+using UnityEngine;
+
+[CreateAssetMenu(menuName = "Tidy Up Framework/Objectives/Inspect Objects")]
+public sealed class InspectObjectsObjective : TidyObjectiveDefinition
+{
+    [SerializeField] int requiredCount = 3;
+
+    public override TidyObjectiveProgress Evaluate(TidyLevelContext context)
+    {
+        var picked = 0;
+        foreach (var tidyObject in context.Objects)
+        {
+            if (tidyObject.HasBeenPickedUp)
+            {
+                picked++;
+            }
+        }
+
+        return new TidyObjectiveProgress(Mathf.Min(picked, requiredCount), requiredCount);
+    }
+}</code></pre>
+<p><code>TidyLevelContext</code> exposes the level, score, combo, elapsed time, correct placements, mistakes, hints used, cleaned surfaces, disposed clutter and the object, target and cleanable registries. Override <code>IsResolvedAtLevelEnd</code> for goals that can only be judged when the level ends.</p>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 054ca2c64fe24b142b6e2fa9ec9d2f74
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Categories/Category_RoomShoes.asset
+  uploadId: 1021752

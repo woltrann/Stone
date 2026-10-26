@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_room_dust_0
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: room_dust_0
+  displayName: Dust Bunny
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.627451, g: 0.5882353, b: 0.50980395, a: 1}
+  category: {fileID: 11400000, guid: 13b36c26ff1cea64da8a0b3400df0878, type: 2}
+  tags:
+  - {fileID: 11400000, guid: be3cc7816b61f5540a0d2770b47d1294, type: 2}
+  - {fileID: 11400000, guid: 1dbb101338b8e35458b2accb6d474ab6, type: 2}
+  - {fileID: 11400000, guid: bb061ce7cc66dea4c82c5ae348fb6ce6, type: 2}
+  size: 0.3
+  weight: 0.01
+  priority: 0
+  sortKey: Dust Bunny
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 0
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 3
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 3979162855182182390, guid: d93f7780050d04a468949e9d7a2eff35, type: 3}
+  inspectText: A fluffy ball of dust. The vacuum will make short work of it.

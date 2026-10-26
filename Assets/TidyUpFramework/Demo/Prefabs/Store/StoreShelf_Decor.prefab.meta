@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 4c0ea31e7646c724ca8c8c0016844ef0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Store/StoreShelf_Decor.prefab
+  uploadId: 1021752

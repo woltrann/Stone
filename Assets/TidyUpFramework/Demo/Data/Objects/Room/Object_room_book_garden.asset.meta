@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b96745b2d214b524a93ba7deeffb4425
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Room/Object_room_book_garden.asset
+  uploadId: 1021752

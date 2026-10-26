@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Customising &amp; Extending</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Customising &amp; Extending</h1>
+<p class="lead">Most games need no code changes. When they do, every extension point is a small base class or interface.</p>
+
+<h2 id="customisation">Customisation without code</h2>
+<table>
+<tr><th>Goal</th><th>Where</th></tr>
+<tr><td>New object types</td><td>Object Definitions, Categories, Tags</td></tr>
+<tr><td>New sorting logic</td><td>Match filters, Rule assets, ordering and grouping on targets</td></tr>
+<tr><td>Different feel</td><td>Placement Motion on targets, Physics Profiles, Feedback Definition, Combo Definition</td></tr>
+<tr><td>Difficulty</td><td>Placement policy, preview correctness, hints, time limits, star thresholds</td></tr>
+<tr><td>Look of the UI</td><td>Edit the HUD and Main Menu prefabs; all views are plain uGUI and TextMeshPro</td></tr>
+<tr><td>Controls</td><td>Edit <code>TidyUpInputActions</code>; prompts update automatically</td></tr>
+<tr><td>Audio</td><td>Replace clips inside the audio cue assets</td></tr>
+</table>
+
+<h2 id="extension-points">Extension points</h2>
+<table>
+<tr><th>Extend</th><th>Derive from / implement</th><th>Override</th></tr>
+<tr><td>Sorting rule</td><td><code>TidyRuleDefinition</code></td><td><code>Matches</code>, <code>Describe</code></td></tr>
+<tr><td>Objective</td><td><code>TidyObjectiveDefinition</code></td><td><code>Evaluate</code>, optionally <code>FormatTitle</code>, <code>IsResolvedAtLevelEnd</code></td></tr>
+<tr><td>Placement target</td><td><code>TidyPlacementTarget</code></td><td><code>Capacity</code>, <code>TryFindPose</code>; optionally <code>IsCompatible</code>, <code>AllowsRemoval</code>, <code>InsertOccupant</code>, <code>RemoveOccupant</code>, <code>OnOccupantsChanged</code>, <code>OnPlacementCompleted</code>, <code>GetOrderedOccupants</code>, <code>GetHintPoint</code></td></tr>
+<tr><td>Before/after effect</td><td><code>TidyProgressReactor</code></td><td><code>Apply</code></td></tr>
+<tr><td>Input source</td><td><code>ITidyPlayerInput</code></td><td>All members</td></tr>
+<tr><td>Highlight style</td><td><code>ITidyHighlighter</code></td><td>Set / clear highlight</td></tr>
+<tr><td>Audio back-end</td><td><code>ITidyAudioService</code></td><td>Play, music, ambience, volumes</td></tr>
+<tr><td>Save back-end</td><td><code>ITidySaveStorage</code> or <code>ITidyProgressService</code></td><td>Read / write / delete, or full progress API</td></tr>
+<tr><td>HUD element</td><td><code>TidyLevelBoundView</code></td><td><code>Bind</code>, <code>Unbind</code></td></tr>
+</table>
+
+<h2 id="custom-rules">Creating custom rules</h2>
+<p>See <a href="objects.html#custom-rules">Objects &rarr; Creating custom rules</a>.</p>
+<h2 id="custom-objectives">Creating custom objectives</h2>
+<p>See <a href="objectives.html#custom-objectives">Objectives &rarr; Creating custom objectives</a>.</p>
+<h2 id="custom-interaction">Creating custom interaction types</h2>
+<p>See <a href="player.html#custom-interaction">Player &rarr; Creating custom interaction types</a>.</p>
+<h2 id="custom-zones">Creating custom sorting zones</h2>
+<p>See <a href="placement.html#custom-zones">Placement &rarr; Creating custom sorting zones</a>.</p>
+
+<h2 id="custom-reactor">Example: a custom before/after reactor</h2>
+<pre><code>using TidyUpFramework.Transformation;
+using UnityEngine;
+
+public sealed class TidyAudioPitchReactor : TidyProgressReactor
+{
+    [SerializeField] AudioSource source;
+    [SerializeField] float messyPitch = 0.85f;
+
+    protected override void Apply(float organisedAmount)
+    {
+        source.pitch = Mathf.Lerp(messyPitch, 1f, organisedAmount);
+    }
+}</code></pre>
+
+<h2 id="custom-hud">Example: a HUD counter for mistakes</h2>
+<pre><code>using TidyUpFramework.Levels;
+using TidyUpFramework.Placement;
+using TidyUpFramework.UI;
+using TMPro;
+using UnityEngine;
+
+public sealed class MistakeCounterView : TidyLevelBoundView
+{
+    [SerializeField] TMP_Text label;
+
+    protected override void Bind(TidyLevelManager manager)
+    {
+        manager.PlacementEvaluated += Refresh;
+    }
+
+    protected override void Unbind(TidyLevelManager manager)
+    {
+        manager.PlacementEvaluated -= Refresh;
+    }
+
+    void Refresh(TidyPlacementEvent placement)
+    {
+        label.text = LevelManager.Context.Mistakes.ToString();
+    }
+}</code></pre>
+
+<h2 id="events">Listening to events from anywhere</h2>
+<table>
+<tr><th>Event</th><th>Source</th></tr>
+<tr><td><code>AnyObjectPlaced</code>, <code>AnyObjectRemoved</code>, <code>AnyCompletionChanged</code></td><td><code>TidyTargetRegistry</code></td></tr>
+<tr><td><code>Registered</code>, <code>Unregistered</code>, <code>AnyStateChanged</code></td><td><code>TidyObjectRegistry</code></td></tr>
+<tr><td><code>AnyCleaned</code>, <code>AnyProgressChanged</code></td><td><code>TidyCleanable</code></td></tr>
+<tr><td><code>LevelStarted</code>, <code>ProgressChanged</code>, <code>ObjectiveChanged</code>, <code>ObjectiveCompleted</code>, <code>PlacementEvaluated</code>, <code>LevelCompleted</code>, <code>LevelFailed</code></td><td><code>TidyLevelManager</code></td></tr>
+<tr><td><code>ScoreChanged</code>, <code>ScoreAwarded</code> / <code>ComboChanged</code>, <code>TierReached</code>, <code>ComboBroken</code></td><td><code>TidyScoreSystem</code> / <code>TidyComboSystem</code></td></tr>
+<tr><td><code>HintShown</code>, <code>HintHidden</code></td><td><code>TidyHintSystem</code></td></tr>
+<tr><td><code>StepStarted</code>, <code>StepCompleted</code>, <code>TutorialFinished</code></td><td><code>TidyTutorialRunner</code></td></tr>
+</table>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

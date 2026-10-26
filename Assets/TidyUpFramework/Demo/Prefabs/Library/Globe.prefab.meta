@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 43d84bee65abd0d4c8af818b83123ff7
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Library/Globe.prefab
+  uploadId: 1021752

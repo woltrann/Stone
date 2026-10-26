@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 525fc56b361d5fc4ba3530fa5a68d0f8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Materials/M_Warehouse_Screen.mat
+  uploadId: 1021752

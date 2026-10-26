@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7c5a2cf278684dc4f8ef5da867c3d0a6
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Warehouse/Object_wh_canister_green.asset
+  uploadId: 1021752

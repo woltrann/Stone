@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 76ab0b5626f9e454dbe4a69dbb88c4a9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4890085278179872738
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Lighting/TidyUp_CozyRoom_Lighting.lighting
+  uploadId: 1021752

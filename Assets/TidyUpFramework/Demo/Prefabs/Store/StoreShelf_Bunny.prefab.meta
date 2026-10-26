@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: ffd65422de09b67448b73c2d29f71004
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Store/StoreShelf_Bunny.prefab
+  uploadId: 1021752

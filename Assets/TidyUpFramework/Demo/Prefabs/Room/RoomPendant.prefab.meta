@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 112ee64754e76a84b891f0d62d1c7cf9
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Room/RoomPendant.prefab
+  uploadId: 1021752

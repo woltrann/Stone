@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f53bb026ba98a394c90e7da792355607
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267550
+  packageName: 'Shatter Stone: Stones & Rocks Resource Pack'
+  packageVersion: 2.1.3
+  assetPath: Assets/NV3D/Shatter Stone/Stone/Materials/PFX_GlowDust.mat
+  uploadId: 765286

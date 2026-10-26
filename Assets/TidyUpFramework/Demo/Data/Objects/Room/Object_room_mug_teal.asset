@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_room_mug_teal
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: room_mug_teal
+  displayName: Teal Mug
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.5882353, g: 0.8235294, b: 0.9019608, a: 1}
+  category: {fileID: 11400000, guid: 7469ba10cb2488b4d93ce5272bf7a728, type: 2}
+  tags:
+  - {fileID: 11400000, guid: 0157e23bb3a367b4b9f89464ff65dd04, type: 2}
+  - {fileID: 11400000, guid: 1dbb101338b8e35458b2accb6d474ab6, type: 2}
+  - {fileID: 11400000, guid: 5e062671bf1e23a4499e072087f0ba93, type: 2}
+  size: 0.6
+  weight: 0.3
+  priority: 0
+  sortKey: Teal Mug
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 0
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 10
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 842175211631790081, guid: b0f1b0340557c4547bd1d81c78dad691, type: 3}
+  inspectText: Still a little cocoa at the bottom.

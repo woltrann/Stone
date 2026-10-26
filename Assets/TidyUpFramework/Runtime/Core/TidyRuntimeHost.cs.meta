@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: e18aa48253f2d964ab0626bd343ebd93
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Runtime/Core/TidyRuntimeHost.cs
+  uploadId: 1021752

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: a65142bd8c0c12342864eeb012ce59fa
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Room/RoomBlockBlue.prefab
+  uploadId: 1021752

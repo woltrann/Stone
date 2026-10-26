@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4ad97bdc66f7cca45bb5b9340fb9c2df
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Warehouse/SM_Warehouse_Desk.asset
+  uploadId: 1021752

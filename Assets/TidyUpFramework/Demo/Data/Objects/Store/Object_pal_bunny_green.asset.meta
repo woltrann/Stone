@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: cbf7590d3b92bd64caaf136804ce33ed
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Store/Object_pal_bunny_green.asset
+  uploadId: 1021752

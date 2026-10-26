@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 5916f212ef8ebac49b3c58015c79a4c2
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Room/RoomKettle.prefab
+  uploadId: 1021752

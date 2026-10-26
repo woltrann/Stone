@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e14535a04e09e9b4fb45a92dfc7092ae
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Defaults/Audio Cues/Cue_Snap.asset
+  uploadId: 1021752

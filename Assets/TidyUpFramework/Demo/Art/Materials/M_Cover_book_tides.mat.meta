@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0ca2dbe3f6b6f9f458eaaf1587b66fa7
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Materials/M_Cover_book_tides.mat
+  uploadId: 1021752

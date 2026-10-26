@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 471226de7116cd149b9544448a03d5eb
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Library/ReadingTable.prefab
+  uploadId: 1021752

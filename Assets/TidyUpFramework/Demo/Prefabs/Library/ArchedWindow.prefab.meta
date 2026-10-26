@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 61edb54342ff6f64d8fd1b1a46567dab
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Library/ArchedWindow.prefab
+  uploadId: 1021752

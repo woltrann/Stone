@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f36d5c00089cd4643a0ab49d03a80366
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Store/Object_pal_bunny_pink.asset
+  uploadId: 1021752

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 0276f4f8fecf45642b4bb76d39015afb
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Rooms/SM_Menu_Ceiling.asset
+  uploadId: 1021752

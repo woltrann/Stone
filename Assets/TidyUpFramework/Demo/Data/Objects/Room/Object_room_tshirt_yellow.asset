@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_room_tshirt_yellow
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: room_tshirt_yellow
+  displayName: Yellow T-Shirt
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.9411765, g: 0.5882353, b: 0.54901963, a: 1}
+  category: {fileID: 11400000, guid: fde6c5c4a2eff0a4c900235c3ffd8b72, type: 2}
+  tags:
+  - {fileID: 11400000, guid: 00af170106ff14144b9cb7f296c5ba0b, type: 2}
+  - {fileID: 11400000, guid: 5304d34cf37ca4140a68ac9c4f1ece12, type: 2}
+  size: 1
+  weight: 0.2
+  priority: 0
+  sortKey: Yellow T-Shirt
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 1
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 10
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 8515037409425418800, guid: bf81cf77454534f4cbfd2591b70c0664, type: 3}
+  inspectText: Freshly washed and folded. It smells of sunshine.

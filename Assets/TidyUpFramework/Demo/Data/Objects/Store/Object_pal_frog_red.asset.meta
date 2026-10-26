@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 4cb54c4df78cf5c489e2051ffaa89da8
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objects/Store/Object_pal_frog_red.asset
+  uploadId: 1021752

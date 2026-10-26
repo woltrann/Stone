@@ -1,0 +1,30 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0851dd53ded063a4aaf093603b87ed24, type: 3}
+  m_Name: Objective_Warehouse_Crates
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objectives.TidyPlaceObjectsObjective
+  objectiveId: warehouse_crates
+  title: Rack the crates {current}/{target}
+  description: Fragile glassware on the low beam, spare parts on the middle beam.
+  icon: {fileID: 0}
+  bonusScore: 180
+  hideCounter: 0
+  objectFilter:
+    categories:
+    - {fileID: 11400000, guid: ad4c81f7747e59c4b93741e9cd79df74, type: 2}
+    requiredTags: []
+    excludedTags: []
+    definitions: []
+    rule: {fileID: 0}
+  requiredCount: 0
+  requireCorrectPlacement: 1
+  restrictToTargetIds: []

@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: c11f90abd4a6c1b4caa207097a64a1fa
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Warehouse/WarehouseParcelBlueM.prefab
+  uploadId: 1021752

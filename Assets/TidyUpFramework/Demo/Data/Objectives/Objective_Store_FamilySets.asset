@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b3348e956b58f7c4da24c80ced2fa0d1, type: 3}
+  m_Name: Objective_Store_FamilySets
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objectives.TidyCompleteTargetsObjective
+  objectiveId: store_familysets
+  title: Build 3 Family Sets
+  description: Fill each set pedestal with six Pals of the same family.
+  icon: {fileID: 0}
+  bonusScore: 250
+  hideCounter: 0
+  targetIds:
+  - store_set_0
+  - store_set_1
+  - store_set_2
+  targetIdPrefix: 

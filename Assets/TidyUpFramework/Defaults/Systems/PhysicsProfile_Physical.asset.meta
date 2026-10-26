@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1432f276ce2729644943c3fdceb208b3
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Defaults/Systems/PhysicsProfile_Physical.asset
+  uploadId: 1021752

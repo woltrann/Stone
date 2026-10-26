@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1260ccb3c746736428c2ec45b6dd524b, type: 3}
+  m_Name: PhysicsProfile_Physical
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyPhysicsProfile
+  interactionMode: 1
+  mass: 1.2
+  linearDamping: 0.5
+  angularDamping: 2
+  followSharpness: 18
+  throwSpeed: 6
+  collisionDetection: 3
+  controlledDropDuration: 0.35

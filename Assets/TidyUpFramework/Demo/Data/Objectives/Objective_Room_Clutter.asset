@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: acca56f3c56c39842805a577493e4ad8, type: 3}
+  m_Name: Objective_Room_Clutter
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objectives.TidyClearClutterObjective
+  objectiveId: room_clutter
+  title: Clear the rubbish and dust {current}/{target}
+  description: Bin the rubbish and vacuum up every dust bunny.
+  icon: {fileID: 0}
+  bonusScore: 150
+  hideCounter: 0
+  clutterFilter:
+    categories: []
+    requiredTags: []
+    excludedTags: []
+    definitions: []
+    rule: {fileID: 0}

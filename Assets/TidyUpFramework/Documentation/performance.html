@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Performance, Mobile &amp; URP</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Performance, Mobile &amp; URP</h1>
+<p class="lead">Organising games put hundreds of small objects on screen. The framework is built so that the number of objects costs little when nothing is happening.</p>
+
+<h2 id="performance">Performance optimisation</h2>
+<h3>What the framework already does</h3>
+<table>
+<tr><th>Area</th><th>Approach</th></tr>
+<tr><td>Per-object cost</td><td><code>TidyObject</code> has no <code>Update</code>. Objects at rest are kinematic and do nothing until touched.</td></tr>
+<tr><td>Aiming</td><td>One sphere cast per frame with a pre-allocated hit buffer; collider-to-object look-ups are cached in dictionaries.</td></tr>
+<tr><td>Animation</td><td>A single pooled tween runner animates every object and disables itself when idle.</td></tr>
+<tr><td>Objectives</td><td>Re-evaluated only when something changes (dirty flag, batched once per frame) plus a slow 2 Hz refresh for time-based goals.</td></tr>
+<tr><td>Highlights and ghosts</td><td><code>Graphics.RenderMesh</code> draws extra passes without changing materials, so SRP batching and instancing stay intact.</td></tr>
+<tr><td>Feedback</td><td>Particles are pooled; audio sources are pooled; cues have cooldowns.</td></tr>
+<tr><td>UI</td><td>Views update on events, not every frame (timer text updates once per second).</td></tr>
+<tr><td>Garbage</td><td>Gameplay loops avoid allocations; string building is limited to UI changes.</td></tr>
+</table>
+<h3>What you should do in your scenes</h3>
+<ul>
+<li>Mark environment geometry <strong>Static</strong> (batching, occlusion, reflection probes). Demo builders do this for every room.</li>
+<li>Enable <strong>GPU Instancing</strong> on materials shared by many props (all demo materials have it on) and keep the SRP Batcher enabled.</li>
+<li>Use <strong>controlled</strong> physics profiles for small, numerous props; reserve physics profiles for a few large ones.</li>
+<li>Prefer <code>BoxCollider</code>s on props. Convex mesh colliders are fine for odd shapes; avoid non-convex colliders on movable objects.</li>
+<li>Keep shadow-casting on large props only: the demo disables shadows on tiny objects automatically.</li>
+<li>Use <strong>Light Layers</strong> or limited ranges for candle-style point lights.</li>
+</ul>
+
+<h2 id="mobile">Mobile optimisation</h2>
+<ul>
+<li>Use the <em>Mobile</em> URP asset (forward renderer, no SSAO, lower shadow resolution, render scale 0.8) and the Mobile quality level.</li>
+<li>Set Shadows to Low or Off and Render Scale to 70–85% in the in-game settings for older devices.</li>
+<li>Enable <em>Fill In Order</em> on slot groups and generous trigger colliders on targets so placement is easy with taps.</li>
+<li>Increase the interactor's <em>Aim Radius</em> or let players raise <em>Interaction Assist</em>.</li>
+<li>Limit simultaneously visible interactive objects to a few hundred and favour texture atlases.</li>
+<li>Use <code>TidyPlayerPrefsStorage</code> on WebGL.</li>
+</ul>
+
+<h2 id="urp">URP configuration</h2>
+<table>
+<tr><th>Setting</th><th>PC (recommended)</th><th>Mobile (recommended)</th></tr>
+<tr><td>Rendering path</td><td>Forward+</td><td>Forward</td></tr>
+<tr><td>HDR</td><td>On</td><td>On (or off for very low-end)</td></tr>
+<tr><td>Main light shadows</td><td>2048, soft, 2–4 cascades</td><td>1024, hard, 1 cascade</td></tr>
+<tr><td>Additional light shadows</td><td>On (few shadowed lights)</td><td>Off</td></tr>
+<tr><td>Screen Space Ambient Occlusion</td><td>On</td><td>Off</td></tr>
+<tr><td>Post-processing</td><td>ACES tonemapping, bloom, colour adjustments, white balance, vignette</td><td>Neutral tonemapping, light bloom or none</td></tr>
+<tr><td>MSAA</td><td>2× or 4×</td><td>Off or 2×</td></tr>
+</table>
+<p>Shaders shipped with the framework (outline, ghost) are URP HLSL, support instancing and contain no built-in pipeline code. All demo materials use <em>Universal Render Pipeline/Lit</em>.</p>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

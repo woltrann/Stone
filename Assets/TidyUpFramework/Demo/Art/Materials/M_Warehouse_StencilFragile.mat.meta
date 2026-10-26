@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 7f570a2a1c05a4f4ab7acd991289e148
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Materials/M_Warehouse_StencilFragile.mat
+  uploadId: 1021752

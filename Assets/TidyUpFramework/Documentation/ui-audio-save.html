@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — UI, Audio, Save &amp; Settings</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>UI, Audio, Save &amp; Settings</h1>
+<p class="lead">Presentation and persistence systems. Each view is a small component bound to framework events, so you can restyle or rebuild any screen freely.</p>
+
+<h2 id="ui">UI system</h2>
+<figure><img src="images/hud_overview.png" alt="Annotated HUD"><figcaption>The gameplay HUD: objectives (top left), progress (top centre), score, timer and combo (top right), hint button (bottom left), interaction prompt (bottom centre).</figcaption></figure>
+<h3>Building blocks</h3>
+<table>
+<tr><th>Component</th><th>Role</th></tr>
+<tr><td><code>TidyUIScreen</code></td><td>Any panel that shows and hides with fade, scale or slide transitions; selects a first element for gamepads; can lock gameplay channels while open.</td></tr>
+<tr><td><code>TidyScreenStack</code></td><td>Push/pop navigation with Escape and gamepad East as Back.</td></tr>
+<tr><td><code>TidyButtonFeedback</code></td><td>Hover/select scale, highlight visual, click and hover sounds.</td></tr>
+<tr><td><code>TidySafeArea</code></td><td>Fits a rect to <code>Screen.safeArea</code>.</td></tr>
+<tr><td><code>TidyPromptLabel</code></td><td>Device-aware input prompts in text.</td></tr>
+<tr><td><code>TidyLevelBoundView</code></td><td>Base class for views that bind to the level manager.</td></tr>
+</table>
+<h3>HUD views</h3>
+<p><code>TidyObjectiveListView</code> / <code>TidyObjectiveItemView</code>, <code>TidyScoreView</code>, <code>TidyTimerView</code>, <code>TidyProgressView</code>, <code>TidyComboView</code>, <code>TidyInteractionPromptView</code> (prompt, object name, crosshair), <code>TidyFloatingScoreView</code>, <code>TidyHintButtonView</code>, <code>TidyBannerView</code>, <code>TidyInspectPanelView</code>, <code>TidyTutorialView</code>.</p>
+<h3>Screens</h3>
+<p><code>TidyMainMenu</code>, <code>TidyLevelSelectView</code> + <code>TidyLevelCardView</code>, <code>TidyPauseMenu</code>, <code>TidyResultsScreen</code>, <code>TidyControlsView</code>, settings rows (<code>TidySettingControl</code>) with <code>TidyTabGroup</code>, and mobile controls.</p>
+<figure><img src="images/main_menu.png" alt="Main menu"><figcaption>Main menu over a live 3D backdrop.</figcaption></figure>
+<figure><img src="images/settings.png" alt="Settings screen"><figcaption>Settings with Graphics, Audio, Gameplay and Input tabs. Each row is a <code>TidySettingControl</code> with a key; changes apply and save immediately.</figcaption></figure>
+<figure><img src="images/results.png" alt="Results screen"><figcaption>Results: stars, score count-up, statistics and score breakdown.</figcaption></figure>
+
+<h2 id="audio">Audio system</h2>
+<p>A <code>TidyAudioCue</code> asset holds one or more clips, a channel (Sfx, Music, UI, Ambience), volume, random pitch range, spatial blend, looping and a cooldown that prevents stacking when many objects land at once. Play cues through <code>TidyAudio.Play(cue)</code> / <code>TidyAudio.PlayAt(cue, position)</code> or the <code>ITidyAudioService</code>. The service pools 16 sources, cross-fades music and ambience, and applies channel volumes either directly or through an <code>AudioMixer</code> if one is assigned in the framework settings (exposed parameters <code>MasterVolume</code>, <code>SfxVolume</code>, <code>MusicVolume</code>, <code>UiVolume</code>, <code>AmbienceVolume</code>).</p>
+<p>The framework ships example cues and clips for pick up, place (wood, soft, glass), snap, correct chimes, gentle error, combo sparkles, objective and level fanfares, star pings, UI clicks and hovers, scrubbing and vacuum loops, plus demo ambience and music loops. All were synthesised for this package.</p>
+
+<h2 id="save">Save system</h2>
+<p><code>TidySaveService</code> stores two documents: progress (level records with completion, stars, best score, best time, attempts; completed tutorials; reward balance) and settings. It implements <code>ITidyProgressService</code>, which is all gameplay code depends on.</p>
+<table>
+<tr><th>Storage</th><th>Location</th></tr>
+<tr><td><code>TidyJsonFileStorage</code> (default)</td><td><code>Application.persistentDataPath/TidyUpSaves/*.json</code>, written atomically through a temporary file</td></tr>
+<tr><td><code>TidyPlayerPrefsStorage</code></td><td>PlayerPrefs keys with a prefix (WebGL friendly)</td></tr>
+</table>
+<p>To use a cloud or platform save, implement <code>ITidySaveStorage</code> (three methods) or replace <code>ITidyProgressService</code> entirely and register it in <code>TidyServices</code>. Mid-level snapshots use the same storage, so a custom storage saves them too.</p>
+
+<h2 id="level-progress">Saving progress inside a level</h2>
+<p>Players can leave a half-tidied room and continue later exactly where they stopped. Every level saves a <strong>snapshot</strong> automatically and restores it the next time the level is opened.</p>
+<figure><img src="images/save_pause_menu.png" alt="Pause menu with Save Progress"><figcaption>The pause menu saves when it opens and offers an explicit <em>Save Progress</em> button that confirms with <em>Progress Saved</em>.</figcaption></figure>
+<h3>What is saved</h3>
+<table>
+<tr><th>Data</th><th>Details</th></tr>
+<tr><td>Objects</td><td>State, target and order inside the target, exact pose, discovery and mistake flags. Objects being carried go back into the player's arms.</td></tr>
+<tr><td>Cleaning</td><td>Remaining dirt of every cleanable surface; disposed clutter stays disposed.</td></tr>
+<tr><td>Level</td><td>Score, elapsed time, correct placements, mistakes, hints used, cleaned surfaces, best combo, completion percentage.</td></tr>
+<tr><td>Player</td><td>Position, yaw and pitch.</td></tr>
+</table>
+<h3>When it is saved</h3>
+<ul>
+<li>Every <strong>Autosave Interval</strong> seconds while something changed (Level Manager, default 30 s; 0 disables the timer).</li>
+<li>When the game is paused, when the application is paused or quit, and before any scene change, for example returning to the main menu.</li>
+<li>When the player presses <em>Save Progress</em> or code calls <code>TidyLevelManager.SaveProgress()</code>.</li>
+</ul>
+<p>The snapshot is deleted when the level is completed or failed and when the player restarts it.</p>
+<h3>Continuing</h3>
+<figure><img src="images/save_level_select.png" alt="Level select with a level in progress"><figcaption>Level cards show <em>In progress 21%</em> for levels with saved progress. The main menu button reads <em>Continue</em> and opens the most recently saved level.</figcaption></figure>
+<figure><img src="images/save_continue.png" alt="Welcome back banner"><figcaption>Opening a saved level restores it silently: no sounds, score pop-ups or objective banners replay. A <em>Welcome back</em> banner confirms the restore and the tutorial is skipped.</figcaption></figure>
+<h3>Setup for your own levels</h3>
+<ol class="steps">
+<li>Keep <strong>Save Progress</strong> enabled on the <code>TidyLevelManager</code> (it is on by default).</li>
+<li>Give every <code>TidyObject</code> a unique id with <em>Tidy Up Framework &gt; Generate Missing Scene IDs</em>. The level validator warns about duplicates. Without ids the framework falls back to object names plus an index, which only works while the scene does not change.</li>
+<li>Give every target and cleanable a unique id (already required by objectives).</li>
+</ol>
+<div class="callout warn"><strong>Changing a level after release</strong>Snapshots store ids, not scene references. Objects you remove are ignored and new objects keep their authored state, so saves stay loadable. Renaming ids makes the affected objects reset to their authored state.</div>
+<h3>Scripting</h3>
+<pre><code>var level = TidyServices.Get&lt;TidyLevelManager&gt;();
+level.SaveProgress();          // returns false while not playing
+level.DiscardSavedProgress();  // deletes the snapshot
+level.ProgressSaved += snapshot =&gt; Debug.Log("Saved at " + snapshot.SavedAtUtc);
+level.ProgressRestored += snapshot =&gt; Debug.Log("Restored " + snapshot.Progress);
+
+var save = TidyFramework.Save;
+save.HasLevelSnapshot("toy_store");
+save.GetSavedProgress("toy_store");     // 0..1
+save.FindMostRecentSnapshotLevel();</code></pre>
+<p>Snapshots are stored as <code>level_&lt;LevelId&gt;.json</code> next to <code>progress.json</code>. <code>TidyLevelSnapshot</code> carries a version number for future migrations.</p>
+
+<h2 id="settings">Settings</h2>
+<table>
+<tr><th>Group</th><th>Settings</th></tr>
+<tr><td>Graphics</td><td>Quality preset, resolution, display mode (exclusive, borderless, maximised, windowed), V-Sync, shadows (off–high, mapped to URP shadow distance and cascades), texture quality (mip limit), render scale</td></tr>
+<tr><td>Audio</td><td>Master, music, effects, ambience</td></tr>
+<tr><td>Gameplay</td><td>Hints, tutorials, placement preview, head bob, interaction assist</td></tr>
+<tr><td>Input</td><td>Input method (automatic or forced), camera sensitivity, invert look</td></tr>
+</table>
+<p>Defaults come from <code>TidyUpFrameworkSettings</code>. <code>TidySettingsService</code> applies them at start-up and after every scene load.</p>
+
+<h2 id="framework-settings">Framework settings asset</h2>
+<p><code>Resources/TidyUpFrameworkSettings</code> holds the level catalog, save storage type and folder, default player settings, optional audio mixer and groups, UI sound cues, menu music, input prompt definition and scene fade colour and duration.</p>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: dd78eab2044965e41a4a54cb9d0a7d7c
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Volumes/TidyUp_CozyRoom_GlobalVolume.asset
+  uploadId: 1021752

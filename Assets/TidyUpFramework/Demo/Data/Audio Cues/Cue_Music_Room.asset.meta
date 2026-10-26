@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 1f415ac045130684194d53d512ac7ba1
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Audio Cues/Cue_Music_Room.asset
+  uploadId: 1021752

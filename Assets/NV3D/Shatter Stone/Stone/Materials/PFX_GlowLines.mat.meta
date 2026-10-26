@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: 771c02766ecc4de4e8b28025750b1f0d
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 2100000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 267550
+  packageName: 'Shatter Stone: Stones & Rocks Resource Pack'
+  packageVersion: 2.1.3
+  assetPath: Assets/NV3D/Shatter Stone/Stone/Materials/PFX_GlowLines.mat
+  uploadId: 765286

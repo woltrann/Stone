@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Player &amp; Interaction</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Player Controller &amp; Interaction</h1>
+<p class="lead">A small first person controller and a device-independent interactor. Both are replaceable.</p>
+
+<h2 id="player-prefab">The Tidy Player prefab</h2>
+<pre><code>TidyPlayer                CharacterController, TidyFirstPersonController, TidyInputReader, TidyCursorController
+  Head                    pitch pivot (height and head bob)
+    Camera                Camera, AudioListener, TidyInteractor, TidyPlacementPreview,
+                          TidyCleaningInteractor, TidyCameraPunch</code></pre>
+
+<h2 id="controller">First person controller</h2>
+<table>
+<tr><th>Setting</th><th>Default</th></tr>
+<tr><td>Walk / Sprint / Crouch speed</td><td>3.2 / 5.2 / 1.6 m/s</td></tr>
+<tr><td>Acceleration, gravity</td><td>14, −18</td></tr>
+<tr><td>Sprint enabled, crouch enabled</td><td>On, on</td></tr>
+<tr><td>Maximum pitch, look smoothing</td><td>85°, 0</td></tr>
+<tr><td>Standing / crouching height</td><td>1.75 / 1.1 m</td></tr>
+<tr><td>Head bob</td><td>On (player setting)</td></tr>
+</table>
+<p>The controller respects <code>TidyControlLock</code>: menus, inspection and results lock movement and look without the controller knowing about them.</p>
+<h3>Using your own controller</h3>
+<p>Nothing in the framework requires <code>TidyFirstPersonController</code>. Keep a camera with a <code>TidyInteractor</code> and a component implementing <code>ITidyPlayerInput</code> (or the provided <code>TidyInputReader</code>), and honour <code>TidyControlLock.IsLocked(TidyControlChannel.Movement)</code> and <code>Look</code> in your controller.</p>
+
+<h2 id="interactor">Interactor</h2>
+<p><code>TidyInteractor</code> sphere-casts from the camera (or from a touch position) each frame. Hits are sorted by distance; triggers are skipped when looking for objects and used when looking for targets. Aiming at an object already placed in a target counts as aiming at that target, so you can keep adding books by pointing at the books already on the shelf.</p>
+<table>
+<tr><th>Setting</th><th>Purpose</th></tr>
+<tr><td>Reach Distance</td><td>Interaction distance (3 m).</td></tr>
+<tr><td>Aim Radius</td><td>Sphere radius for forgiving aiming at tiny props (scaled by the player's Interaction Assist setting).</td></tr>
+<tr><td>Interaction Mask</td><td>Layers considered.</td></tr>
+<tr><td>Hold Offset</td><td>Where held objects float relative to the camera.</td></tr>
+<tr><td>Rotate Speed / Rotate Step Degrees</td><td>Continuous and stepped rotation.</td></tr>
+<tr><td>Interact Drops When No Target</td><td>Single-button play style.</td></tr>
+<tr><td>Controlled Throw Distance / Drop Arc</td><td>Arcade tossing for controlled objects.</td></tr>
+<tr><td>Inspect Offset / Rotate Multiplier</td><td>Inspection presentation.</td></tr>
+<tr><td>Carry Capacity</td><td>How many objects the player can carry at once (demo player: 5). 1 keeps classic single-object holding.</td></tr>
+<tr><td>Maximum Stacked Size</td><td>Largest dimension in metres an object may have to join a stack. Bigger objects are always carried alone.</td></tr>
+<tr><td>Stack Offset / Stack Visual Scale / Stack Spacing</td><td>Where the carried stack sits relative to the camera and how compact it looks.</td></tr>
+<tr><td>Auto Select Matching Object</td><td>While carrying several objects, aiming at a target brings a matching object from the stack to the hand.</td></tr>
+</table>
+<h3>Events</h3>
+<p><code>HoverChanged</code>, <code>HeldChanged</code>, <code>CarriedChanged</code>, <code>ObjectPickedUp</code>, <code>ObjectPlaced</code>, <code>PlacementRejected</code>, <code>ObjectDropped</code>, <code>InspectChanged</code>, <code>ContextChanged</code>. The context (<code>Idle</code>, <code>CanPickUp</code>, <code>Holding</code>, <code>CanStack</code>, <code>CanPlace</code>, <code>CanPlaceIncorrect</code>, <code>WrongPlace</code>, <code>TargetFull</code>, <code>Inspecting</code>) drives prompts and crosshair styling.</p>
+
+<h2 id="carrying">Carrying a stack</h2>
+<figure><img src="images/multi_carry.png" alt="Gathering toys into a carried stack"><figcaption>Aiming at another loose object while holding one shows <em>Add to stack</em>. The counter next to the name shows how full the player's arms are.</figcaption></figure>
+<p>Like many modern tidying games, the player can gather several small objects before walking to their homes. Set <strong>Carry Capacity</strong> on the interactor above 1 to enable it; the demo player carries up to 5 objects.</p>
+<ol class="steps">
+<li><strong>Gather.</strong> While holding an object, aim at another loose object and press Interact. It joins the stack and becomes the object in hand. The prompt reads <em>Add to stack</em> and the name label shows <code>3/5</code>.</li>
+<li><strong>Place.</strong> Aim at a target and press Interact as usual. The object in hand is placed and the next one from the stack moves into the hand, so a full stack can be emptied with quick clicks.</li>
+<li><strong>Smart selection.</strong> When the object in hand does not belong to the aimed target but another stacked object does, it is swapped into the hand automatically. Turn this off with <strong>Auto Select Matching Object</strong>.</li>
+<li><strong>Drop.</strong> Drop and Toss release the object in hand; the rest of the stack stays in your arms. <code>DropAll()</code> empties everything.</li>
+</ol>
+<figure><img src="images/multi_carry_smart_select.png" alt="Smart selection from the stack"><figcaption>Holding a candle while aiming at the green potion rack: the green potion from the stack comes to the hand and the ghost preview shows its slot.</figcaption></figure>
+<h3>Which objects can be stacked</h3>
+<table>
+<tr><th>Rule</th><th>Where</th></tr>
+<tr><td>Only loose objects join a stack. Placed objects are still picked up with empty hands.</td><td>Built in</td></tr>
+<tr><td>Objects larger than <strong>Maximum Stacked Size</strong> are always carried alone.</td><td>Interactor</td></tr>
+<tr><td><strong>Carry In Stack</strong> (Capabilities) turns stacking off for an object type, for example tools or fragile items.</td><td>Object Definition</td></tr>
+<tr><td>Cleaning tools are never stacked. Add your own rules through <code>TidyInteractor.StackFilter</code>.</td><td>Code</td></tr>
+</table>
+<p>Scripting: <code>CarryCapacity</code>, <code>CarriedCount</code>, <code>StackedObjects</code>, <code>IsCarryingStack</code>, <code>CanStack(obj)</code>, <code>TryAddToStack(obj)</code>, <code>SelectCarried(obj)</code>, <code>DropAll()</code> and the <code>CarriedChanged</code> event. A simple upgrade system can raise <code>CarryCapacity</code> at runtime.</p>
+<pre><code>if (TidyServices.TryGet(out TidyInteractor interactor))
+{
+    interactor.CarryCapacity = 8;
+}</code></pre>
+
+<h2 id="physics">Physics vs controlled handling</h2>
+<table>
+<tr><th></th><th>Controlled</th><th>Physics</th></tr>
+<tr><td>Held</td><td>Glides to the hold point, colliders off</td><td>Rigidbody driven by velocity, collides with the world</td></tr>
+<tr><td>Dropped</td><td>Settles upright on the surface below with a small bounce. Objects resting on top of a picked-up object settle down too</td><td>Falls and tumbles</td></tr>
+<tr><td>Thrown</td><td>Arcs to the aimed point</td><td>Launched with Throw Speed</td></tr>
+<tr><td>Inspected</td><td>Turned in front of the camera</td><td>Made kinematic while inspected so it never jitters, and pushed back to fit large objects in view</td></tr>
+<tr><td>Best for</td><td>Hundreds of small props, mobile, precise sorting</td><td>Boxes, furniture-like props, physical fun</td></tr>
+</table>
+<p>Choose per object type through the <code>TidyPhysicsProfile</code> on the definition. Placed objects are always kinematic, so shelves never collapse.</p>
+
+<h2 id="highlight">Highlights and preview</h2>
+<p><code>TidyOutlineHighlighter</code> draws an inverted-hull outline with <code>Graphics.RenderMesh</code>, so no material is modified and batching is preserved. Styles: Hover, Hint (pulsing, visible through walls), Valid, Invalid. Meshes that store smooth normals in UV3 (all demo meshes do) get gap-free outlines on hard edges. <code>TidyPlacementPreview</code> renders a translucent ghost of the held object at the candidate pose, tinted by whether the placement is correct, accepted-but-wrong or rejected.</p>
+
+<h2 id="custom-interaction">Creating custom interaction types</h2>
+<p>Interaction types beyond pick-and-place (switches, drawers, doors, levers) are best built as small components that react to the interactor's events or poll its hover target. A drawer that opens when clicked:</p>
+<pre><code>using TidyUpFramework.Core;
+using TidyUpFramework.Input;
+using TidyUpFramework.Interaction;
+using UnityEngine;
+
+public sealed class ClickToOpenDrawer : MonoBehaviour
+{
+    [SerializeField] Transform drawer;
+    [SerializeField] Vector3 openOffset = new Vector3(0f, 0f, 0.35f);
+
+    bool isOpen;
+
+    void Update()
+    {
+        if (!TidyServices.TryGet(out TidyInteractor interactor) || !TidyServices.TryGet(out ITidyPlayerInput input))
+        {
+            return;
+        }
+
+        if (interactor.HeldObject != null || !input.InteractPressed || !interactor.TryAim(out var hit) || hit.collider.transform != transform)
+        {
+            return;
+        }
+
+        isOpen = !isOpen;
+        var target = drawer.parent.TransformPoint(isOpen ? openOffset : Vector3.zero);
+        TidyTweenRunner.MovePose(drawer, target, drawer.rotation, 0.3f, TidyEaseType.OutCubic);
+    }
+}</code></pre>
+<p>Put a <code>TidyContainer</code> on the drawer so it also accepts objects.</p>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

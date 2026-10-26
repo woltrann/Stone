@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_book_moss
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: book_moss
+  displayName: Moss and Fern
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.3372549, g: 0.6666667, b: 0.36078432, a: 1}
+  category: {fileID: 11400000, guid: 27f29a4050b54a74e9d87fa926652433, type: 2}
+  tags:
+  - {fileID: 11400000, guid: f76e70b38c6372643909bbf1fd3b7538, type: 2}
+  - {fileID: 11400000, guid: 5304d34cf37ca4140a68ac9c4f1ece12, type: 2}
+  size: 2.3999999
+  weight: 0.79999995
+  priority: 0
+  sortKey: Moss and Fern
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 1
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 12
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 2723491216103829325, guid: f6ef2cf0034a5ca4c9ed7c0fbe78948f, type: 3}
+  inspectText: Pressed leaves fall out when you open it.

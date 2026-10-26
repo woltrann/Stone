@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — What's New &amp; Changelog</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>What's New &amp; Changelog</h1>
+<p class="lead">Version 1.1 adds the two features players asked for most, carrying a stack and saving in the middle of a level, and fixes every issue reported since release.</p>
+
+<h2 id="v1-1">Version 1.1</h2>
+
+<h3 id="new-carrying">New: carry a stack of objects</h3>
+<figure><img src="images/multi_carry.png" alt="Carrying a stack of toys"><figcaption>Gather toys one after another; the counter shows how full your arms are.</figcaption></figure>
+<ul>
+<li>While holding an object, aim at another loose object and press Interact to add it to the stack. The demo player carries up to 5 objects.</li>
+<li>Placing an object brings the next one from the stack to the hand, so a full stack is emptied with quick clicks.</li>
+<li>Smart selection: aiming at a target swaps a matching stacked object into the hand.</li>
+<li>Configurable on the interactor: <em>Carry Capacity</em>, <em>Maximum Stacked Size</em>, <em>Stack Offset</em>, <em>Stack Visual Scale</em>, <em>Auto Select Matching Object</em>. New <em>Carry In Stack</em> flag on object definitions and a <code>StackFilter</code> hook for code rules.</li>
+<li>New HUD prompt <em>Add to stack</em> and a <code>3/5</code> counter next to the object name.</li>
+</ul>
+<p>Details: <a href="player.html#carrying">Carrying a stack</a>.</p>
+
+<h3 id="new-save">New: save and continue inside a level</h3>
+<figure><img src="images/save_continue.png" alt="Welcome back banner after continuing"><figcaption>Continuing a level restores every object, the score, the timer and the player position.</figcaption></figure>
+<ul>
+<li>Levels autosave every 30 seconds while something changed, on pause, on quit and before scene changes. The pause menu adds a <em>Save Progress</em> button.</li>
+<li>Opening the level again restores it silently and shows a <em>Welcome back</em> banner. The main menu <em>Continue</em> button opens the most recently saved level and level cards show <em>In progress 37%</em>.</li>
+<li>Snapshots are deleted when the level is completed, failed or restarted.</li>
+<li>New API: <code>TidyLevelManager.SaveProgress()</code>, <code>DiscardSavedProgress()</code>, <code>ProgressSaved</code>, <code>ProgressRestored</code>; <code>TidySaveService.SaveLevelSnapshot</code>, <code>TryLoadLevelSnapshot</code>, <code>DeleteLevelSnapshot</code>, <code>HasLevelSnapshot</code>, <code>GetSavedProgress</code>, <code>FindMostRecentSnapshotLevel</code>.</li>
+<li>Every Tidy Object in the demo scenes now has a unique id. Run <em>Generate Missing Scene IDs</em> on your own scenes.</li>
+</ul>
+<p>Details: <a href="ui-audio-save.html#level-progress">Saving progress inside a level</a>.</p>
+
+<h3 id="new-cleaning">New: cleaning methods</h3>
+<ul>
+<li><code>TidyCleanable</code> has <em>Accepted Methods</em> (Bare Hands, Scrubbing, Vacuum) and <code>TidyCleaningTool</code> has a <em>Method</em>. Defaults accept everything, so existing levels keep working.</li>
+<li>Aiming at a surface with the wrong tool shows <em>Needs a scrubbing tool</em> or <em>Needs a vacuum</em>.</li>
+<li>In the Cozy Room stains now need the sponge; empty hands and the vacuum no longer clean them.</li>
+</ul>
+
+<h3 id="fixes">Fixes</h3>
+<table>
+<tr><th>Issue</th><th>Fix</th></tr>
+<tr><td>Dropped objects sometimes floated in mid-air, most often in the Arcane Library</td><td>The drop probe no longer lands on the player's own capsule or on held objects, and objects resting on a picked-up object now settle down.</td></tr>
+<tr><td>The tutorial could not be skipped with the cursor locked</td><td>Backspace (gamepad View) skips the tutorial and Enter confirms Continue steps. Shortcuts are shown on the buttons and configurable on <code>TidyTutorialView</code>.</td></tr>
+<tr><td>Bare hands, the sponge and the vacuum all cleaned the same stains in the Cozy Room</td><td>Cleaning methods, see above.</td></tr>
+<tr><td>Tools on the warehouse workbench could not be picked up</td><td>The workbench collider now ends at the bench top, and the interactor can reach objects embedded in furniture colliders.</td></tr>
+<tr><td>Inspecting a drum made it vibrate</td><td>Physics objects become kinematic with colliders off while inspected; large objects are held further away so they fit the view.</td></tr>
+<tr><td>Controls screen text shifted when switching between the three tabs</td><td>Rows use a fixed height and middle alignment, the tabs share one width and the active tab is highlighted. The gamepad Move prompt now reads <em>Left Stick</em>.</td></tr>
+<tr><td>Long objective counters such as <code>1289/2000</code> were cut off</td><td>Counters shrink to fit.</td></tr>
+</table>
+<figure><img src="images/controls.png" alt="Controls screen"><figcaption>The Controls screen with aligned rows and tabs.</figcaption></figure>
+
+<h3 id="upgrade">Upgrading from 1.0</h3>
+<ol class="steps">
+<li>Back up your project, then import the update over the existing <code>TidyUpFramework</code> folder.</li>
+<li>Your own player prefab keeps single-object holding (Carry Capacity 1). Raise it on the <code>TidyInteractor</code> to enable stacks.</li>
+<li>Mid-level saving is on by default for every Level Manager. Run <em>Tools &gt; Tidy Up Framework &gt; Generate Missing Scene IDs</em> in each level scene and save it.</li>
+<li>If you copied the demo HUD, add a <em>Save Progress</em> button to your pause menu and assign it to <code>TidyPauseMenu.saveButton</code> (optional; saving on pause works without it).</li>
+<li>Code that switches over <code>TidyInteractionContext</code> should handle the new <code>CanStack</code> value.</li>
+</ol>
+
+<h2 id="v1-0">Version 1.0</h2>
+<p>Initial release: data-driven objects, rules and targets; snap slots, slot groups, rows, containers, free zones and stack points; objectives, scoring, combos, hints, cleaning, before/after transformation and tutorials; keyboard, gamepad and touch input; complete UI; four demo levels and a sandbox.</p>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

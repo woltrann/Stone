@@ -1,0 +1,42 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_potion_green_round
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: potion_green_round
+  displayName: Verdant Tonic (Round)
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.49411765, g: 0.8039216, b: 1, a: 1}
+  category: {fileID: 11400000, guid: 30126d80bf0a2ef4ab2796d3fd68af8c, type: 2}
+  tags:
+  - {fileID: 11400000, guid: f76e70b38c6372643909bbf1fd3b7538, type: 2}
+  - {fileID: 11400000, guid: 5e062671bf1e23a4499e072087f0ba93, type: 2}
+  - {fileID: 11400000, guid: c24c533358923d4499c78c56263397e4, type: 2}
+  - {fileID: 11400000, guid: 1dbb101338b8e35458b2accb6d474ab6, type: 2}
+  size: 1
+  weight: 0.4
+  priority: 1
+  sortKey: Verdant Tonic (Round)
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 0
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 15
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 9108775624386999950, guid: 19080f37349e04c419df4a50ae0f3f20, type: 3}
+  inspectText: A carefully corked green potion. Handle with care.

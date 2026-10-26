@@ -1,0 +1,9 @@
+fileFormatVersion: 2
+guid: acca56f3c56c39842805a577493e4ad8
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Runtime/Objectives/TidyClearClutterObjective.cs
+  uploadId: 1021752

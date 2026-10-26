@@ -1,0 +1,134 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f04f2751f3c54bc4594936523d894ddf, type: 3}
+  m_Name: Tutorial_ArcaneLibrary
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Tutorial.TidyTutorialDefinition
+  tutorialId: tutorial_library
+  playOnlyOnce: 1
+  steps:
+  - Message: Welcome to the Arcane Library. Look around with {Look}.
+    PromptAction: 1
+    ShowPrompt: 1
+    Completion: 3
+    ObjectFilter:
+      categories: []
+      requiredTags: []
+      excludedTags: []
+      definitions: []
+      rule: {fileID: 0}
+    TargetId: 
+    ObjectiveId: 
+    DurationSeconds: 3
+    HighlightObjects: 0
+    HighlightTarget: 0
+    ShowArrow: 0
+  - Message: Walk between the bookcases with {Move}.
+    PromptAction: 0
+    ShowPrompt: 1
+    Completion: 2
+    ObjectFilter:
+      categories: []
+      requiredTags: []
+      excludedTags: []
+      definitions: []
+      rule: {fileID: 0}
+    TargetId: 
+    ObjectiveId: 
+    DurationSeconds: 3
+    HighlightObjects: 0
+    HighlightTarget: 0
+    ShowArrow: 0
+  - Message: Books are scattered everywhere. Aim at a glowing spell book and press
+      {Interact} to pick it up.
+    PromptAction: 2
+    ShowPrompt: 1
+    Completion: 5
+    ObjectFilter:
+      categories:
+      - {fileID: 11400000, guid: 19cac58af0541684da6bd68621a2886c, type: 2}
+      requiredTags: []
+      excludedTags: []
+      definitions: []
+      rule: {fileID: 0}
+    TargetId: 
+    ObjectiveId: 
+    DurationSeconds: 3
+    HighlightObjects: 1
+    HighlightTarget: 0
+    ShowArrow: 1
+  - Message: Spell books live on the purple bookcase. Aim at its shelf and press
+      {Interact}. The ghost shows where it will go.
+    PromptAction: 2
+    ShowPrompt: 1
+    Completion: 7
+    ObjectFilter:
+      categories: []
+      requiredTags: []
+      excludedTags: []
+      definitions: []
+      rule: {fileID: 0}
+    TargetId: shelf_spell_am
+    ObjectiveId: 
+    DurationSeconds: 3
+    HighlightObjects: 0
+    HighlightTarget: 1
+    ShowArrow: 1
+  - Message: Pick up any object and turn it with {Rotate}. Press {Inspect} to take
+      a closer look.
+    PromptAction: 6
+    ShowPrompt: 1
+    Completion: 10
+    ObjectFilter:
+      categories: []
+      requiredTags: []
+      excludedTags: []
+      definitions: []
+      rule: {fileID: 0}
+    TargetId: 
+    ObjectiveId: 
+    DurationSeconds: 3
+    HighlightObjects: 0
+    HighlightTarget: 0
+    ShowArrow: 0
+  - Message: Not sure where something goes? Press {Hint}.
+    PromptAction: 9
+    ShowPrompt: 1
+    Completion: 12
+    ObjectFilter:
+      categories: []
+      requiredTags: []
+      excludedTags: []
+      definitions: []
+      rule: {fileID: 0}
+    TargetId: 
+    ObjectiveId: 
+    DurationSeconds: 3
+    HighlightObjects: 0
+    HighlightTarget: 0
+    ShowArrow: 0
+  - Message: Correct placements in quick succession build a combo. Tidy up the whole
+      hall!
+    PromptAction: 2
+    ShowPrompt: 1
+    Completion: 0
+    ObjectFilter:
+      categories: []
+      requiredTags: []
+      excludedTags: []
+      definitions: []
+      rule: {fileID: 0}
+    TargetId: 
+    ObjectiveId: 
+    DurationSeconds: 3
+    HighlightObjects: 0
+    HighlightTarget: 0
+    ShowArrow: 0

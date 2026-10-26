@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Gameplay Systems</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Scoring, Combo, Hints, Cleaning &amp; Before/After</h1>
+<p class="lead">Optional systems that turn correct placements into a satisfying loop. Each one is controlled by a single asset and can be disabled independently.</p>
+
+<h2 id="scoring">Scoring</h2>
+<p><code>TidyScoreDefinition</code> lists every scoring component with its own toggle, so you can build a relaxed game without penalties or a competitive one with speed bonuses.</p>
+<table>
+<tr><th>Component</th><th>Default</th><th>Notes</th></tr>
+<tr><td>Correct placement</td><td>Object base score × 1</td><td>Awarded once per object, so re-placing cannot farm points.</td></tr>
+<tr><td>Combo multiplier</td><td>On</td><td>Placement points are multiplied by the current combo multiplier.</td></tr>
+<tr><td>Incorrect placement penalty</td><td>−5</td><td>Only with the Accept Incorrect policy.</td></tr>
+<tr><td>Cleaning / disposed clutter</td><td>15 / 5</td><td>Cleaning also advances the combo.</td></tr>
+<tr><td>Objective bonus</td><td>Per objective</td><td>Set on each objective asset.</td></tr>
+<tr><td>Level complete bonus</td><td>250</td><td></td></tr>
+<tr><td>Speed bonus</td><td>2 per second under par</td><td>Par time 300 s.</td></tr>
+<tr><td>No-mistake bonus</td><td>150</td><td></td></tr>
+<tr><td>Accuracy bonus</td><td>up to 100</td><td>Scaled by correct / (correct + mistakes).</td></tr>
+<tr><td>Hint penalty</td><td>0</td><td>Hints can also cost score through the hint definition.</td></tr>
+</table>
+
+<h2 id="combo">Combo / flow system</h2>
+<p>Each correct placement or cleaned surface within <em>Combo Window Seconds</em> of the previous one increases the combo. The multiplier grows by <em>Multiplier Per Step</em> up to <em>Maximum Multiplier</em>. Tiers ("Tidy!", "Neat!", "Spotless!", "Immaculate!") fire once when reached and drive stronger feedback: higher pitched chimes, bigger particles and a camera kick. Disable <em>Combo Enabled</em> to remove the mechanic entirely; the HUD hides itself.</p>
+<figure><img src="images/combo_feedback.png" alt="Combo tier feedback"><figcaption>Combo counter, multiplier, window bar and tier banner.</figcaption></figure>
+
+<h2 id="hints">Hint system</h2>
+<p>The hint system picks the nearest object that still needs sorting and that has a free, correct destination, then highlights it with a pulsing outline visible through walls and shows bobbing indicators above the object and the destination. While the player holds an object, the hint points to where that object belongs. If nothing remains to sort it points at the nearest dirty surface.</p>
+<table>
+<tr><th>Setting</th><th>Purpose</th></tr>
+<tr><td>Hints Enabled</td><td>Master switch (players can also disable hints in Settings).</td></tr>
+<tr><td>Maximum Hints</td><td>−1 for unlimited.</td></tr>
+<tr><td>Free Hints / Score Cost</td><td>Hints after the free ones cost score.</td></tr>
+<tr><td>Cooldown Seconds / Duration Seconds</td><td>Pacing.</td></tr>
+<tr><td>Highlight Object / Destination / Show Arrow</td><td>Presentation.</td></tr>
+<tr><td>Auto Hint After Idle Seconds</td><td>Gentle nudge for players who seem stuck.</td></tr>
+</table>
+
+<h2 id="cleaning">Cleaning system</h2>
+<p>Cleaning is optional and independent from sorting.</p>
+<ul>
+<li><strong>Cleanable surfaces</strong> (<code>TidyCleanable</code>): stains, dust or grime. Players hold Interact while aiming at them. They fade and shrink as they are scrubbed. Set <em>Seconds To Clean</em>, <em>Accepted Methods</em>, an optional <em>Required Tool</em> filter and a <em>Group Id</em> for group objectives.</li>
+<li><strong>Cleaning tools</strong> (<code>TidyCleaningTool</code> on an interactive object): sponges or brushes clean faster and in a radius. Enable <em>Collects Clutter</em> to turn the tool into a vacuum that sucks up loose clutter. <em>Method</em> is Scrubbing or Vacuum; Automatic picks Vacuum for clutter-collecting tools.</li>
+<li><strong>Clutter</strong>: any Tidy Object with <em>Counts As Clutter</em>. Put it in a disposal bin or vacuum it.</li>
+<li>The <code>TidyCleaningInteractor</code> sits next to the Tidy Interactor on the player camera.</li>
+</ul>
+<h3 id="cleaning-methods">Cleaning methods</h3>
+<p><em>Accepted Methods</em> decides what works on a surface. A stain can require scrubbing, dust can require the vacuum, and light marks can accept bare hands. The default accepts everything, so existing levels behave as before.</p>
+<table>
+<tr><th>Method</th><th>Used by</th></tr>
+<tr><td>Bare Hands</td><td>Holding Interact with empty hands</td></tr>
+<tr><td>Scrubbing</td><td>Sponges, brushes and cloths (<code>TidyCleaningTool</code> with Method Scrubbing)</td></tr>
+<tr><td>Vacuum</td><td>Vacuum tools (Collects Clutter or Method Vacuum)</td></tr>
+</table>
+<figure><img src="images/cleaning_methods.png" alt="Needs a scrubbing tool prompt"><figcaption>In the Cozy Room stains accept Scrubbing only. Aiming at one with empty hands shows <em>Needs a scrubbing tool</em> instead of silently cleaning it.</figcaption></figure>
+
+<h2 id="before-after">Before / After system</h2>
+<p>The transformation of a messy room into an organised one is the emotional payoff of the genre. A <code>TidyTransformationController</code> follows level progress (or a single target's completion) and drives any number of reactors on its children. Each reactor maps a <em>Progress Range</em> through a response curve and smooths the result.</p>
+<table>
+<tr><th>Reactor</th><th>Use</th></tr>
+<tr><td>Light Reactor</td><td>Dim, cool light becomes warm and bright.</td></tr>
+<tr><td>Volume Reactor</td><td>Cross-fades a desaturated "messy" post-processing volume into a warm "organised" one.</td></tr>
+<tr><td>Toggle Reactor</td><td>Swaps sets of objects at a threshold: cobwebs disappear, flowers and fairy lights appear.</td></tr>
+<tr><td>Gradual Reveal Reactor</td><td>Reveals or hides objects one by one as progress grows (e.g. floor clutter vanishing, candles lighting up).</td></tr>
+<tr><td>Material Color Reactor</td><td>Tints renderers through property blocks, optionally driving emission.</td></tr>
+</table>
+<figure><img src="images/before_after.png" alt="Before and after comparison"><figcaption>The Cozy Room at 0% and 100%: clutter removed, stains cleaned, lights warmed, decorations revealed.</figcaption></figure>
+<p>Custom reactors derive from <code>TidyProgressReactor</code> and implement <code>Apply(float organisedAmount)</code>.</p>
+
+<h2 id="feedback">Satisfying feedback</h2>
+<p><code>TidyFeedbackPlayer</code> listens to the interactor, level manager, targets and cleaning, and plays the effects configured in a <code>TidyFeedbackDefinition</code>: an audio cue, a pooled particle prefab and a camera punch per event (pick up, drop, correct, incorrect, rejected, target complete, combo tier, objective, level complete, cleaned, hint). Correct-placement pitch can rise with the combo. Visual feedback built into the systems includes hover outlines, ghost previews, placement arcs, landing punches, neighbour shuffles on shelves, floating score labels, objective check animations and the results star sequence.</p>
+<div class="callout"><strong>Restraint by default</strong>Defaults favour calm, soft feedback. Increase intensity through the definition rather than code, and keep camera motion optional (Camera Punch has an intensity multiplier you can expose as an accessibility option).</div>
+
+<h2 id="tutorial">Tutorial system</h2>
+<p>A <code>TidyTutorialDefinition</code> is a list of steps. Each step shows a message (with input tokens such as <code>{Interact}</code> replaced by device-specific keys), optionally highlights objects matching a filter and points at a target, and completes on one of: Press Continue, Timer, Move Player, Look Around, Pick Up Any / Matching, Place Any / Correctly / In Target, Rotate Held Object, Inspect, Drop, Use Hint, Clean Any, Complete Objective. Tutorials play once per save unless configured otherwise, and players can skip them or disable them in Settings.</p>
+<p>The tutorial panel works without a mouse cursor: <strong>Backspace</strong> or the gamepad <strong>View</strong> button skips the tutorial and <strong>Enter</strong> confirms steps that wait for Continue. The shortcut is shown on the buttons and can be changed on <code>TidyTutorialView</code>. Restored levels skip the tutorial automatically.</p>
+<figure><img src="images/tutorial_skip.png" alt="Tutorial panel with skip shortcut"><figcaption>The skip button shows its keyboard shortcut.</figcaption></figure>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

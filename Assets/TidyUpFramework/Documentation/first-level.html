@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — Creating Your First Level</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>Creating Your First Level</h1>
+<p class="lead">A complete walkthrough: a small study where the player shelves books by colour, files an encyclopaedia in order and clears the floor onto a desk. No code is written.</p>
+
+<div class="callout"><strong>Before you start</strong>Open <code>Demo/Scenes/TidyUp_Sandbox</code> to see the finished result of this tutorial, or follow along in a new scene. The demo assets used here live in <code>Demo/Prefabs/Library</code> and <code>Demo/Data</code>; use your own models if you prefer.</div>
+
+<h2 id="tutorial">Tutorial: creating a book sorting level</h2>
+<ol class="steps">
+<li>
+<strong>Create the scene and a Level Definition.</strong>
+<p>Create a scene, add a floor and save it as <code>MyStudy</code>. In the Project window choose <em>Create &gt; Tidy Up Framework &gt; Level Definition</em>, name it <code>Level_MyStudy</code>, set <em>Display Name</em> to "My Study" and <em>Scene Name</em> to <code>MyStudy</code>.</p>
+</li>
+<li>
+<strong>Create categories.</strong>
+<p><em>Create &gt; Tidy Up Framework &gt; Category</em>: <code>Books</code>, then <code>History</code>, <code>Star Charts</code> and <code>Encyclopaedia</code> with <code>Books</code> as their parent. Give each a display colour.</p>
+</li>
+<li>
+<strong>Create book object definitions.</strong>
+<p><em>Create &gt; Tidy Up Framework &gt; Object Definition</em> for each book. Set the category and add a colour tag (<code>Red</code> for history, <code>Blue</code> for star charts). For encyclopaedia volumes set the category to <code>Encyclopaedia</code> and a <em>Sequence Index</em> (1, 2, 3...). Tick <em>Stackable</em> if books may also be stacked.</p>
+</li>
+<li>
+<strong>Place the books.</strong>
+<p>Drag your book models (or the demo prefabs) into the scene and scatter them on the floor and desk. Select them and run <em>Tools &gt; Tidy Up Framework &gt; Make Selected Objects Interactive</em>, then assign each definition. Demo prefabs are already configured.</p>
+</li>
+<li>
+<strong>Place shelves.</strong>
+<p>Add a bookcase model. On each shelf board choose <em>GameObject &gt; Tidy Up Framework &gt; Placement &gt; Shelf Row (Packed)</em>. Position the row at the left end of the board, set <em>Length</em> to the board width and <em>Item Euler Rotation</em> to <code>(0, 90, 0)</code> so spines face the player. Resize the aim trigger to cover the shelf opening.</p>
+<figure><img src="images/target_shelf_botany.png" alt="Shelf rows on a bookcase"><figcaption>Three shelf rows with their gizmos and aim triggers.</figcaption></figure>
+</li>
+<li>
+<strong>Configure shelf rules.</strong>
+<p>Top row: <em>Acceptance &gt; Categories</em> = <code>Books</code>, <em>Required Tags</em> = <code>Red</code>, <em>Target Id</em> = <code>shelf_red</code>. Middle row: the same with <code>Blue</code> (<code>shelf_blue</code>). Bottom row: <em>Categories</em> = <code>Encyclopaedia</code>, <em>Ordering</em> = <code>Sequence</code>, <em>Completion Mode</em> = <code>When All Matching Objects Placed</code> (<code>shelf_history</code>). Add a <em>Free Placement Zone</em> on the desk that accepts <code>Curiosities</code>.</p>
+</li>
+<li>
+<strong>Create objectives.</strong>
+<p><em>Create &gt; Tidy Up Framework &gt; Objectives &gt; Place Objects</em>: filter Categories = <code>Books</code>, Required Tags = <code>Red</code>, Required Count = 0 (all), title "Shelve the red books {current}/{target}". Repeat for blue. Add <em>Complete Targets</em> with target id <code>shelf_history</code>, title "File the encyclopaedia in order". Optionally add a <em>Place Objects</em> objective for the desk and tick <em>Optional</em>. List them in <code>Level_MyStudy</code>.</p>
+</li>
+<li>
+<strong>Add the level systems.</strong>
+<p><em>GameObject &gt; Tidy Up Framework &gt; Complete Level Setup</em>. Assign <code>Level_MyStudy</code> to the Level Manager. Move the player to the doorway.</p>
+</li>
+<li>
+<strong>Validate and test the level.</strong>
+<p>Run <em>Tools &gt; Tidy Up Framework &gt; Level Validator</em>. Fix errors (missing aim colliders, duplicate ids, scene not in build) with the Fix buttons, then press Play: pick books up, aim at the shelves, watch the ghost preview, complete the objectives and read your results.</p>
+<figure><img src="images/tutorial_09_playing.png" alt="Playing the level"><figcaption>Playing the finished level: hover outline, prompts, objectives and the ghost preview on the shelf.</figcaption></figure>
+</li>
+<li>
+<strong>Add it to the game and build.</strong>
+<p>Add <code>Level_MyStudy</code> to your Level Catalog, set its unlock requirement, add the scene to the build list and build. It appears in Level Select with stars and best times.</p>
+</li>
+</ol>
+
+<h2 id="acceptance">Acceptance test: a level from a blank scene</h2>
+<p>This is the checklist used to validate the framework. Every step is possible without writing code.</p>
+<table>
+<tr><th>#</th><th>Step</th><th>How</th></tr>
+<tr><td>1</td><td>Add the player</td><td>GameObject &gt; Tidy Up Framework &gt; Player</td></tr>
+<tr><td>2</td><td>Add interactive objects</td><td>Make Selected Objects Interactive</td></tr>
+<tr><td>3</td><td>Create a category</td><td>Create &gt; Tidy Up Framework &gt; Category</td></tr>
+<tr><td>4</td><td>Create a sorting zone</td><td>GameObject &gt; Tidy Up Framework &gt; Placement &gt; Container</td></tr>
+<tr><td>5</td><td>Configure the sorting rule</td><td>Container &gt; Acceptance &gt; Categories</td></tr>
+<tr><td>6</td><td>Create an objective</td><td>Create &gt; Tidy Up Framework &gt; Objectives &gt; Place Objects</td></tr>
+<tr><td>7</td><td>Add the level manager</td><td>GameObject &gt; Tidy Up Framework &gt; Level Systems (+ HUD)</td></tr>
+<tr><td>8–12</td><td>Play, pick up, move, place, receive feedback</td><td>Press Play</td></tr>
+<tr><td>13–15</td><td>Complete the objective, receive a score, complete the level</td><td>Results screen appears</td></tr>
+<tr><td>16</td><td>Save progress</td><td>Automatic through the save service</td></tr>
+<tr><td>17–18</td><td>Return to Level Select and see the completed level</td><td>Results &gt; Menu &gt; Level Select (when the level is in the catalog)</td></tr>
+<tr><td>19</td><td>Create another level without new gameplay code</td><td>Duplicate the scene and level definition, change rules</td></tr>
+</table>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

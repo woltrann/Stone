@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 81cf60e5b4e845d49abe9392b2a2442c
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Warehouse/WarehouseCabinet.prefab
+  uploadId: 1021752

@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: ce8f4e51981ec0848b0a7cd17dc2ede9
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Library/SM_Pedestal_100.asset
+  uploadId: 1021752

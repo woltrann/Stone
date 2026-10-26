@@ -1,0 +1,58 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5287fb79df5f6ef4dabf76b13749d519, type: 3}
+  m_Name: TidyUpFrameworkSettings
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Settings.TidyFrameworkSettings
+  levelCatalog: {fileID: 11400000, guid: 641544ca393fed24cb81ce50978b93df, type: 2}
+  saveStorage: 0
+  saveFolderName: TidyUpSaves
+  defaultSettings:
+    Version: 1
+    QualityLevel: -1
+    ResolutionWidth: 0
+    ResolutionHeight: 0
+    FullScreenMode: 1
+    VSync: 1
+    ShadowQuality: 2
+    TextureQuality: 0
+    TargetFrameRate: 60
+    RenderScale: 1
+    MasterVolume: 1
+    MusicVolume: 0.7
+    SfxVolume: 0.85
+    UiVolume: 0.8
+    AmbienceVolume: 0.6
+    LookSensitivity: 1
+    InteractionSensitivity: 1
+    InvertY: 0
+    HintsEnabled: 1
+    TutorialEnabled: 1
+    HeadBob: 1
+    ShowPlacementPreview: 1
+    PreferredScheme: -1
+  audioMixer: {fileID: 0}
+  sfxGroup: {fileID: 0}
+  musicGroup: {fileID: 0}
+  uiGroup: {fileID: 0}
+  ambienceGroup: {fileID: 0}
+  masterVolumeParameter: MasterVolume
+  sfxVolumeParameter: SfxVolume
+  musicVolumeParameter: MusicVolume
+  uiVolumeParameter: UiVolume
+  ambienceVolumeParameter: AmbienceVolume
+  uiClickCue: {fileID: 11400000, guid: 6bdf1d7d8d5181d48af55d55e21025b7, type: 2}
+  uiHoverCue: {fileID: 11400000, guid: cf5947bb24c009c49942d6160aefdf70, type: 2}
+  uiBackCue: {fileID: 11400000, guid: 8eb1e222efe7a8c4e83de7e969550b16, type: 2}
+  menuMusic: {fileID: 11400000, guid: 79e302576141d384c85d2cb7d8ffc72a, type: 2}
+  inputPrompts: {fileID: 11400000, guid: 08f0779f81a1d54459423b3c13fd8744, type: 2}
+  fadeSeconds: 0.45
+  fadeColor: {r: 0.07, g: 0.06, b: 0.08, a: 1}

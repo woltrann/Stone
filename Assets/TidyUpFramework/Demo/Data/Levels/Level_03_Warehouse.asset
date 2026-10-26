@@ -1,0 +1,56 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76a3fd1ff4f24fe4e9cdf3b54e3c4d3d, type: 3}
+  m_Name: Level_03_Warehouse
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Levels.TidyLevelDefinition
+  levelId: warehouse
+  displayName: Northwind Parcel Depot
+  description: The morning delivery was dumped all over the depot floor. Sort parcels
+    by label colour, stack cartons by size, rack the crates and fence in the hazardous
+    goods before the evening truck arrives.
+  sceneName: TidyUp_Warehouse
+  thumbnail: {fileID: 21300000, guid: 4890dd57589977247a824047422d7f63, type: 3}
+  difficulty: 3
+  accentColor: {r: 0.9411765, g: 0.5882353, b: 0.23529412, a: 1}
+  objectives:
+  - Objective: {fileID: 11400000, guid: e1b1e7f5d4ef5e242a40b8ffc462dcf5, type: 2}
+    Optional: 0
+  - Objective: {fileID: 11400000, guid: 847208cf6b8fa7f47a26857460bbfac5, type: 2}
+    Optional: 0
+  - Objective: {fileID: 11400000, guid: 3f0bcd333cf08cd4b80d643dec147384, type: 2}
+    Optional: 0
+  - Objective: {fileID: 11400000, guid: d44ff9cd9536c7746b4495334eb95785, type: 2}
+    Optional: 0
+  - Objective: {fileID: 11400000, guid: 26bb79482aa39d143b14d315925d6241, type: 2}
+    Optional: 0
+  - Objective: {fileID: 11400000, guid: f3df68657672f1e40814bb64425f7e53, type: 2}
+    Optional: 1
+  - Objective: {fileID: 11400000, guid: a34a27c45a721ce4490bdca593e35b2e, type: 2}
+    Optional: 1
+  - Objective: {fileID: 11400000, guid: 7032e2f751a87c04fb33c8513d3fe079, type: 2}
+    Optional: 1
+  timeLimitSeconds: 900
+  failWhenTimeRunsOut: 1
+  starMetric: 1
+  starThresholds: {x: 540, y: 360}
+  scoreDefinition: {fileID: 11400000, guid: c04134cd5fcd2614a8b01ed5755dc430, type: 2}
+  comboDefinition: {fileID: 11400000, guid: edc808230aafb3240a29cc88dd779e80, type: 2}
+  hintDefinition: {fileID: 11400000, guid: 448cce28526a6a6439cb889e2fdcaa5e, type: 2}
+  tutorial: {fileID: 0}
+  music: {fileID: 11400000, guid: 25358f5fea79d4649a7e83d75f0f36e8, type: 2}
+  ambience: {fileID: 11400000, guid: 4b93f28f5b139274684aebe3b3a15a89, type: 2}
+  unlockRequirement:
+    UnlockedByDefault: 0
+    RequiredLevel: {fileID: 11400000, guid: 59f9fda73ae7274449916c2fd6047061, type: 2}
+    RequiredTotalStars: 0
+  rewardAmount: 200
+  rewardDescription: Depot Supervisor Badge

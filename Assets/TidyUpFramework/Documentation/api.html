@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tidy Up Framework — API Reference</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<div class="layout">
+<nav class="sidebar"></nav>
+<main>
+<h1>API Reference</h1>
+<p class="lead">The most important public types. All types live under the <code>TidyUpFramework</code> root namespace; the sub-namespace matches the folder.</p>
+
+<h2 id="core">TidyUpFramework.Core</h2>
+<h3>TidyServices</h3>
+<p><strong>Purpose:</strong> type-keyed registry for scene and application services. <strong>Methods:</strong> <code>Register&lt;T&gt;(T)</code>, <code>Unregister&lt;T&gt;(T)</code>, <code>TryGet&lt;T&gt;(out T)</code>, <code>Get&lt;T&gt;()</code>. <strong>Events:</strong> <code>ServiceChanged(Type)</code>.</p>
+<h3>TidyTweenRunner</h3>
+<p><strong>Purpose:</strong> pooled, allocation-light tweening. <strong>Methods:</strong> <code>MovePose(transform, position, rotation, duration, ease, arcHeight, completed)</code>, <code>ScaleTo(...)</code>, <code>Punch(transform, restScale, strength, duration, vibrato)</code>, <code>Value(setter, duration, ease, completed, unscaledTime, delay)</code>, <code>Kill(handle | transform | transform, kind)</code>, <code>IsTweening(transform)</code>.</p>
+<pre><code>TidyTweenRunner.MovePose(book.transform, slotPosition, slotRotation, 0.3f, TidyEaseType.OutCubic, 0.1f, () => Debug.Log("Landed"));</code></pre>
+<h3>TidyControlLock</h3>
+<p><strong>Purpose:</strong> reference-counted locks for Movement, Look, Interaction and Cursor. <strong>Methods:</strong> <code>Acquire(owner, channels)</code>, <code>Release(owner)</code>, <code>IsLocked(channel)</code>. <strong>Events:</strong> <code>Changed</code>.</p>
+
+<h2 id="objects">TidyUpFramework.Objects</h2>
+<h3>TidyObject (MonoBehaviour)</h3>
+<p><strong>Important properties:</strong> <code>Definition</code>, <code>InstanceId</code>, <code>State</code>, <code>CurrentTarget</code>, <code>IsCorrectlyPlaced</code>, <code>HasBeenPickedUp</code>, <code>MistakeCount</code>, <code>Category</code>, <code>Tags</code>, <code>Size</code>, <code>Weight</code>, <code>Priority</code>, <code>SortKey</code>, <code>SequenceIndex</code>, <code>BaseScore</code>, capability flags, <code>PhysicsProfile</code>, <code>Renderers</code>, <code>Colliders</code>, <code>LocalBounds</code>, <code>IsAvailableForPickup</code>, <code>CanCarryInStack</code>, <code>IsCarried</code>.<br>
+<strong>Methods:</strong> <code>HasTag</code>, <code>IsInCategory</code>, <code>FindTag(group)</code>, <code>PivotPositionForSurface</code>, <code>CalculateWorldBounds</code>, <code>RestoreProgressFlags</code>, state transitions (<code>MarkHeld</code>, <code>MarkCarried</code>, <code>MarkMoving</code>, <code>MarkPlaced</code>, <code>MarkLoose</code>, <code>MarkConsumed</code>) used by the interactor and targets.<br>
+<strong>Events:</strong> <code>StateChanged</code>. <strong>Dependencies:</strong> collider, optional Rigidbody.</p>
+<h3>TidyObjectDefinition, TidyCategoryDefinition, TidyTagDefinition, TidyPhysicsProfile (ScriptableObject)</h3>
+<p>Data assets described in <a href="objects.html">Objects, Categories &amp; Rules</a>. <code>TidyCategoryDefinition.IsOrDescendsFrom(other)</code> walks the hierarchy.</p>
+<h3>TidyObjectRegistry (static)</h3>
+<p><code>All</code>, <code>TryGetFromCollider</code>, <code>FindByInstanceId</code>; events <code>Registered</code>, <code>Unregistered</code>, <code>AnyStateChanged</code>.</p>
+
+<h2 id="rules">TidyUpFramework.Rules</h2>
+<p><code>TidyRuleDefinition</code> (abstract: <code>Matches</code>, <code>Describe</code>, <code>PlayerFacingDescription</code>) with <code>TidyCategoryRule</code>, <code>TidyTagRule</code>, <code>TidyDefinitionRule</code>, <code>TidyNumericRule</code>, <code>TidySortKeyRangeRule</code>, <code>TidyCompositeRule</code>. <code>TidyMatchFilter</code> (serialisable: <code>Matches</code>, <code>Describe</code>, <code>IsEmpty</code>, <code>Create</code>, <code>ForDefinitions</code>). <code>TidyOrdering</code> (<code>Compare</code>, <code>IsOrdered</code>, <code>IsGrouped</code>).</p>
+
+<h2 id="placement">TidyUpFramework.Placement</h2>
+<h3>TidyPlacementTarget (abstract MonoBehaviour)</h3>
+<p><strong>Properties:</strong> <code>TargetId</code>, <code>DisplayName</code>, <code>Acceptance</code>, <code>Policy</code>, <code>Ordering</code>, <code>Grouping</code>, <code>CompletionMode</code>, <code>Capacity</code>, <code>Occupants</code>, <code>IsFull</code>, <code>IsComplete</code>, <code>CorrectCount</code>, <code>CompletionRatio</code>, <code>IsOrderSatisfied</code>, <code>IsGroupingSatisfied</code>.<br>
+<strong>Methods:</strong> <code>Belongs(object)</code>, <code>IsCompatible(object)</code>, <code>Evaluate(query) → TidyPlacementCandidate</code>, <code>TryPlace(candidate, animate)</code>, <code>TryPlaceDirect(object, animate)</code>, <code>Release(object)</code>, <code>AllowsRemoval(object)</code>, <code>GetHintPoint(object)</code>.<br>
+<strong>Events:</strong> <code>ObjectPlaced</code>, <code>ObjectRemoved</code>, <code>CompletionChanged</code>.</p>
+<pre><code>var target = TidyTargetRegistry.FindById("shelf_spell_books");
+var candidate = target.Evaluate(TidyPlacementQuery.WithoutAim(book));
+if (candidate.IsValid)
+{
+    target.TryPlace(candidate);
+}</code></pre>
+<p><strong>Concrete types:</strong> <code>TidySnapSlot</code>, <code>TidySlotGroup</code>, <code>TidyRowZone</code>, <code>TidyContainer</code> (event <code>FillChanged</code>), <code>TidyFreePlacementZone</code>, <code>TidyStackPoint</code>. <strong>Registry:</strong> <code>TidyTargetRegistry</code>.</p>
+
+<h2 id="interaction">TidyUpFramework.Interaction</h2>
+<h3>TidyInteractor</h3>
+<p><strong>Properties:</strong> <code>HoveredObject</code>, <code>HeldObject</code>, <code>StackedObjects</code>, <code>CarriedCount</code>, <code>CarryCapacity</code>, <code>IsCarryingStack</code>, <code>StackFilter</code>, <code>IsInspecting</code>, <code>CurrentCandidate</code>, <code>Context</code>, <code>AimCamera</code>, <code>ReachDistance</code>, <code>AimAssistMultiplier</code>. <strong>Methods:</strong> <code>TryAim(out hit)</code>, <code>CenterRay()</code>, <code>ForcePickUp(object)</code>, <code>ForceDrop()</code>, <code>DropAll()</code>, <code>CanStack(object)</code>, <code>TryAddToStack(object)</code>, <code>SelectCarried(object)</code>. <strong>Events:</strong> see <a href="player.html#interactor">Player</a>. <strong>Dependencies:</strong> <code>ITidyPlayerInput</code>, optional <code>ITidyHighlighter</code>, optional <code>TidyPlacementPreview</code>.</p>
+<p><code>ITidyHighlighter</code> / <code>TidyOutlineHighlighter</code>, <code>TidyPlacementPreview</code>, <code>TidyHoldMotion</code>.</p>
+
+<h2 id="levels">TidyUpFramework.Levels &amp; Objectives</h2>
+<h3>TidyLevelManager</h3>
+<p><strong>Properties:</strong> <code>Level</code>, <code>LevelId</code>, <code>Context</code>, <code>State</code>, <code>Trackers</code>, <code>Progress</code>, <code>TimeRemaining</code>, <code>Score</code>, <code>Combo</code>, <code>LastResult</code>, <code>SavesProgress</code>, <code>IsRestoring</code>, <code>HasPendingRestore</code>, <code>WasRestored</code>. <strong>Methods:</strong> <code>StartLevel()</code>, <code>AssignLevel(level)</code>, <code>RegisterHintUsed(cost)</code>, <code>FailLevel()</code>, <code>ForceComplete()</code>, <code>SaveProgress()</code>, <code>DiscardSavedProgress()</code>. <strong>Events:</strong> <code>LevelStarted</code>, <code>StateChanged</code>, <code>ProgressChanged</code>, <code>ObjectiveChanged</code>, <code>ObjectiveCompleted</code>, <code>PlacementEvaluated</code>, <code>AllRequiredObjectivesComplete</code>, <code>LevelCompleted</code>, <code>LevelFailed</code>, <code>ProgressSaved</code>, <code>ProgressRestored</code>.</p>
+<pre><code>levelManager.LevelCompleted += result =>
+{
+    Debug.Log(result.Stars + " stars, " + result.Score + " points in " + result.TimeSeconds + " s");
+};</code></pre>
+<p><code>TidyLevelDefinition</code> (<code>CalculateStars</code>), <code>TidyLevelCatalog</code> (<code>FindById</code>, <code>FindByScene</code>, <code>NextAfter</code>), <code>TidyLevelResult</code>, <code>TidyLevelContext</code>, <code>ITidyProgressService</code>, <code>TidySceneLoader</code>.</p>
+<p><code>TidyObjectiveDefinition</code> (abstract <code>Evaluate</code>) and concrete objectives; <code>TidyObjectiveTracker</code> (<code>Progress</code>, <code>IsComplete</code>, <code>IsFailed</code>, <code>Title</code>; events <code>Changed</code>, <code>CompletedFirstTime</code>); <code>TidyObjectiveProgress</code> (<code>Current</code>, <code>Target</code>, <code>Ratio</code>, <code>IsComplete</code>).</p>
+
+<h2 id="systems">Scoring, Hints, Cleaning, Transformation, Feedback, Tutorial</h2>
+<table>
+<tr><th>Type</th><th>Key members</th></tr>
+<tr><td><code>TidyScoreSystem</code></td><td><code>Score</code>, <code>Add(amount, reason[, position])</code>; events <code>ScoreChanged</code>, <code>ScoreAwarded</code></td></tr>
+<tr><td><code>TidyComboSystem</code></td><td><code>Count</code>, <code>BestCount</code>, <code>Multiplier</code>, <code>CurrentTier</code>, <code>WindowRemaining01</code>, <code>RegisterSuccess</code>, <code>RegisterMistake</code>, <code>Break</code></td></tr>
+<tr><td><code>TidyHintSystem</code></td><td><code>RequestHint()</code>, <code>FindHint()</code>, <code>HideHint()</code>, <code>IsAvailable</code>, <code>HintsLeft</code>, <code>SetGloballyEnabled</code></td></tr>
+<tr><td><code>TidyCleanable</code></td><td><code>Scrub(seconds)</code>, <code>Dirt</code>, <code>IsClean</code>, <code>AcceptedMethods</code>, <code>AcceptsMethod</code>, <code>AcceptsTool</code>, <code>ConfigureMethods</code>, <code>RestoreDirt</code>; static <code>All</code>, <code>AnyCleaned</code></td></tr>
+<tr><td><code>TidyCleaningTool</code></td><td><code>Method</code>, <code>CleaningSpeedMultiplier</code>, <code>CleaningRadius</code>, <code>CollectsClutter</code>, <code>ConfigureMethod</code></td></tr>
+<tr><td><code>TidyCleaningInteractor</code></td><td><code>HoveredCleanable</code>, <code>BlockedCleanable</code>, <code>IsCleaning</code>; event <code>HoveredCleanableChanged</code></td></tr>
+<tr><td><code>TidyTransformationController</code></td><td><code>SetProgress(progress, instant)</code>, <code>CurrentProgress</code></td></tr>
+<tr><td><code>TidyProgressReactor</code></td><td>abstract <code>Apply(organisedAmount)</code></td></tr>
+<tr><td><code>TidyFeedbackPlayer</code></td><td><code>Play(effect, position, intensity)</code></td></tr>
+<tr><td><code>TidyTutorialRunner</code></td><td><code>Continue()</code>, <code>Skip()</code>, <code>CurrentStep</code>; events <code>StepStarted</code>, <code>StepCompleted</code>, <code>TutorialFinished</code></td></tr>
+</table>
+
+<h2 id="services-api">Input, Audio, Save, Settings</h2>
+<table>
+<tr><th>Type</th><th>Key members</th></tr>
+<tr><td><code>ITidyPlayerInput</code> / <code>TidyInputReader</code></td><td>Frame input properties, <code>ActiveScheme</code>, <code>SchemeChanged</code>; reader adds virtual input methods, <code>ForceScheme</code>, <code>LookSensitivity</code>, <code>InvertY</code></td></tr>
+<tr><td><code>TidyInputPrompts</code></td><td><code>Label(action[, scheme])</code>, <code>Key(action)</code>, <code>Format(template)</code></td></tr>
+<tr><td><code>ITidyAudioService</code> / <code>TidyAudio</code></td><td><code>Play</code>, <code>PlayAt</code>, <code>PlayMusic</code>, <code>PlayAmbience</code>, <code>StopMusic</code>, channel and master volume</td></tr>
+<tr><td><code>TidySaveService</code></td><td><code>Progress</code>, <code>Settings</code>, <code>IsUnlocked</code>, <code>RecordResult</code>, <code>MarkTutorialCompleted</code>, <code>AddReward</code>, <code>ResetProgress</code>, <code>SaveLevelSnapshot</code>, <code>TryLoadLevelSnapshot</code>, <code>DeleteLevelSnapshot</code>, <code>HasLevelSnapshot</code>, <code>GetSavedProgress</code>, <code>FindMostRecentSnapshotLevel</code></td></tr>
+<tr><td><code>TidyLevelSnapshot</code> / <code>TidyLevelSnapshotter</code></td><td>Serializable snapshot of a level in progress; <code>CaptureWorld</code>, <code>RestoreWorld</code>, <code>BuildIds</code></td></tr>
+<tr><td><code>TidySettingsService</code></td><td><code>Current</code>, <code>Apply(settings, persist)</code>, <code>ApplyAndSave(modify)</code>, <code>Resolutions</code>; event <code>Changed</code></td></tr>
+<tr><td><code>TidyFramework</code> (static)</td><td><code>Settings</code>, <code>Save</code>, <code>SettingsService</code>, <code>Audio</code>, <code>SceneLoader</code>, <code>Catalog</code>, <code>LoadLevel</code>, <code>LoadMainMenu</code>, <code>RestartLevel</code></td></tr>
+</table>
+</main>
+</div>
+<script src="nav.js"></script>
+</body>
+</html>

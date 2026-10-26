@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: e4f1a8a363f9508499c13dbfc74973e5
+TextScriptImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Documentation/extending.html
+  uploadId: 1021752

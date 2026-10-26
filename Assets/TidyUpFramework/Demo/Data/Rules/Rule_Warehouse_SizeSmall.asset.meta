@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: f331b7e1f0c9dc048b60bef3ab928b35
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Rules/Rule_Warehouse_SizeSmall.asset
+  uploadId: 1021752

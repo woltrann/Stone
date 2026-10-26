@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: e1b1e7f5d4ef5e242a40b8ffc462dcf5
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 11400000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Data/Objectives/Objective_Warehouse_Parcels.asset
+  uploadId: 1021752

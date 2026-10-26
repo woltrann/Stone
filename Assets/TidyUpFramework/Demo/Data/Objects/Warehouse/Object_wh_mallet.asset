@@ -1,0 +1,40 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_wh_mallet
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: wh_mallet
+  displayName: Rubber Mallet
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.9254902, g: 0.5176471, b: 0.21176471, a: 1}
+  category: {fileID: 11400000, guid: 1d8d33a36c4773b4ab28dcf393949776, type: 2}
+  tags:
+  - {fileID: 11400000, guid: 1dbb101338b8e35458b2accb6d474ab6, type: 2}
+  - {fileID: 11400000, guid: 41ef7ab123daeb7449e7d99c194d9cfb, type: 2}
+  size: 1
+  weight: 0.5
+  priority: 1
+  sortKey: Rubber Mallet
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 0
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 12
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 4739652110872541415, guid: 9a5f903211cfd45428490e5871c25cf7, type: 3}
+  inspectText: For persuading pallet boards gently. It hangs on the tool wall.

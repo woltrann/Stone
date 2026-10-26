@@ -1,0 +1,15 @@
+fileFormatVersion: 2
+guid: b5aca5dda1f7e72499ed79bd8af0fc61
+NativeFormatImporter:
+  externalObjects: {}
+  mainObjectFileID: 4300000
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Art/Meshes/Rooms/SM_ToyStore_Trim.asset
+  uploadId: 1021752

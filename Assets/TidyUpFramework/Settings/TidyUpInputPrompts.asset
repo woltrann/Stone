@@ -1,0 +1,60 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 61eb05a06c80fb24b8f604f0a049f20e, type: 3}
+  m_Name: TidyUpInputPrompts
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Input.TidyInputPromptDefinition
+  keyTemplate: <b><color=#FFE3A3>[{0}]</color></b>
+  entries:
+  - Action: 0
+    KeyboardMouseLabel: WASD
+    GamepadLabel: Left Stick
+    TouchLabel: Joystick
+  - Action: 1
+    KeyboardMouseLabel: Mouse
+    GamepadLabel: Right Stick
+    TouchLabel: Drag
+  - Action: 2
+    KeyboardMouseLabel: LMB
+    GamepadLabel: A
+    TouchLabel: Tap
+  - Action: 3
+    KeyboardMouseLabel: RMB
+    GamepadLabel: B
+    TouchLabel: Drop
+  - Action: 4
+    KeyboardMouseLabel: F
+    GamepadLabel: RT
+    TouchLabel: Throw
+  - Action: 5
+    KeyboardMouseLabel: Scroll
+    GamepadLabel: LB/RB
+    TouchLabel: "\u21BA \u21BB"
+  - Action: 6
+    KeyboardMouseLabel: R
+    GamepadLabel: Y
+    TouchLabel: Look
+  - Action: 7
+    KeyboardMouseLabel: Shift
+    GamepadLabel: L3
+    TouchLabel: Push stick
+  - Action: 8
+    KeyboardMouseLabel: Ctrl
+    GamepadLabel: R3
+    TouchLabel: 
+  - Action: 9
+    KeyboardMouseLabel: H
+    GamepadLabel: D-Pad Up
+    TouchLabel: Bulb
+  - Action: 10
+    KeyboardMouseLabel: Esc
+    GamepadLabel: Start
+    TouchLabel: II

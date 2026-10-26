@@ -1,0 +1,14 @@
+fileFormatVersion: 2
+guid: 7e49c1f3f4e5b9546adf7dd6d71a99a0
+PrefabImporter:
+  externalObjects: {}
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
+AssetOrigin:
+  serializedVersion: 1
+  productId: 413224
+  packageName: "Tidy Up Game Creator \u2013 Sorting & Organizing Framework"
+  packageVersion: 1.1
+  assetPath: Assets/TidyUpFramework/Demo/Prefabs/Library/Chair.prefab
+  uploadId: 1021752

@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f675b7545ce035240aa3a408795266f0, type: 3}
+  m_Name: Object_room_plush_frog
+  m_EditorClassIdentifier: TidyUpFramework.Runtime::TidyUpFramework.Objects.TidyObjectDefinition
+  id: room_plush_frog
+  displayName: Pond Frog
+  description: 
+  icon: {fileID: 0}
+  displayColor: {r: 0.98039216, g: 0.78431374, b: 0.43137255, a: 1}
+  category: {fileID: 11400000, guid: b796f62bf2e81364da3700e9ffdc849a, type: 2}
+  tags:
+  - {fileID: 11400000, guid: f76e70b38c6372643909bbf1fd3b7538, type: 2}
+  - {fileID: 11400000, guid: 5304d34cf37ca4140a68ac9c4f1ece12, type: 2}
+  - {fileID: 11400000, guid: e6fb0066599a35749addaf6c06a2efe6, type: 2}
+  size: 1.2
+  weight: 0.2
+  priority: 0
+  sortKey: Pond Frog
+  sequenceIndex: 0
+  movable: 1
+  rotatable: 1
+  placeable: 1
+  sortable: 1
+  stackable: 0
+  inspectable: 1
+  containerCompatible: 1
+  snapCompatible: 1
+  baseScore: 12
+  physicsProfile: {fileID: 11400000, guid: 3893b6adc1c76984abcb63356440af6b, type: 2}
+  prefab: {fileID: 5923136528716796583, guid: 7460dcbba20697d46b621228c0ad8199, type: 3}
+  inspectText: Soft, squishy and very huggable.

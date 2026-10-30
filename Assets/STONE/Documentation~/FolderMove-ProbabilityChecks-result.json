@@ -1,0 +1,53 @@
+{
+  "success": true,
+  "command": "command script run",
+  "data": {
+    "command": "script run",
+    "parameters": {
+      "file": "Assets/STONE/Tests~/ProbabilityChecks.cs"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 193,
+      "executeMs": 244,
+      "assemblyName": "PipelineRunScript_ProbabilityChecks_5c19eef0d6264b499f70fd8f33a7aebb",
+      "success": true,
+      "result": {
+        "passed": [
+          "5% ore: empty frequency within 6 sigma",
+          "Komur weighted frequency within 6 sigma",
+          "Yakut weighted frequency within 6 sigma",
+          "Zumrut weighted frequency within 6 sigma",
+          "Elmas weighted frequency within 6 sigma",
+          "0% with empty list: always empty",
+          "100% with empty list: rejected",
+          "100% single entry: always ore",
+          "100% multiple entries: always ore",
+          "Invalid weight rejected: 99",
+          "Invalid weight rejected: 101",
+          "Invalid weight rejected: -1",
+          "Invalid weight rejected: NaN",
+          "Invalid weight rejected: Infinity",
+          "Positive weight without ore: rejected",
+          "Duplicate ore: rejected",
+          "Invalid first-stage probability: rejected"
+        ],
+        "samples": 200000,
+        "empty": 189991,
+        "ores": {
+          "Zumrut": 2049,
+          "Yakut": 2523,
+          "Komur": 4912,
+          "Elmas": 525
+        }
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\Stone"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

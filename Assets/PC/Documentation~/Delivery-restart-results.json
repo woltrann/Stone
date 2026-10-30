@@ -1,0 +1,11 @@
+{
+    "passed": [
+        "Actual insufficient-funds order did not move truck",
+        "Full Play Mode restart preserves paid balance",
+        "Restart restores delivered one and resumes partial three exactly",
+        "All runtime source IDs unique after full restart",
+        "Crash-window reservation confirmed without duplicate spawn",
+        "Previously Delivered order stays completed and unqueued"
+    ],
+    "balance": 99600
+}

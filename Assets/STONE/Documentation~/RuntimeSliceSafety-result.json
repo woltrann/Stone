@@ -1,0 +1,47 @@
+{
+  "success": true,
+  "command": "command script run",
+  "data": {
+    "command": "script run",
+    "parameters": {
+      "file": "Assets/STONE/Tests~/RuntimeSliceSafetyChecks.cs",
+      "timeout": "30"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 304,
+      "executeMs": 1860,
+      "assemblyName": "PipelineRunScript_RuntimeSliceSafetyChecks_444166cd5e164ea68085b39d82d257a7",
+      "success": true,
+      "result": {
+        "passed": [
+          "Input placed for safety checks",
+          "Missing plane rejects start and preserves source",
+          "Outside-plane cut starts timed attempt",
+          "Nonintersecting cut retains and unlocks original",
+          "Valid cut starts after failure",
+          "Failure after first output rolls back partial piece and preserves input",
+          "Legacy pre-mesh snapshot loads via retained compatibility assets",
+          "Incomplete saved geometry restores raw source and preserves cached ore",
+          "Malformed custom snapshot retains raw source instead of consuming it",
+          "Physics cube sliced: ",
+          "Simple pieces use legal convex MeshColliders",
+          "Dynamic Rigidbody mode and total mass preserved",
+          "Dynamic cut piece falls and collides with floor",
+          "Dynamic generated piece supports framework pickup",
+          "Mass fraction survives framework pickup/drop transitions",
+          "Complex physics source sliced: ",
+          "Complex dynamic geometry uses bounded compound boxes, no invalid concave MeshCollider"
+        ],
+        "count": 17
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\Stone"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

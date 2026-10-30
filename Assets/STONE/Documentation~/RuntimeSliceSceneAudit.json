@@ -1,0 +1,110 @@
+{
+  "saved": true,
+  "scene": "Assets/Scenes/TidyUp_Warehouse.unity",
+  "missing": [],
+  "missingScripts": [],
+  "duplicates": [],
+  "saveProgressRestored": true,
+  "cuttingPlaneNormal": "(1.00, 0.00, 0.00)",
+  "profileChance": 100.0,
+  "stoneChecks": [
+    {
+      "name": "Stein (1)",
+      "id": "stone_warehouse_1",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (10)",
+      "id": "stone_warehouse_10",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (11)",
+      "id": "stone_warehouse_11",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (12)",
+      "id": "stone_warehouse_12",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (13)",
+      "id": "stone_warehouse_13",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (14)",
+      "id": "stone_warehouse_14",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (2)",
+      "id": "stone_warehouse_2",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (3)",
+      "id": "stone_warehouse_3",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (4)",
+      "id": "stone_warehouse_4",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (5)",
+      "id": "stone_warehouse_raw_5",
+      "readable": true,
+      "sliceSupported": false,
+      "error": "Source: Mesh is open, non-manifold, or has inconsistent winding (edge uses 1, orientation sum -1)."
+    },
+    {
+      "name": "Stein (6)",
+      "id": "stone_warehouse_6",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (7)",
+      "id": "stone_warehouse_7",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (8)",
+      "id": "stone_warehouse_8",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    },
+    {
+      "name": "Stein (9)",
+      "id": "stone_warehouse_9",
+      "readable": true,
+      "sliceSupported": true,
+      "error": null
+    }
+  ]
+}

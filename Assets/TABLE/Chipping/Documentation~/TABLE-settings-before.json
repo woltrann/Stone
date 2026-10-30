@@ -1,0 +1,71 @@
+{
+    "MonoBehaviour": {
+        "m_Enabled": true,
+        "m_EditorHideFlags": 0,
+        "m_Name": "",
+        "m_EditorClassIdentifier": "Assembly-CSharp::StoneGame.Chipping.StoneChippingTable",
+        "slot": {
+            "instanceID": 0
+        },
+        "cameraPoint": {
+            "instanceID": 0
+        },
+        "hammerHolder": {
+            "instanceID": 0
+        },
+        "hammerVisual": {
+            "instanceID": 0
+        },
+        "hammerReturnCollider": {
+            "instanceID": 0
+        },
+        "playerCamera": {
+            "instanceID": 0
+        },
+        "player": {
+            "instanceID": 0
+        },
+        "interactor": {
+            "instanceID": 0
+        },
+        "cameraDrivers": [
+            {
+                "instanceID": 0
+            }
+        ],
+        "progressPanel": {
+            "instanceID": 0
+        },
+        "progressLabel": {
+            "instanceID": 0
+        },
+        "progressFill": {
+            "instanceID": 0
+        },
+        "gameplayHud": {
+            "instanceID": 0
+        },
+        "transitionDuration": 0.550000011920929,
+        "hitDuration": 0.44999998807907104,
+        "interactionDistance": 2.5,
+        "rayDistance": 5.0,
+        "hammerDepth": 1.100000023841858,
+        "hammerOffset": {
+            "x": 0.11999999731779099,
+            "y": -0.05999999865889549,
+            "z": 0.0
+        },
+        "heldHammerEuler": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": -30.0
+        },
+        "strikeEuler": {
+            "x": 65.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "strikeLift": 0.25,
+        "heldHammerScale": 0.6499999761581421
+    }
+}

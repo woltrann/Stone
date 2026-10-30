@@ -1,0 +1,18 @@
+{
+    "passed": [
+        "Paid test order accepted",
+        "Async state stays unpublished until durable acknowledgement",
+        "Encoding/write run on worker; notifications run on Unity thread",
+        "Caller mutations cannot change in-flight detached save",
+        "Read snapshots do not alias durable mutable fields",
+        "Failed worker write preserves reservation and releases writer",
+        "Wallet transaction serializes behind outstanding delivery write without lost update",
+        "Background save remains compatible with existing envelope and loader",
+        "Unchanged snapshot does not schedule file writes",
+        "Reset flushes old writer so it cannot overwrite new game",
+        "Standard SHA-256 compatibility: 0 chars",
+        "Standard SHA-256 compatibility: 3 chars",
+        "Standard SHA-256 compatibility: 20 chars",
+        "Standard SHA-256 compatibility: 100000 chars"
+    ]
+}

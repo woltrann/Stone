@@ -1,0 +1,14 @@
+{
+    "passed": [
+        "Completed empty A restores 6/6",
+        "Independent empty B restores 3/6",
+        "Saved cut materials retain distinct asset identities after full restart",
+        "Completed cut appearance restored",
+        "B does not borrow the saw's currently configured material",
+        "Resumed B hit 4",
+        "Resumed B hit 5",
+        "Resumed B hit 6",
+        "B completes with its own saved cut material",
+        "No extra payment or redelivery after material restore"
+    ]
+}

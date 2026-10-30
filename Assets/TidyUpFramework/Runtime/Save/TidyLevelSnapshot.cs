@@ -17,6 +17,7 @@ namespace TidyUpFramework.Save
         public bool PickedUp;
         public int Mistakes;
         public int CarryOrder = -1;
+        public string CustomState;
     }
 
     [Serializable]

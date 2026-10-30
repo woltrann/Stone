@@ -164,6 +164,7 @@ namespace TidyUpFramework.Interaction
             var renderParams = new RenderParams(activeMaterial) { shadowCastingMode = ShadowCastingMode.Off, receiveShadows = false, layer = gameObject.layer };
             foreach (var part in parts)
             {
+                if (part.Mesh == null) continue; // Runtime-generated meshes can be replaced or disposed.
                 var matrix = rootMatrix * part.LocalMatrix;
                 for (var subMesh = 0; subMesh < part.Mesh.subMeshCount; subMesh++)
                 {

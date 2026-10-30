@@ -4,7 +4,7 @@ using UnityEngine;
 namespace TidyUpFramework.Placement
 {
     [AddComponentMenu("Tidy Up Framework/Placement/Snap Slot")]
-    public sealed class TidySnapSlot : TidyPlacementTarget
+    public class TidySnapSlot : TidyPlacementTarget
     {
         [SerializeField, Tooltip("Extra rotation applied to the placed object relative to this transform.")]
         Vector3 placedEulerOffset;

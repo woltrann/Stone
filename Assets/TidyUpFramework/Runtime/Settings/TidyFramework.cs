@@ -1,3 +1,4 @@
+using System;
 using TidyUpFramework.Audio;
 using TidyUpFramework.Core;
 using TidyUpFramework.Levels;
@@ -18,6 +19,8 @@ namespace TidyUpFramework.Settings
         public static TidyAudioService Audio { get; private set; }
         public static TidySceneLoader SceneLoader { get; private set; }
         public static TidyLevelCatalog Catalog => settings != null ? settings.LevelCatalog : null;
+        // Persistent services reset before the old scene can be discarded. A failed save cancels restart.
+        public static event Func<bool> LevelRestarting;
 
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         public static void Initialize()
@@ -76,6 +79,15 @@ namespace TidyUpFramework.Settings
 
         public static void RestartLevel()
         {
+            if (LevelRestarting != null)
+            {
+                foreach (Func<bool> prepare in LevelRestarting.GetInvocationList())
+                {
+                    try { if (!prepare()) return; }
+                    catch (Exception exception) { Debug.LogException(exception); return; }
+                }
+            }
+
             if (TidyServices.TryGet<TidyLevelManager>(out var levelManager))
             {
                 levelManager.DiscardSavedProgress();
@@ -103,6 +115,7 @@ namespace TidyUpFramework.Settings
         static void ResetOnDomainReload()
         {
             IsInitialized = false;
+            LevelRestarting = null;
             settings = null;
             Save = null;
             SettingsService = null;

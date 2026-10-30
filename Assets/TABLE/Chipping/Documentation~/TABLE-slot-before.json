@@ -1,0 +1,56 @@
+{
+    "MonoBehaviour": {
+        "m_Enabled": true,
+        "m_EditorHideFlags": 0,
+        "m_Name": "",
+        "m_EditorClassIdentifier": "Assembly-CSharp::StoneGame.Chipping.StoneWorkSlot",
+        "targetId": "stone-chipping-table-slot",
+        "displayName": "Cevher yontma masası",
+        "gizmoColor": {
+            "r": 0.3499999940395355,
+            "g": 0.8500000238418579,
+            "b": 0.550000011920929,
+            "a": 1.0
+        },
+        "acceptance": {
+            "categories": [],
+            "requiredTags": [],
+            "excludedTags": [],
+            "definitions": [],
+            "rule": {
+                "instanceID": 0
+            }
+        },
+        "policy": 0,
+        "ordering": 0,
+        "orderingDirection": 0,
+        "grouping": 0,
+        "groupingTagGroup": 1,
+        "completionMode": 0,
+        "requiredCount": 1,
+        "countsTowardsProgress": false,
+        "allowRemoval": true,
+        "lockCorrectObjects": false,
+        "lockWhenComplete": false,
+        "contentRoot": {
+            "instanceID": 0
+        },
+        "motion": {
+            "Duration": 0.3199999928474426,
+            "Ease": 4,
+            "ArcHeight": 0.11999999731779099,
+            "LandingPunch": 0.11999999731779099,
+            "LandingPunchDuration": 0.25
+        },
+        "initialOccupants": [],
+        "placedEulerOffset": {
+            "x": 0.0,
+            "y": 0.0,
+            "z": 0.0
+        },
+        "gizmoRadius": 0.07999999821186066,
+        "table": {
+            "instanceID": 0
+        }
+    }
+}

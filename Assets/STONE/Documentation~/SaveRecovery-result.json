@@ -1,0 +1,18 @@
+{
+  "affected": [
+    "stone_warehouse_1",
+    "stone_warehouse_3",
+    "stone_warehouse_2"
+  ],
+  "sourceOrePayloadPreserved": true,
+  "otherProgressUntouched": true,
+  "idChanges": [
+    "Stein (3): stone_warehouse_3_unique -> stone_warehouse_3",
+    "Stein (4): stone_warehouse_4_unique -> stone_warehouse_4",
+    "Stein (14): stone_warehouse_3 -> stone_warehouse_14",
+    "Stein (5): stone_warehouse_5 -> stone_warehouse_raw_5",
+    "Stein (10): stone_warehouse_4 -> stone_warehouse_10"
+  ],
+  "duplicates": [],
+  "backup": "SaveRecoveryBackup-20261027.json"
+}

@@ -1,0 +1,67 @@
+{
+  "success": true,
+  "command": "command script run",
+  "data": {
+    "command": "script run",
+    "parameters": {
+      "file": "Assets/STONE/Tests~/PlayChecks.cs",
+      "timeout": "35"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 557,
+      "executeMs": 6858,
+      "assemblyName": "PipelineRunScript_PlayChecks_7bf9dfc80571418e9a700cbbfecc934b",
+      "success": true,
+      "result": {
+        "passed": [
+          "Play mode active",
+          "Frame counter advances",
+          "Existing interactor aims at saw without occlusion",
+          "0% instance rolls empty",
+          "Existing stone never rerolls after profile change",
+          "Framework pickup remains functional",
+          "Held stone follows existing carry system",
+          "Framework drop remains functional",
+          "Framework placement preview recognizes saw slot",
+          "Existing interact input places carried stone",
+          "Timed cutting starts",
+          "Second cut blocked while busy",
+          "Input stone locked during cutting",
+          "Second input blocked",
+          "Input retained until cut completes",
+          "Empty cut creates exactly two halves and releases slot",
+          "Empty halves have no ore visual",
+          "Both halves support existing physics and interaction",
+          "Cut halves cannot be processed again",
+          "Cut half can be picked up",
+          "Saw accepts next raw stone",
+          "100% instance contains ore",
+          "Ore cut starts",
+          "Disabling saw safely cancels and unlocks input",
+          "T key starts cancelled cut through Input System without throw conflict",
+          "Two generated ore halves preserve source/profile/ore metadata",
+          "Runtime meshes remain closed after spawning",
+          "Runtime material slots match submesh indices",
+          "Correct ore visual appears on both cut faces",
+          "Ore remains visual-only; compound piece colliders enabled",
+          "Restoring earlier save removes this test's dynamic halves",
+          "Snapshot JSON roundtrip restores actual generated meshes without reroll or duplication",
+          "Restored geometry remains closed",
+          "Snapshot preserves consumed source"
+        ],
+        "frames": 581,
+        "ore": "Yakut",
+        "sourceSnapshotObjects": 28,
+        "savedObjects": 32
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7800,
+      "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\Stone"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

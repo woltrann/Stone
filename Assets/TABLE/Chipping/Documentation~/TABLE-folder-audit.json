@@ -1,0 +1,25 @@
+{
+    "tableFolderExists": true,
+    "oldFolderGone": true,
+    "tableGuidPreserved": true,
+    "slotGuidPreserved": true,
+    "tableSettingsPreserved": true,
+    "slotSettingsPreserved": true,
+    "fallbackMaterialsRegistered": true,
+    "missingReferences": 0,
+    "missingScripts": 0,
+    "references": [
+        "slot=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-312259608-0",
+        "cameraPoint=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-267456772-0",
+        "hammerHolder=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-1396469031-0",
+        "hammerVisual=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-6001294062127482260-999460285",
+        "hammerReturnCollider=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-1396469030-0",
+        "playerCamera=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-5926929877962231262-1945109715",
+        "player=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-377155787531643305-1945109715",
+        "interactor=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-5119942635316979109-1945109715",
+        "progressPanel=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-1592950940-0",
+        "progressLabel=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-154916784-0",
+        "progressFill=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-1684874707-0",
+        "gameplayHud=GlobalObjectId_V1-2-7672893be2aa4bc468fa9ad15afba549-8219067495050180351-1937649447"
+    ]
+}

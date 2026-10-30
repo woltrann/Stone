@@ -176,6 +176,11 @@ namespace TidyUpFramework.Levels
             return true;
         }
 
+        public void MarkCustomStateDirty()
+        {
+            if(!IsRestoring && State==TidyLevelState.Playing)hasUnsavedChanges=true;
+        }
+
         public void DiscardSavedProgress()
         {
             progressDiscarded = true;

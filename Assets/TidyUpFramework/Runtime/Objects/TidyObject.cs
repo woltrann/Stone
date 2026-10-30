@@ -215,6 +215,11 @@ namespace TidyUpFramework.Objects
             definition = newDefinition;
         }
 
+        public void AssignPhysicsProfileOverride(TidyPhysicsProfile profile)
+        {
+            physicsProfileOverride = profile;
+        }
+
         public void AssignInstanceId(string newInstanceId)
         {
             instanceId = newInstanceId;

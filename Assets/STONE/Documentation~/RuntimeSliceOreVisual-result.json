@@ -1,0 +1,58 @@
+{
+  "success": true,
+  "command": "command script run",
+  "data": {
+    "command": "script run",
+    "parameters": {
+      "file": "Assets/STONE/Tests~/OreVisualChecks.cs",
+      "timeout": "25"
+    },
+    "result": {
+      "diagnostics": [],
+      "compileMs": 178,
+      "executeMs": 1457,
+      "assemblyName": "PipelineRunScript_OreVisualChecks_42302db1c7e14b76a91b9ebb09645786",
+      "success": true,
+      "result": {
+        "results": [
+          {
+            "ore": "Komur",
+            "halves": 2,
+            "prefabMatches": true,
+            "socketsAligned": true,
+            "overlap": false
+          },
+          {
+            "ore": "Yakut",
+            "halves": 2,
+            "prefabMatches": true,
+            "socketsAligned": true,
+            "overlap": false
+          },
+          {
+            "ore": "Zumrut",
+            "halves": 2,
+            "prefabMatches": true,
+            "socketsAligned": true,
+            "overlap": false
+          },
+          {
+            "ore": "Elmas",
+            "halves": 2,
+            "prefabMatches": true,
+            "socketsAligned": true,
+            "overlap": false
+          }
+        ],
+        "screenshot": "Temp/StoneCutting/ore-preview.png"
+      }
+    },
+    "target": {
+      "host": "127.0.0.1",
+      "port": 7801,
+      "projectPath": "C:\\Users\\pc\\Documents\\GitHub\\Stone"
+    }
+  },
+  "errors": [],
+  "warnings": []
+}

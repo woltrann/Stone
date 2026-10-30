@@ -1,0 +1,13 @@
+{
+    "existingItems": 68,
+    "ordered": 30,
+    "spawned": 30,
+    "frameCount": 535,
+    "framesOver50ms": 20,
+    "mainThreadFileWrites": 0,
+    "workerFileWrites": 71,
+    "medianFrameMs": 12.783999554812908,
+    "p95FrameMs": 33.74069556593895,
+    "maxFrameMs": 114.4689992070198,
+    "lastWorkerMs": 96.8416
+}

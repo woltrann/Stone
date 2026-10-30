@@ -1,0 +1,13 @@
+{
+    "levelSaveUnchanged": true,
+    "progressSaveUnchanged": true,
+    "saveProgressRestored": true,
+    "sceneSaved": true,
+    "screenExcludedFromStaticBatch": true,
+    "levelBeforeSHA256": "1725fa02f78ca664a45818895196cf44baf67fe23c83f5fbfec440b7158b4aa9",
+    "levelAfterSHA256": "1725fa02f78ca664a45818895196cf44baf67fe23c83f5fbfec440b7158b4aa9",
+    "progressBeforeSHA256": "c8c4f21a7eb2d37d00103adcf67fdfb4a6b972f8b372ecd20f184427f234ba06",
+    "progressAfterSHA256": "c8c4f21a7eb2d37d00103adcf67fdfb4a6b972f8b372ecd20f184427f234ba06",
+    "scene": "Assets/Scenes/TidyUp_Warehouse.unity",
+    "missingScripts": 0
+}

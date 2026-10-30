@@ -1,0 +1,13 @@
+{
+    "stone": "Stein (2)_right",
+    "meshPixels": 334,
+    "acceptedPixels": 0,
+    "capPixels": 0,
+    "blockers": [
+        "TidyPlayer: 334"
+    ],
+    "screenSize": {
+        "x": 88.90411376953125,
+        "y": 127.94709777832031
+    }
+}

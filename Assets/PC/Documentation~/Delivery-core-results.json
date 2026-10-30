@@ -1,0 +1,25 @@
+{
+    "passed": [
+        "Existing order API accepts paid order",
+        "Pending cannot skip delivery",
+        "Cannot reserve item before Processing",
+        "Begin persists Processing and scene",
+        "Processing order cannot be claimed by another scene",
+        "No Delivered status before every item exists",
+        "Ordinal one waits for confirmed ordinal zero",
+        "Durable item reservation saved before activation",
+        "Unconfirmed reservation survives reload without another charge",
+        "Retry of same reservation is idempotent",
+        "Failed confirmation retains retryable reservation",
+        "Confirm is durable and idempotent",
+        "Partial order is never Delivered",
+        "Second ordinal accepted exactly once",
+        "Physical world snapshot checkpoint saved",
+        "Complete delivery updates existing status without payment",
+        "Delivered status and exact item identities/poses survive load",
+        "Delivered order cannot start another trip",
+        "Delivery operations never reemit purchase event",
+        "Rejected payment creates no delivery event",
+        "New game clears delivery ledger with orders"
+    ]
+}

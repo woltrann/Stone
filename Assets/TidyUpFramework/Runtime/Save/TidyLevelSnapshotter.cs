@@ -15,12 +15,23 @@ namespace TidyUpFramework.Save
         const float GroundProbeDistance = 20f;
 
         static readonly RaycastHit[] GroundHits = new RaycastHit[16];
+        // Runtime spawn providers reconstruct their objects before IDs and custom state are restored.
+        public static event Action<TidyLevelSnapshot> Restoring;
+        public static event Action<TidyLevelSnapshot> Restored;
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        static void ResetProviders(){Restoring=null;Restored=null;}
 
-        public static void CaptureWorld(TidyLevelSnapshot snapshot, TidyInteractor interactor, TidyFirstPersonController player)
+        public static void CaptureWorld(TidyLevelSnapshot snapshot, TidyInteractor interactor, TidyFirstPersonController player,
+            ISet<string> includedIds=null,IReadOnlyDictionary<string,string> customStateOverrides=null)
         {
             snapshot.Objects.Clear();
             snapshot.Cleanables.Clear();
             var ids = BuildIds();
+            if(includedIds!=null)
+            {
+                var excluded=new List<TidyObject>();foreach(var pair in ids)if(!includedIds.Contains(pair.Value))excluded.Add(pair.Key);
+                foreach(var obj in excluded)ids.Remove(obj);
+            }
             var captured = new HashSet<TidyObject>();
 
             foreach (var target in TidyTargetRegistry.All)
@@ -39,7 +50,7 @@ namespace TidyUpFramework.Save
                         continue;
                     }
 
-                    var entry = CreateEntry(tidyObject, id, TidyObjectState.Placed);
+                    var entry = CreateEntry(tidyObject, id, TidyObjectState.Placed,customStateOverrides);
                     entry.TargetId = target.TargetId;
                     entry.TargetOrder = order;
                     entry.HasPose = tidyObject.State == TidyObjectState.Placed || tidyObject.State == TidyObjectState.Consumed;
@@ -52,10 +63,10 @@ namespace TidyUpFramework.Save
                 var stacked = interactor.StackedObjects;
                 for (var index = 0; index < stacked.Count; index++)
                 {
-                    AddCarried(snapshot, ids, captured, stacked[index], index);
+                    AddCarried(snapshot, ids, captured, stacked[index], index,customStateOverrides);
                 }
 
-                AddCarried(snapshot, ids, captured, interactor.HeldObject, stacked.Count);
+                AddCarried(snapshot, ids, captured, interactor.HeldObject, stacked.Count,customStateOverrides);
             }
 
             foreach (var pair in ids)
@@ -69,22 +80,22 @@ namespace TidyUpFramework.Save
                 switch (tidyObject.State)
                 {
                     case TidyObjectState.Consumed:
-                        snapshot.Objects.Add(CreateEntry(tidyObject, pair.Value, TidyObjectState.Consumed));
+                        snapshot.Objects.Add(CreateEntry(tidyObject, pair.Value, TidyObjectState.Consumed,customStateOverrides));
                         break;
                     case TidyObjectState.Moving:
                     case TidyObjectState.Held:
                     case TidyObjectState.Inspecting:
-                        var settled = CreateEntry(tidyObject, pair.Value, TidyObjectState.Loose);
+                        var settled = CreateEntry(tidyObject, pair.Value, TidyObjectState.Loose,customStateOverrides);
                         settled.Position = GroundedPivot(tidyObject, out settled.Rotation);
                         snapshot.Objects.Add(settled);
                         break;
                     default:
-                        snapshot.Objects.Add(CreateEntry(tidyObject, pair.Value, TidyObjectState.Loose));
+                        snapshot.Objects.Add(CreateEntry(tidyObject, pair.Value, TidyObjectState.Loose,customStateOverrides));
                         break;
                 }
             }
 
-            foreach (var cleanable in TidyCleanable.All)
+            if(includedIds==null)foreach (var cleanable in TidyCleanable.All)
             {
                 if (cleanable != null)
                 {
@@ -103,11 +114,29 @@ namespace TidyUpFramework.Save
 
         public static void RestoreWorld(TidyLevelSnapshot snapshot, TidyInteractor interactor, TidyFirstPersonController player)
         {
+            Restoring?.Invoke(snapshot);
+            if (interactor != null) interactor.DropAll();
+            // Gameplay participants may recreate runtime objects referenced by the snapshot.
+            var initialIds = BuildIds();
+            foreach (var pair in initialIds)
+            {
+                foreach (var entry in snapshot.Objects)
+                {
+                    if (entry == null || entry.Id != pair.Value) continue;
+                    var participant = pair.Key.GetComponent<ITidyObjectSnapshotParticipant>();
+                    participant?.RestoreObjectState(entry.CustomState);
+                    break;
+                }
+            }
             var byId = new Dictionary<string, TidyObject>();
             foreach (var pair in BuildIds())
             {
                 byId[pair.Value] = pair.Key;
             }
+            // Source participants can create pieces after the first pass. Restore their own state too.
+            foreach(var entry in snapshot.Objects)
+                if(entry!=null && byId.TryGetValue(entry.Id,out var created) && !initialIds.ContainsKey(created))
+                    created.GetComponent<ITidyObjectSnapshotParticipant>()?.RestoreObjectState(entry.CustomState);
 
             if (interactor != null)
             {
@@ -141,6 +170,14 @@ namespace TidyUpFramework.Save
 
                 if (state == TidyObjectState.Consumed)
                 {
+                    var recovery = tidyObject.GetComponent<ITidyObjectSnapshotRecovery>();
+                    if (recovery != null && recovery.RestoreFailed)
+                    {
+                        tidyObject.gameObject.SetActive(true);
+                        tidyObject.MarkLoose();
+                        SetPose(tidyObject, entry.Position, entry.Rotation);
+                        continue;
+                    }
                     tidyObject.MarkConsumed();
                     tidyObject.gameObject.SetActive(false);
                     continue;
@@ -187,6 +224,7 @@ namespace TidyUpFramework.Save
                     }
                 }
             }
+            Restored?.Invoke(snapshot);
         }
 
         public static Dictionary<TidyObject, string> BuildIds()
@@ -209,20 +247,20 @@ namespace TidyUpFramework.Save
             return result;
         }
 
-        static void AddCarried(TidyLevelSnapshot snapshot, Dictionary<TidyObject, string> ids, HashSet<TidyObject> captured, TidyObject tidyObject, int order)
+        static void AddCarried(TidyLevelSnapshot snapshot, Dictionary<TidyObject, string> ids, HashSet<TidyObject> captured, TidyObject tidyObject, int order,IReadOnlyDictionary<string,string> customStates=null)
         {
             if (tidyObject == null || !ids.TryGetValue(tidyObject, out var id) || !captured.Add(tidyObject))
             {
                 return;
             }
 
-            var entry = CreateEntry(tidyObject, id, TidyObjectState.Loose);
+            var entry = CreateEntry(tidyObject, id, TidyObjectState.Loose,customStates);
             entry.Position = GroundedPivot(tidyObject, out entry.Rotation);
             entry.CarryOrder = order;
             snapshot.Objects.Add(entry);
         }
 
-        static TidyObjectSnapshot CreateEntry(TidyObject tidyObject, string id, TidyObjectState state)
+        static TidyObjectSnapshot CreateEntry(TidyObject tidyObject, string id, TidyObjectState state,IReadOnlyDictionary<string,string> customStates=null)
         {
             var transform = tidyObject.transform;
             return new TidyObjectSnapshot
@@ -232,7 +270,8 @@ namespace TidyUpFramework.Save
                 Position = transform.position,
                 Rotation = transform.rotation,
                 PickedUp = tidyObject.HasBeenPickedUp,
-                Mistakes = tidyObject.MistakeCount
+                Mistakes = tidyObject.MistakeCount,
+                CustomState = customStates!=null && customStates.TryGetValue(id,out var saved)?saved:tidyObject.GetComponent<ITidyObjectSnapshotParticipant>()?.CaptureObjectState()
             };
         }
 

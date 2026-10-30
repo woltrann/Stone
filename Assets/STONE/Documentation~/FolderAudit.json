@@ -1,0 +1,27 @@
+{
+  "movedGuidCount": 32,
+  "guidMismatches": [],
+  "missingScripts": [],
+  "missingReferences": [],
+  "externalSharedDependencies": [
+    "Assets/TidyUpFramework/Runtime/Objects/TidyObject.cs",
+    "Assets/TidyUpFramework/Runtime/Objects/TidyObjectDefinition.cs",
+    "Assets/TidyUpFramework/Runtime/Objects/TidyCategoryDefinition.cs"
+  ],
+  "cleanedEmptyFolders": [
+    "Assets/TidyUpFramework/Demo/Data/Stone/Ore",
+    "Assets/TidyUpFramework/Demo/Data/Stone/Stones",
+    "Assets/TidyUpFramework/Demo/Data/Stone",
+    "Assets/TidyUpFramework/Demo/Data/Objects/Warehouse/source",
+    "Assets/TidyUpFramework/Demo/Data/Objects/Warehouse/textures",
+    "Assets/Scripts/StoneGame"
+  ],
+  "rawStoneCount": 14,
+  "profileCount": 4,
+  "oreCount": 4,
+  "participantAssembly": "TidyUpFramework.Runtime",
+  "sceneDirtyBeforeAndAfter": {
+    "before": true,
+    "after": true
+  }
+}

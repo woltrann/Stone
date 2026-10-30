@@ -1,0 +1,13 @@
+{
+    "passed": [
+        "Regression uses isolated Play session",
+        "Existing saw accepts raw stone at chance 0",
+        "Existing timed cut starts at chance 0",
+        "Runtime cut produces two real mesh halves at chance 0",
+        "Ore metadata correct at chance 0",
+        "Existing saw accepts raw stone at chance 100",
+        "Existing timed cut starts at chance 100",
+        "Runtime cut produces two real mesh halves at chance 100",
+        "Ore metadata correct at chance 100"
+    ]
+}

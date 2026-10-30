@@ -1,0 +1,11 @@
+{
+    "passed": [
+        "Original computer interaction still enters",
+        "Computer camera/input ownership still works",
+        "Computer desktop remains interactive",
+        "Computer exits normally",
+        "Computer exit restores normal controls",
+        "Pause menu still opens normally outside work mode",
+        "Resume restores gameplay"
+    ]
+}

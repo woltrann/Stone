@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e39de65b617fac6498fbae7dccded854, type: 3}
+  m_Name: PCSettings
+  m_EditorClassIdentifier: Assembly-CSharp::StoneGame.Computers.InteractiveComputerSettings
+  interactionDistance: 2.5
+  interactionKey: 19
+  exitKey: 60
+  prompt: "\u0130nternete eri\u015Fmek i\xE7in [{key}] tu\u015Funa bas"
+  requireFrontSide: 1
+  outlineShader: {fileID: 4800000, guid: 943076babdf98ac46bb149b6862678fd, type: 3}
+  outlineColor: {r: 0.32, g: 0.94, b: 0.82, a: 1}
+  outlineWidth: 3
+  enterDuration: 0.75
+  exitDuration: 0.65
+  automaticallyFrameScreen: 1
+  screenPadding: 1.12
+  nearClipClearance: 0.08
+  emissionColor: {r: 0.12, g: 0.6, b: 0.5, a: 1}
+  emissionIntensity: 0.65

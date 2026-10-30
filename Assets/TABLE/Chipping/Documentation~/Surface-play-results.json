@@ -1,0 +1,17 @@
+{
+    "passed": [
+        "Paid order delivers two empty-cut test sources",
+        "Actual empty-stone saw cut 0",
+        "Both real empty halves retain explicit material and permit chipping 0",
+        "Actual empty-stone saw cut 1",
+        "Both real empty halves retain explicit material and permit chipping 1",
+        "Empty A reaches partial 3/6 through table raycasts",
+        "Different material B starts at own zero progress",
+        "Switching stones preserves independent partial progress",
+        "Empty A converts all submeshes to A's actual cut material",
+        "Completing A does not recolor or complete B",
+        "Real sliced mesh is unchanged by chipping",
+        "Completed empty stone rejects further hit",
+        "Two different cut materials persist through existing checkpoint"
+    ]
+}

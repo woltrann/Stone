@@ -1,0 +1,4 @@
+{
+    "payload": "{\"version\":1,\"balance\":9000,\"orders\":[{\"orderId\":\"fc7fd435af3749d48e4dfa50c01aef42\",\"requestId\":\"c1eae5723a804e69997e1f161e83f139\",\"productId\":\"raw-stone-default\",\"productName\":\"Ham Taş\",\"createdAtUtc\":\"2026-10-29T07:39:38.2689876Z\",\"quantity\":10,\"unitPrice\":100,\"totalPaid\":1000,\"status\":0}]}",
+    "sha256": "ZJhr9d7hbv6mShReEexxbB1e6kJSuTMWz67YcAJVY6s="
+}

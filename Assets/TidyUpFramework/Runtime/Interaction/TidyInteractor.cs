@@ -130,9 +130,9 @@ namespace TidyUpFramework.Interaction
             return TryRaycastFirstSolid(CenterRay(), out hit);
         }
 
-        public bool TryFindAimed<T>(out T component, out RaycastHit hit) where T : Component
+        public bool TryFindAimed<T>(out T component, out RaycastHit hit, float distance = -1f) where T : Component
         {
-            var count = CastSorted(CenterRay(), reachDistance);
+            var count = CastSorted(CenterRay(), distance < 0f ? reachDistance : distance);
             for (var index = 0; index < count; index++)
             {
                 var candidate = hits[index];

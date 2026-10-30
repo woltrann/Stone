@@ -20,6 +20,7 @@ namespace TidyUpFramework.Interaction
     public sealed class TidyOutlineHighlighter : MonoBehaviour, ITidyHighlighter
     {
         const string OutlineShaderName = "TidyUpFramework/Outline";
+        static readonly int StyleCount = Enum.GetValues(typeof(TidyHighlightStyle)).Length;
         static readonly int ColorId = Shader.PropertyToID("_OutlineColor");
         static readonly int WidthId = Shader.PropertyToID("_OutlineWidth");
         static readonly int PulseId = Shader.PropertyToID("_PulseSpeed");
@@ -44,6 +45,8 @@ namespace TidyUpFramework.Interaction
         {
             public IReadOnlyList<Renderer> Renderers;
             public readonly Dictionary<object, TidyHighlightStyle> StylesByOwner = new Dictionary<object, TidyHighlightStyle>();
+            public Material AppearanceOverride;
+            public object AppearanceOwner;
 
             public TidyHighlightStyle Strongest
             {
@@ -91,6 +94,17 @@ namespace TidyUpFramework.Interaction
             entry.StylesByOwner[owner] = style;
         }
 
+        // The caller owns the material. Existing highlight calls keep their shared style materials.
+        public void SetHighlight(Component key, IReadOnlyList<Renderer> renderers, TidyHighlightStyle style, object owner, Material appearance)
+        {
+            SetHighlight(key, renderers, style, owner);
+            if (key != null && entries.TryGetValue(key, out var entry))
+            {
+                entry.AppearanceOverride = appearance;
+                entry.AppearanceOwner = owner;
+            }
+        }
+
         public void ClearHighlight(Component key, object owner)
         {
             if (key == null || !entries.TryGetValue(key, out var entry))
@@ -99,6 +113,7 @@ namespace TidyUpFramework.Interaction
             }
 
             entry.StylesByOwner.Remove(owner);
+            if (entry.AppearanceOwner == owner) { entry.AppearanceOverride = null; entry.AppearanceOwner = null; }
             if (entry.StylesByOwner.Count == 0)
             {
                 entries.Remove(key);
@@ -111,6 +126,7 @@ namespace TidyUpFramework.Interaction
             foreach (var pair in entries)
             {
                 pair.Value.StylesByOwner.Remove(owner);
+                if (pair.Value.AppearanceOwner == owner) { pair.Value.AppearanceOverride = null; pair.Value.AppearanceOwner = null; }
                 if (pair.Value.StylesByOwner.Count == 0)
                 {
                     staleKeys.Add(pair.Key);
@@ -152,7 +168,7 @@ namespace TidyUpFramework.Interaction
 
         void BuildMaterials()
         {
-            if (materialsByStyle != null)
+            if (materialsByStyle != null && materialsByStyle.Length == StyleCount)
             {
                 return;
             }
@@ -164,7 +180,7 @@ namespace TidyUpFramework.Interaction
                 return;
             }
 
-            materialsByStyle = new Material[Enum.GetValues(typeof(TidyHighlightStyle)).Length];
+            materialsByStyle = new Material[StyleCount];
             materialsByStyle[(int)TidyHighlightStyle.Hover] = CreateMaterial(shader, hover);
             materialsByStyle[(int)TidyHighlightStyle.Hint] = CreateMaterial(shader, hint);
             materialsByStyle[(int)TidyHighlightStyle.Valid] = CreateMaterial(shader, valid);
@@ -183,6 +199,9 @@ namespace TidyUpFramework.Interaction
 
         void LateUpdate()
         {
+            // Unity hot reload can restore a non-null but empty runtime material array.
+            if (materialsByStyle == null || materialsByStyle.Length != StyleCount)
+                BuildMaterials();
             if (materialsByStyle == null || entries.Count == 0)
             {
                 return;
@@ -197,7 +216,7 @@ namespace TidyUpFramework.Interaction
                     continue;
                 }
 
-                var material = materialsByStyle[(int)pair.Value.Strongest];
+                var material = pair.Value.AppearanceOverride != null ? pair.Value.AppearanceOverride : materialsByStyle[(int)pair.Value.Strongest];
                 if (material != null && pair.Key.gameObject.activeInHierarchy)
                 {
                     Draw(pair.Value.Renderers, material);

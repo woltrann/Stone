@@ -1,0 +1,11 @@
+{
+    "passed": [
+        "Full Play Mode restart rebuilds exactly two runtime mesh halves",
+        "Completed stone persists six of six",
+        "Completed ore material reapplied after full restart",
+        "Other stone independently resumes one of six",
+        "Ore identity preserved and completed stone remains locked",
+        "Piece IDs remain unique",
+        "Completed order does not requeue"
+    ]
+}

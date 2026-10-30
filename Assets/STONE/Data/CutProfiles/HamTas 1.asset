@@ -1,0 +1,27 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ab278600958277643b34fc703d65c490, type: 3}
+  m_Name: HamTas 1
+  m_EditorClassIdentifier: Assembly-CSharp::StoneGame.Cutting.StoneCutProfile
+  containsOrePercent: 100
+  oreChances:
+  - ore: {fileID: 11400000, guid: e3851036839e54344b19b2cf6dbeb23c, type: 2}
+    chancePercent: 50
+  - ore: {fileID: 11400000, guid: 0ebadd5b62bfbe84b8e73b8e80a3df6b, type: 2}
+    chancePercent: 25
+  - ore: {fileID: 11400000, guid: db23511bb80d4794696029b6dd379fb6, type: 2}
+    chancePercent: 20
+  - ore: {fileID: 11400000, guid: f513b0099efa3cb4cbbf3d777e9b6a33, type: 2}
+    chancePercent: 5
+  leftHalfPrefab: {fileID: 1264643818684595546, guid: 38c926df8ef53704d925d00123babf9b, type: 3}
+  rightHalfPrefab: {fileID: 1264643818684595546, guid: dce67284ba235ce48bac869370e3f807, type: 3}
+  cutPieceTidyDefinition: {fileID: 11400000, guid: 738420ab36b999247849b1a60ad791ad, type: 2}

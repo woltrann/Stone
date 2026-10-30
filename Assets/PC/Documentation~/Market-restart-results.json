@@ -1,0 +1,20 @@
+{
+    "passed": [
+        "Paid order created",
+        "Purchased stone exists before restart",
+        "Failed reset write cancels reload and preserves paid state",
+        "Second order starts active delivery",
+        "Restart exercised during pending write or unfinished delivery",
+        "Money returns to EconomySettings starting balance",
+        "All orders removed",
+        "Delivery ledger cleared",
+        "Purchased and partially delivered stones removed",
+        "Truck and delivery queue return to idle",
+        "Truck returns to scene starting position",
+        "Reset is durable in existing save file",
+        "Computer balance label refreshes after restart",
+        "Orders UI contains no previous orders",
+        "Old coroutine/background write cannot resurrect orders or stones"
+    ],
+    "initialBalance": 10000
+}

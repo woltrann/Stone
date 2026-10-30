@@ -54,6 +54,30 @@ namespace TidyUpFramework.UI
         int fadeHandle;
         Placement.TidyPlacementTarget lastCandidateTarget;
         TidyContextPrompt stackPrompt;
+        object externalOwner;
+        string externalText;
+        Color externalColor;
+        bool externalCrosshair;
+        TMP_FontAsset originalPromptFont;
+
+        public void SetExternalPrompt(object owner, string text, Color color, bool showCrosshair = true, TMP_FontAsset font = null)
+        {
+            if (owner == null) return;
+            if (externalOwner == null && promptLabel != null) originalPromptFont = promptLabel.font;
+            externalOwner = owner; externalText = text; externalColor = color; externalCrosshair = showCrosshair;
+            if (font != null && promptLabel != null) promptLabel.font = font;
+            Refresh();
+        }
+
+        public void ClearExternalPrompt(object owner)
+        {
+            if (externalOwner != owner) return;
+            externalOwner = null;
+            if (promptLabel != null && originalPromptFont != null) promptLabel.font = originalPromptFont;
+            originalPromptFont = null;
+            lastText = null;
+            Refresh();
+        }
 
         void Start()
         {
@@ -142,6 +166,17 @@ namespace TidyUpFramework.UI
 
         void Refresh()
         {
+            if (externalOwner != null)
+            {
+                SetPrompt(externalText);
+                if (objectNameLabel != null) objectNameLabel.text = string.Empty;
+                if (crosshair != null)
+                {
+                    crosshair.color = externalColor;
+                    TidyTweenRunner.ScaleTo(crosshair.transform, Vector3.one * (externalCrosshair ? 1.2f : 0f), 0.12f, TidyEaseType.OutBack);
+                }
+                return;
+            }
             if (interactor == null)
             {
                 return;

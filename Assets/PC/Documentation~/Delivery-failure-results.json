@@ -1,0 +1,18 @@
+{
+    "passed": [
+        "Fault test order paid once",
+        "Write failure after activation retains one physical stone and unconfirmed record",
+        "Failed confirmation never marks Delivered or charges again",
+        "Retry confirms existing first stone and creates only missing ordinal",
+        "Partial-spawn fault order accepted",
+        "Missing outlet after one item preserves partial shipment",
+        "Partial retry produces exactly total quantity without second payment",
+        "Validation fault test paid order exists",
+        "Invalid references fail before any spawn or Processing claim",
+        "Immediate validation failure remains retryable instead of stuck coroutine",
+        "Truck Rigidbody branch order accepted",
+        "Existing truck Rigidbody made temporarily kinematic",
+        "MovePosition branch restores truck body policy and rotation: pos=(50.00, 1.00, 15.00) bodyPos=(50.00, 1.00, 15.00) kin=False gravity=False angle=0"
+    ],
+    "failed": []
+}

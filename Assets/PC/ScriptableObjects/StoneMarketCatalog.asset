@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b1bf46d7f12bb1409250e489ee3694d, type: 3}
+  m_Name: StoneMarketCatalog
+  m_EditorClassIdentifier: Assembly-CSharp::StoneGame.Shop.StoneMarketCatalog
+  products:
+  - id: raw-stone-default
+    displayName: "Ham Ta\u015F"
+    description: "At\xF6lyenizde i\u015Fleyebilece\u011Finiz ham ta\u015F. \u0130\xE7eri\u011Fi kesim s\u0131ras\u0131nda ortaya \xE7\u0131kar."
+    image: {fileID: 0}
+    unitPrice: 100
+    prefab: {fileID: 6560635849089099064, guid: 812aeca7fc00d7c49a7139bf32afc784, type: 3}
+    definition: {fileID: 11400000, guid: e65ea97ab8387c64a9cfa97b6f349b6a, type: 2}
+    active: 1
+  maximumOrderQuantity: 999

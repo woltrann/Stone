@@ -34,6 +34,15 @@ namespace TidyUpFramework.Feedback
             strength = Mathf.Clamp01(Mathf.Max(strength, amount * intensityMultiplier));
         }
 
+        // Finish transient feedback before another mode takes ownership of the camera.
+        public void Cancel()
+        {
+            if (strength <= 0f) return;
+            strength = 0f;
+            if (targetCamera != null) targetCamera.fieldOfView = baseFieldOfView;
+            transform.localPosition = basePosition;
+        }
+
         void Awake()
         {
             targetCamera = GetComponent<Camera>();

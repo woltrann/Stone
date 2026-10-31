@@ -57,6 +57,7 @@ namespace StoneGame.Cutting
 
         void OnDestroy()
         {
+            ClearChipPatches();
             // Placement/drop feedback may still be animating a piece when a snapshot replaces it.
             TidyUpFramework.Core.TidyTweenRunner.Kill(transform);
             StoneMeshCutResult.DestroyMesh(ownedMesh);

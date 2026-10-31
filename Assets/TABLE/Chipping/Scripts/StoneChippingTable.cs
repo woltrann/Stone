@@ -145,6 +145,7 @@ namespace StoneGame.Chipping
         struct PointerHit{public Collider Collider;public CutStoneHalf Stone;public Vector3 Point,Normal;public float Distance;public bool CutFace;}
         CutStoneHalf pickingStone;
         Mesh pickingMesh;
+        int pickingRevision=-1;
         Vector3[] pickingVertices;
         int[] pickingIndices;
         bool[] pickingCutFaces;
@@ -153,8 +154,10 @@ namespace StoneGame.Chipping
         void StopCoroutineIfStriking(){if(strike!=null)StopCoroutine(strike);strike=null;IsStriking=false;}
         void PreparePickingMesh(CutStoneHalf stone)
         {
-            var mesh=stone!=null?stone.GeneratedMesh:null;
-            if(stone==pickingStone && mesh==pickingMesh)return;
+            var mesh=stone!=null?stone.ChippingSurfaceMesh:null;
+            int revision=stone!=null?stone.ChippingGeometryRevision:0;
+            if(stone==pickingStone && mesh==pickingMesh && revision==pickingRevision)return;
+            pickingRevision=revision;
             pickingStone=stone;pickingMesh=mesh;pickingVertices=null;pickingIndices=null;pickingCutFaces=null;
             if(mesh==null || !mesh.isReadable)return;
             pickingVertices=mesh.vertices;var indices=new List<int>();var cutFaces=new List<bool>();
@@ -246,7 +249,7 @@ namespace StoneGame.Chipping
                 bool impactFrame=!applied && phase>=.58f;
                 if(impactFrame){gripPosition=targetGrip;rotation=impactRotation;}
                 SetHammerGripPose(gripPosition,rotation);
-                if(impactFrame){applied=true;if(stone!=null && ActiveStone==stone && stone.TryChip()){NotifyProgress(stone);RefreshProgress();HammerHit?.Invoke(stone,hit.Point);}}
+                if(impactFrame){applied=true;if(stone!=null && ActiveStone==stone && stone.TryChip(hit.Point,hit.Normal)){NotifyProgress(stone);RefreshProgress();HammerHit?.Invoke(stone,hit.Point);}}
                 yield return null;
             }
             IsStriking=false;strike=null;

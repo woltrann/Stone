@@ -1,0 +1,9 @@
+{
+    "passed": [
+        "Dented coarse mesh remains closed: ",
+        "Convex physics clone shrinks exactly to final size",
+        "Completed coarse mesh remains closed: ",
+        "Convex reload does not double shrink",
+        "Convex reset restores original physics mesh"
+    ]
+}

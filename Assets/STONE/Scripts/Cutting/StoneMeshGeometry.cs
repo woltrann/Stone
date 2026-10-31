@@ -29,7 +29,9 @@ namespace StoneGame.Cutting
                 surfaceNormal=half.CutSurfaceNormal, surfaceRadius=half.CutSurfaceRadius, volume=half.Volume,
                 surfaceMetadataVersion=1,cutSurfaceSubmesh=half.CutSurfaceSubmesh,cutSurfaceMaterialId=half.CutSurfaceMaterialId };
             for(int i=0;i<mesh.subMeshCount;i++) data.submeshes[i]=new Submesh {indices=mesh.GetTriangles(i)};
-            var materials=half.GetComponent<MeshRenderer>().sharedMaterials;
+            // Partial chipping uses an extra visual submesh. Save the source layout;
+            // individual impact marks are restored by the chipping participant.
+            var materials=half.ChippingSourceMaterials;
             data.materialNames=new string[materials.Length];
             for(int i=0;i<materials.Length;i++) data.materialNames[i]=materials[i]!=null?materials[i].name:null;
             return data;

@@ -29,6 +29,12 @@ namespace StoneGame.Cutting
         [Header("Chipping")]
         [SerializeField, Min(1)] int chippingRequiredHits = 6;
         public int ChippingRequiredHits => Mathf.Max(1,chippingRequiredHits);
+        [SerializeField,Range(0f,.04f),Tooltip("Dent depth per hit as a fraction of the cut mesh diagonal.")]
+        float chippingDentDepth=.018f;
+        [SerializeField,Range(.8f,1f),Tooltip("Final linear size after chipping. 0.92 means 8% smaller in each direction.")]
+        float chippingFinalSize=.92f;
+        public float ChippingDentDepth=>Mathf.Clamp(chippingDentDepth,0,.04f);
+        public float ChippingFinalSize=>Mathf.Clamp(chippingFinalSize,.8f,1f);
 
         public GameObject LeftHalfPrefab => leftHalfPrefab;
         public GameObject RightHalfPrefab => rightHalfPrefab;
